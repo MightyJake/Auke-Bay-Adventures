@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yacht Fleet | Auke Bay Adventures — Juneau, Alaska Charters</title>
+<meta name="description" content="Our fleet of 4 private charter yachts in Juneau, Alaska. 26', 30', and 42' Nordic Tugs and KingFisher yachts for bareboat or skippered charters on the Inside Passage.">
+<link rel="stylesheet" href="css/global.css">
+<style>
+.fleet-intro { padding:var(--sp-xl) var(--sp-lg); background:var(--c-cream); display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+.fleet-intro-text p { font-size:.97rem; font-weight:300; color:var(--c-text-mid); line-height:1.82; margin-bottom:14px; }
+.fleet-filter { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:0; padding:24px var(--sp-lg); background:var(--c-navy); border-bottom:1px solid rgba(168,204,216,.1); }
+.filter-btn {
+  font-family:var(--ff-cond); font-size:.68rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  padding:9px 20px; border-radius:20px;
+  border:1px solid rgba(168,204,216,.2); color:var(--c-ice);
+  background:transparent; cursor:pointer; transition:.2s;
+}
+.filter-btn.active,.filter-btn:hover { background:var(--c-gold); border-color:var(--c-gold); color:var(--c-navy); }
+.fleet-section { padding:var(--sp-xl) var(--sp-lg); background:var(--c-white); }
+.yacht-feature {
+  display:grid; grid-template-columns:1.1fr 1fr;
+  gap:0; margin-bottom:80px;
+  border-radius:var(--r-lg); overflow:hidden;
+  box-shadow:var(--shadow-mid);
+}
+.yacht-feature:nth-child(even) { direction:rtl; }
+.yacht-feature:nth-child(even) > * { direction:ltr; }
+.yacht-imgs { position:relative; overflow:hidden; background:var(--c-ocean); min-height:460px; }
+.yacht-imgs .main-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s; }
+.yacht-imgs:hover .main-img { transform:scale(1.04); }
+.yacht-badge {
+  position:absolute; top:20px; left:20px;
+  background:var(--c-gold); color:var(--c-navy);
+  font-family:var(--ff-cond); font-size:.62rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  padding:6px 14px; border-radius:20px;
+}
+.yacht-detail {
+  background:var(--c-navy); padding:48px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.yacht-detail .yd-size {
+  font-family:var(--ff-cond); font-size:.68rem; font-weight:700;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--c-gold-light); margin-bottom:8px;
+}
+.yacht-detail h2 { font-family:var(--ff-display); font-size:2rem; color:var(--c-white); margin-bottom:14px; }
+.yacht-detail p { font-size:.9rem; color:var(--c-ice); font-weight:300; line-height:1.78; margin-bottom:24px; }
+.specs-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:28px; }
+.spec-item { border-top:1px solid rgba(168,204,216,.15); padding-top:10px; }
+.spec-item .sl { font-family:var(--ff-cond); font-size:.6rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--c-text-soft); margin-bottom:3px; }
+.spec-item .sv { font-size:.92rem; color:var(--c-white); font-weight:400; }
+.yacht-amenities { margin-bottom:28px; }
+.yacht-amenities h4 { font-family:var(--ff-cond); font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--c-gold-light); margin-bottom:10px; }
+.amenity-tags { display:flex; flex-wrap:wrap; gap:8px; }
+.amenity-tag { font-family:var(--ff-cond); font-size:.64rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:5px 12px; border:1px solid rgba(168,204,216,.2); border-radius:20px; color:var(--c-ice); }
+.also-good { padding:var(--sp-xl) var(--sp-lg); background:var(--c-deep); }
+.also-good h2 { font-family:var(--ff-display); font-size:1.8rem; color:var(--c-white); text-align:center; margin-bottom:var(--sp-lg); }
+.compare-table { width:100%; border-collapse:collapse; color:var(--c-ice); font-size:.88rem; }
+.compare-table th { font-family:var(--ff-cond); font-size:.64rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--c-gold-light); padding:14px 20px; border-bottom:1px solid rgba(168,204,216,.15); text-align:left; background:rgba(255,255,255,.03); }
+.compare-table td { padding:14px 20px; border-bottom:1px solid rgba(168,204,216,.06); }
+.compare-table tr:hover td { background:rgba(255,255,255,.03); }
+.compare-table td:first-child { font-family:var(--ff-display); font-size:1rem; color:var(--c-white); }
+@media(max-width:900px){
+  .fleet-intro,.yacht-feature{grid-template-columns:1fr;}
+  .yacht-feature:nth-child(even){direction:ltr;}
+  .yacht-imgs{min-height:300px;}
+  .yacht-detail{padding:32px 24px;}
+  .specs-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .specs-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="topbar-left">📍 Auke Bay Harbor, Juneau, AK</span>
+  <span class="topbar-center">✦ 2026 Charter Season — Now Booking ✦</span>
+  <span class="topbar-right"><a href="tel:+19077231042">(907) 723-1042</a></span>
+</div>
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <img src="uploads/auke_logo.png" alt="Auke Bay Adventures">
+    <div class="nav-brand-text"><span class="nav-brand-name">Auke Bay Adventures</span><span class="nav-brand-sub">Juneau, Alaska</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="fleet.html" class="active">Fleet</a></li>
+    <li><a href="experiences.html">Experiences</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="fleet.html">Fleet</a><a href="experiences.html">Experiences</a><a href="pricing.html">Pricing</a><a href="gallery.html">Gallery</a><a href="contact.html" class="mobile-cta">Book Now</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('uploads/gallery_yachts.jpg')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Our Vessels</div>
+    <h1>The Auke Bay Fleet</h1>
+  </div>
+</section>
+
+<section class="fleet-intro">
+  <div class="reveal">
+    <div class="section-eyebrow">Built for the Inside Passage</div>
+    <h2 class="section-title" style="margin-bottom:20px;">Four Vessels.<br>One Unforgettable Region.</h2>
+    <p>Our fleet spans from nimble day-boats to fully-equipped multi-day Nordic Tugs. Every vessel is USCG-compliant, outfitted with modern electronics, safety gear, and the comforts you need to focus entirely on your adventure.</p>
+    <p>All boats are available for <strong>bareboat charter</strong> (self-captained, Alaska boating experience required) or with the addition of a licensed <strong>skippered captain</strong> at $650/day.</p>
+    <a href="pricing.html" class="btn btn-outline-navy" style="margin-top:24px;">View 2026 Pricing</a>
+  </div>
+  <div class="reveal reveal-delay-1">
+    <img src="uploads/fleet_guy_fishing.jpg" alt="Auke Bay Adventures fleet — charter boats in Juneau Alaska" style="border-radius:var(--r-md); box-shadow:var(--shadow-mid);">
+  </div>
+</section>
+
+<section class="fleet-section">
+
+  <!-- 26' Southern C's -->
+  <div class="yacht-feature reveal">
+    <div class="yacht-imgs">
+      <img class="main-img" src="uploads/fleet_hero.jpg" alt="26 foot Southern C's KingFisher luxury charter boat — Auke Bay Adventures Juneau Alaska">
+      <div class="yacht-badge">From $1,200/day</div>
+    </div>
+    <div class="yacht-detail">
+      <div class="yd-size">26-Foot Vessel</div>
+      <h2>Southern C's<br><em style="font-family:var(--ff-display);font-style:italic;font-size:1rem;color:var(--c-ice);">KingFisher Weekender — Luxury Edition</em></h2>
+      <p>The perfect nimble day-boat for fishing excursions and short overnight trips. The KingFisher Weekender Luxury Edition delivers comfort without compromise — ideal for couples or small groups who want to explore the Inside Passage in style.</p>
+      <div class="specs-grid">
+        <div class="spec-item"><div class="sl">Length</div><div class="sv">26 Feet</div></div>
+        <div class="spec-item"><div class="sl">Charter Rate</div><div class="sv">$1,200/day</div></div>
+        <div class="spec-item"><div class="sl">Charter Type</div><div class="sv">Bareboat / Skippered</div></div>
+        <div class="spec-item"><div class="sl">Damage Deposit</div><div class="sv">$1,000 (refundable)</div></div>
+        <div class="spec-item"><div class="sl">Cleaning Fee</div><div class="sv">$250/trip</div></div>
+        <div class="spec-item"><div class="sl">Style</div><div class="sv">KingFisher Luxury</div></div>
+      </div>
+      <div class="yacht-amenities">
+        <h4>Ideal For</h4>
+        <div class="amenity-tags">
+          <span class="amenity-tag">Day Fishing</span>
+          <span class="amenity-tag">Couples</span>
+          <span class="amenity-tag">Short Overnight</span>
+          <span class="amenity-tag">Photography</span>
+        </div>
+      </div>
+      <a href="contact.html" class="btn btn-gold">Book This Vessel</a>
+    </div>
+  </div>
+
+  <!-- 30' Sablefish -->
+  <div class="yacht-feature reveal">
+    <div class="yacht-imgs">
+      <img class="main-img" src="uploads/yacht_sablefish.jpg" alt="30 foot Sablefish KingFisher charter boat — Auke Bay Adventures Juneau Alaska">
+      <div class="yacht-badge">From $1,575/day</div>
+    </div>
+    <div class="yacht-detail">
+      <div class="yd-size">30-Foot Vessel</div>
+      <h2>Sablefish<br><em style="font-family:var(--ff-display);font-style:italic;font-size:1rem;color:var(--c-ice);">Designation KingFisher Yacht</em></h2>
+      <p>The 30' Designation KingFisher offers more range, more interior space, and the ability to comfortably host small groups for multi-day Inside Passage adventures. An exceptional all-arounder for fishing, wildlife watching, and overnight coastal exploration.</p>
+      <div class="specs-grid">
+        <div class="spec-item"><div class="sl">Length</div><div class="sv">30 Feet</div></div>
+        <div class="spec-item"><div class="sl">Charter Rate</div><div class="sv">$1,575/day</div></div>
+        <div class="spec-item"><div class="sl">Charter Type</div><div class="sv">Bareboat / Skippered</div></div>
+        <div class="spec-item"><div class="sl">Damage Deposit</div><div class="sv">$1,000 (refundable)</div></div>
+        <div class="spec-item"><div class="sl">Cleaning Fee</div><div class="sv">$250/trip</div></div>
+        <div class="spec-item"><div class="sl">Style</div><div class="sv">Designation KingFisher</div></div>
+      </div>
+      <div class="yacht-amenities">
+        <h4>Ideal For</h4>
+        <div class="amenity-tags">
+          <span class="amenity-tag">Multi-Day Trips</span>
+          <span class="amenity-tag">Small Groups</span>
+          <span class="amenity-tag">Fishing</span>
+          <span class="amenity-tag">Whale Watching</span>
+        </div>
+      </div>
+      <a href="contact.html" class="btn btn-gold">Book This Vessel</a>
+    </div>
+  </div>
+
+  <!-- 42' Stickeen -->
+  <div class="yacht-feature reveal">
+    <div class="yacht-imgs">
+      <img class="main-img" src="uploads/yacht_stickeen.jpg" alt="42 foot Stickeen Nordic Tug charter yacht — Auke Bay Adventures Juneau Alaska">
+      <div class="yacht-badge">From $2,195/day</div>
+    </div>
+    <div class="yacht-detail">
+      <div class="yd-size">42-Foot Vessel</div>
+      <h2>Stickeen<br><em style="font-family:var(--ff-display);font-style:italic;font-size:1rem;color:var(--c-ice);">42′ Nordic Tug Yacht</em></h2>
+      <p>Our flagship 42' Nordic Tug is the ultimate Inside Passage vessel — full liveaboard comfort, long-range capability, and a seakeeping reputation that inspires confidence in all conditions. The Stickeen is purpose-built for extended Alaska expeditions.</p>
+      <div class="specs-grid">
+        <div class="spec-item"><div class="sl">Length</div><div class="sv">42 Feet</div></div>
+        <div class="spec-item"><div class="sl">Charter Rate</div><div class="sv">$2,195/day</div></div>
+        <div class="spec-item"><div class="sl">Charter Type</div><div class="sv">Bareboat / Skippered</div></div>
+        <div class="spec-item"><div class="sl">Damage Deposit</div><div class="sv">$4,000 (refundable)</div></div>
+        <div class="spec-item"><div class="sl">Cleaning Fee</div><div class="sv">$350/trip</div></div>
+        <div class="spec-item"><div class="sl">Style</div><div class="sv">Nordic Tug 42</div></div>
+      </div>
+      <div class="yacht-amenities">
+        <h4>Ideal For</h4>
+        <div class="amenity-tags">
+          <span class="amenity-tag">Extended Expeditions</span>
+          <span class="amenity-tag">Glacier Bay</span>
+          <span class="amenity-tag">Larger Groups</span>
+          <span class="amenity-tag">Liveaboard</span>
+        </div>
+      </div>
+      <a href="contact.html" class="btn btn-gold">Book This Vessel</a>
+    </div>
+  </div>
+
+  <!-- 42' 58 North -->
+  <div class="yacht-feature reveal">
+    <div class="yacht-imgs">
+      <img class="main-img" src="uploads/yacht_58north.jpg" alt="42 foot 58 North Nordic Tug charter yacht — Auke Bay Adventures Juneau Alaska">
+      <div class="yacht-badge">From $2,195/day</div>
+    </div>
+    <div class="yacht-detail">
+      <div class="yd-size">42-Foot Vessel</div>
+      <h2>58° North<br><em style="font-family:var(--ff-display);font-style:italic;font-size:1rem;color:var(--c-ice);">42′ Nordic Tug Yacht</em></h2>
+      <p>Named for the latitude of Alaska's breathtaking Inside Passage, the 58° North is the twin vessel to Stickeen — offering identical premium comfort, long-range capability, and seakeeping for the most ambitious Southeast Alaska adventures imaginable.</p>
+      <div class="specs-grid">
+        <div class="spec-item"><div class="sl">Length</div><div class="sv">42 Feet</div></div>
+        <div class="spec-item"><div class="sl">Charter Rate</div><div class="sv">$2,195/day</div></div>
+        <div class="spec-item"><div class="sl">Charter Type</div><div class="sv">Bareboat / Skippered</div></div>
+        <div class="spec-item"><div class="sl">Damage Deposit</div><div class="sv">$4,000 (refundable)</div></div>
+        <div class="spec-item"><div class="sl">Cleaning Fee</div><div class="sv">$350/trip</div></div>
+        <div class="spec-item"><div class="sl">Style</div><div class="sv">Nordic Tug 42</div></div>
+      </div>
+      <div class="yacht-amenities">
+        <h4>Ideal For</h4>
+        <div class="amenity-tags">
+          <span class="amenity-tag">Extended Expeditions</span>
+          <span class="amenity-tag">Corporate Groups</span>
+          <span class="amenity-tag">Photography</span>
+          <span class="amenity-tag">Village Exploration</span>
+        </div>
+      </div>
+      <a href="contact.html" class="btn btn-gold">Book This Vessel</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- Compare Table -->
+<section class="also-good">
+  <h2 class="reveal">Quick Fleet Comparison</h2>
+  <div class="reveal" style="overflow-x:auto;">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Vessel</th><th>Length</th><th>Daily Rate</th><th>Deposit</th><th>Cleaning</th><th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Southern C's</td><td>26 ft</td><td>$1,200</td><td>$1,000</td><td>$250</td><td>Day trips, couples</td></tr>
+      <tr><td>Sablefish</td><td>30 ft</td><td>$1,575</td><td>$1,000</td><td>$250</td><td>Multi-day, small groups</td></tr>
+      <tr><td>Stickeen</td><td>42 ft</td><td>$2,195</td><td>$4,000</td><td>$350</td><td>Extended expeditions</td></tr>
+      <tr><td>58° North</td><td>42 ft</td><td>$2,195</td><td>$4,000</td><td>$350</td><td>Extended expeditions</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div style="text-align:center;margin-top:36px;">
+    <a href="pricing.html" class="btn btn-gold">View Full 2026 Pricing</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><img src="uploads/auke_logo.png" alt="Auke Bay Adventures"><p>Private luxury yacht charters in Southeast Alaska's Inside Passage. Bareboat and skippered charters from Auke Bay Harbor, Juneau, AK.</p></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="fleet.html">Fleet</a></li><li><a href="experiences.html">Experiences</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Book Now</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="http://www.adfg.alaska.gov/" target="_blank">AK Fish &amp; Game</a></li><li><a href="http://www.uscg.mil/" target="_blank">U.S. Coast Guard</a></li><li><a href="http://www.alaska.org/" target="_blank">Alaska.org</a></li><li><a href="http://www.alaskaair.com/" target="_blank">Alaska Airlines</a></li><li><a href="https://www.aukebayadventures.com/wp-content/uploads/2025/12/2026_AUKE-BAY-ADVENTURES-LLC_charter-agreement-5.pdf" target="_blank">Charter Agreement</a></li></ul></div>
+    <div class="footer-col footer-contact"><h4>Contact</h4><address><p>11485 Auke Bay Harbor Rd.<br>Juneau, AK 99821</p><a href="tel:+19077231042" class="phone-link">(907) 723-1042</a></address></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Auke Bay Adventures, Inc. | Juneau, Alaska Private Yacht Charters</p><div class="footer-social"><a href="https://www.facebook.com/Auke-Bay-Adventures-1422845364457113" target="_blank">f</a></div></div>
+</footer>
+<div class="lightbox" id="lightbox" onclick="closeLb()"><button class="lb-close">×</button><img id="lb-img" src="" alt=""></div>
+<script src="js/shared.js"></script>
+</body>
+</html>

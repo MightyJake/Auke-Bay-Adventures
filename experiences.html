@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charter Experiences | Auke Bay Adventures — Juneau, Alaska</title>
+<meta name="description" content="Explore everything Auke Bay Adventures offers in Southeast Alaska's Inside Passage — sport fishing, whale watching, Glacier Bay, kayaking, wildlife photography, and private group charters from Juneau, AK.">
+<meta property="og:title" content="Charter Experiences | Auke Bay Adventures — Alaska's Inside Passage">
+<meta property="og:description" content="World-class fishing, whale watching, Glacier Bay, kayaking, wildlife photography and more. Private yacht charters from Juneau, Alaska.">
+<meta property="og:image" content="uploads/gallery_fishing.jpg">
+<link rel="canonical" href="https://www.aukebayadventures.com/experiences/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "Auke Bay Adventures — Charter Experiences",
+  "description": "Sport fishing, whale watching, Glacier Bay, kayaking and wildlife photography charters in Southeast Alaska's Inside Passage.",
+  "url": "https://www.aukebayadventures.com",
+  "telephone": "+19077231042",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "11485 Auke Bay Harbor Rd.",
+    "addressLocality": "Juneau",
+    "addressRegion": "AK",
+    "postalCode": "99821",
+    "addressCountry": "US"
+  }
+}
+</script>
+<link rel="stylesheet" href="css/global.css">
+<style>
+
+/* ── INTRO ── */
+.exp-intro {
+  padding: var(--sp-xl) var(--sp-lg);
+  background: var(--c-cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.exp-intro-text p {
+  font-size: .97rem;
+  font-weight: 300;
+  color: var(--c-text-mid);
+  line-height: 1.82;
+  margin-bottom: 16px;
+}
+.exp-intro-image {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-hard);
+}
+.exp-intro-image img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  transition: transform .7s ease;
+}
+.exp-intro-image:hover img { transform: scale(1.04); }
+.exp-intro-image::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(200,136,58,.25);
+  border-radius: var(--r-md);
+  pointer-events: none;
+}
+
+/* ── EXPERIENCE FEATURES ── */
+.exp-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+  border-bottom: 1px solid rgba(8,25,46,.06);
+}
+.exp-feature:nth-child(even) { direction: rtl; }
+.exp-feature:nth-child(even) > * { direction: ltr; }
+.ef-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-ocean);
+}
+.ef-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .7s ease;
+  min-height: 420px;
+}
+.ef-image:hover img { transform: scale(1.04); }
+.ef-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(8,25,46,.4) 100%);
+  pointer-events: none;
+}
+.ef-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: var(--c-gold);
+  color: var(--c-navy);
+  font-family: var(--ff-cond);
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  z-index: 2;
+}
+.ef-body {
+  padding: 64px 56px;
+  background: var(--c-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ef-body.dark {
+  background: var(--c-navy);
+}
+.ef-num {
+  font-family: var(--ff-display);
+  font-size: 4rem;
+  font-weight: 600;
+  color: rgba(8,25,46,.06);
+  line-height: 1;
+  margin-bottom: -12px;
+}
+.ef-body.dark .ef-num { color: rgba(255,255,255,.06); }
+.ef-body h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 600;
+  color: var(--c-navy);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.ef-body.dark h2 { color: var(--c-white); }
+.ef-body p {
+  font-size: .93rem;
+  font-weight: 300;
+  color: var(--c-text-mid);
+  line-height: 1.82;
+  margin-bottom: 14px;
+}
+.ef-body.dark p { color: var(--c-ice); }
+.ef-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0 28px;
+  padding: 20px;
+  background: var(--c-cream);
+  border-radius: var(--r-sm);
+  border-left: 3px solid var(--c-gold);
+}
+.ef-body.dark .ef-details {
+  background: rgba(255,255,255,.05);
+  border-color: var(--c-gold-light);
+}
+.ef-detail-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: .83rem;
+  color: var(--c-text-mid);
+  font-weight: 300;
+}
+.ef-body.dark .ef-detail-row { color: var(--c-glacier); }
+.ef-detail-row strong {
+  font-family: var(--ff-cond);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--c-navy);
+  min-width: 80px;
+  padding-top: 2px;
+}
+.ef-body.dark .ef-detail-row strong { color: var(--c-gold-light); }
+.ef-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.ef-tag {
+  font-family: var(--ff-cond);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(8,25,46,.15);
+  color: var(--c-text-mid);
+}
+.ef-body.dark .ef-tag {
+  border-color: rgba(168,204,216,.2);
+  color: var(--c-ice);
+}
+
+/* ── GEAR SECTION ── */
+.gear-section {
+  padding: var(--sp-xl) var(--sp-lg);
+  background: var(--c-cream);
+}
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: var(--sp-lg);
+}
+.gear-card {
+  background: var(--c-white);
+  border: 1px solid rgba(8,25,46,.08);
+  border-radius: var(--r-md);
+  padding: 28px 24px;
+  text-align: center;
+  transition: box-shadow .3s, transform .3s;
+}
+.gear-card:hover {
+  box-shadow: var(--shadow-mid);
+  transform: translateY(-4px);
+}
+.gear-icon { font-size: 2.2rem; margin-bottom: 12px; }
+.gear-card h3 {
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  color: var(--c-navy);
+  margin-bottom: 8px;
+}
+.gear-card p {
+  font-size: .8rem;
+  color: var(--c-text-mid);
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+.gear-price {
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--c-navy);
+}
+.gear-price span {
+  font-family: var(--ff-cond);
+  font-size: .65rem;
+  color: var(--c-text-soft);
+}
+
+/* ── PLANNING STRIP ── */
+.planning-strip {
+  padding: var(--sp-xl) var(--sp-lg);
+  background: var(--c-deep);
+  color: var(--c-white);
+}
+.planning-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: var(--sp-lg);
+}
+.plan-step { position: relative; }
+.plan-num {
+  font-family: var(--ff-display);
+  font-size: 3rem;
+  font-weight: 600;
+  color: rgba(200,136,58,.25);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.plan-step h3 {
+  font-family: var(--ff-display);
+  font-size: 1.15rem;
+  color: var(--c-white);
+  margin-bottom: 8px;
+}
+.plan-step p {
+  font-size: .84rem;
+  color: var(--c-ice);
+  font-weight: 300;
+  line-height: 1.72;
+}
+.plan-connector {
+  position: absolute;
+  top: 24px;
+  right: -16px;
+  color: var(--c-gold);
+  font-size: 1.2rem;
+  opacity: .4;
+}
+
+/* ── FAQ ── */
+.faq-section {
+  padding: var(--sp-xl) var(--sp-lg);
+  background: var(--c-white);
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 1000px;
+  margin: var(--sp-lg) auto 0;
+}
+.faq-item {
+  border: 1px solid rgba(8,25,46,.08);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: box-shadow .3s;
+}
+.faq-item:hover { box-shadow: var(--shadow-soft); }
+.faq-q {
+  padding: 20px 24px;
+  font-family: var(--ff-display);
+  font-size: 1rem;
+  color: var(--c-navy);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: var(--c-white);
+  transition: background .2s;
+  user-select: none;
+}
+.faq-q:hover { background: var(--c-cream); }
+.faq-q::after {
+  content: '+';
+  font-family: var(--ff-body);
+  font-size: 1.4rem;
+  color: var(--c-gold);
+  font-weight: 300;
+  flex-shrink: 0;
+  transition: transform .3s;
+}
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a {
+  display: none;
+  padding: 0 24px 20px;
+  font-size: .86rem;
+  color: var(--c-text-mid);
+  font-weight: 300;
+  line-height: 1.8;
+  background: var(--c-white);
+  border-top: 1px solid rgba(8,25,46,.05);
+}
+.faq-item.open .faq-a { display: block; padding-top: 16px; }
+
+/* ── FINAL CTA ── */
+.exp-cta {
+  padding: var(--sp-xl) var(--sp-lg);
+  background:
+    linear-gradient(rgba(8,25,46,.84), rgba(8,25,46,.84)),
+    url('uploads/gallery_scenic.jpg') center / cover fixed;
+  text-align: center;
+  color: var(--c-white);
+}
+.exp-cta h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.exp-cta p {
+  font-size: .97rem;
+  color: var(--c-glacier);
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto 36px;
+  line-height: 1.82;
+}
+.exp-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.exp-cta-phone {
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
+  color: var(--c-white);
+  transition: color .2s;
+}
+.exp-cta-phone:hover { color: var(--c-gold-light); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .gear-grid { grid-template-columns: repeat(2, 1fr); }
+  .planning-grid { grid-template-columns: repeat(2, 1fr); }
+  .plan-connector { display: none; }
+}
+@media (max-width: 900px) {
+  .exp-intro { grid-template-columns: 1fr; gap: 36px; }
+  .exp-intro-image img { height: 300px; }
+  .exp-feature { grid-template-columns: 1fr; direction: ltr !important; }
+  .exp-feature:nth-child(even) { direction: ltr; }
+  .ef-image img { min-height: 280px; }
+  .ef-body { padding: 40px 28px; }
+  .faq-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .gear-grid { grid-template-columns: 1fr; }
+  .planning-grid { grid-template-columns: 1fr; }
+  .ef-body { padding: 32px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span class="topbar-left">📍 Auke Bay Harbor, Juneau, AK</span>
+  <span class="topbar-center">✦ 2026 Charter Season — Now Booking ✦</span>
+  <span class="topbar-right"><a href="tel:+19077231042">(907) 723-1042</a></span>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <img src="uploads/auke_logo.png" alt="Auke Bay Adventures Logo">
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Auke Bay Adventures</span>
+      <span class="nav-brand-sub">Juneau, Alaska</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="experiences.html" class="active">Experiences</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="fleet.html">Fleet</a>
+  <a href="experiences.html">Experiences</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html" class="mobile-cta">Book Now</a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('uploads/gallery_scenic.jpg');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Choose Your Adventure</div>
+    <h1>Experiences on the<br>Inside Passage</h1>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="exp-intro">
+  <div class="exp-intro-text reveal">
+    <div class="section-eyebrow">Alaska, Your Way</div>
+    <h2 class="section-title" style="margin-bottom: 20px;">One Region.<br>Infinite Adventures.</h2>
+    <p>Southeast Alaska's Inside Passage is one of the most biologically rich, visually dramatic, and genuinely wild places on earth. Auke Bay Adventures puts you right in the middle of it — aboard a private yacht, on your schedule, with no one else's itinerary to worry about.</p>
+    <p>Whether you're here to chase world-record halibut, photograph humpback whales at sunrise, explore the ice fields of Glacier Bay, or simply drift through ancient fjords with people you love — the only limit is how many days you have.</p>
+    <p>Below are the experiences our guests love most. Mix and match any of them across your charter days — Steve and the crew will help you build the perfect itinerary.</p>
+    <a href="contact.html" class="btn btn-gold" style="margin-top: 8px;">Start Planning Your Trip</a>
+  </div>
+  <div class="exp-intro-image reveal reveal-delay-1">
+    <img src="uploads/gallery_charter_exp.jpg"
+         alt="Guests aboard an Auke Bay Adventures private charter in Southeast Alaska's Inside Passage">
+  </div>
+</section>
+
+<!-- ── EXPERIENCE 01: SPORT FISHING ── -->
+<section class="exp-feature">
+  <div class="ef-image reveal">
+    <img src="uploads/gallery_fishing.jpg"
+         alt="Sport fishing for halibut and salmon on an Auke Bay Adventures charter in Juneau, Alaska">
+    <div class="ef-image-overlay"></div>
+    <div class="ef-badge">Most Popular</div>
+  </div>
+  <div class="ef-body reveal reveal-delay-1">
+    <div class="ef-num">01</div>
+    <div class="section-eyebrow">Sport Fishing</div>
+    <h2>World-Class Halibut &amp;<br>Salmon Fishing</h2>
+    <p>Southeast Alaska is one of the last places on earth where catching a 200-pound halibut is a realistic expectation, not a fishing story. The cold, nutrient-dense waters of the Inside Passage produce fish in sizes and quantities that make anglers from around the world make the trip year after year.</p>
+    <p>Your charter can be tailored entirely around fishing — Steve knows the tides, the structure, the bait, and the spots that don't show up on anyone else's map. Rods, reels, and terminal tackle available for rent.</p>
+    <div class="ef-details">
+      <div class="ef-detail-row"><strong>Target</strong> Pacific Halibut, King &amp; Silver Salmon, Rockfish, Lingcod, Pacific Cod</div>
+      <div class="ef-detail-row"><strong>Season</strong> May through September (peak: June–August for salmon)</div>
+      <div class="ef-detail-row"><strong>Gear</strong> Halibut rods $70/trip · Salmon rods $65/trip</div>
+      <div class="ef-detail-row"><strong>License</strong> Alaska Sport Fishing License required (client responsibility)</div>
+    </div>
+    <div class="ef-tags">
+      <span class="ef-tag">Halibut</span>
+      <span class="ef-tag">Salmon</span>
+      <span class="ef-tag">Rockfish</span>
+      <span class="ef-tag">All Skill Levels</span>
+      <span class="ef-tag">Catch &amp; Release</span>
+    </div>
+    <a href="contact.html" class="btn btn-gold">Book a Fishing Charter</a>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE 02: WHALE WATCHING ── -->
+<section class="exp-feature">
+  <div class="ef-image reveal">
+    <img src="uploads/gallery_whales.jpg"
+         alt="Humpback whale breaching in Southeast Alaska's Inside Passage near Juneau">
+    <div class="ef-image-overlay"></div>
+    <div class="ef-badge">Iconic Experience</div>
+  </div>
+  <div class="ef-body dark reveal reveal-delay-1">
+    <div class="ef-num">02</div>
+    <div class="section-eyebrow light">Whale Watching</div>
+    <h2>Humpbacks, Orcas &amp;<br>Marine Wildlife</h2>
+    <p>The Inside Passage is one of the most reliable places on earth to observe humpback whales in the wild. During the summer feeding season, pods of humpbacks gather to bubble-net feed — a complex cooperative hunting behavior that is genuinely breathtaking to witness from fifty feet away on the deck of your private yacht.</p>
+    <p>Beyond whales, the waters around Juneau host orca pods, Dall's porpoise, Steller sea lions, harbor seals, and an extraordinary density of bald eagles. Every trip into the passage is a wildlife encounter waiting to happen.</p>
+    <div class="ef-details">
+      <div class="ef-detail-row"><strong>Species</strong> Humpback Whales, Orca, Dall's Porpoise, Steller Sea Lions, Harbor Seals, Bald Eagles</div>
+      <div class="ef-detail-row"><strong>Best Season</strong> June through September</div>
+      <div class="ef-detail-row"><strong>Viewing</strong> From your private vessel — no crowded tour boats, no strangers</div>
+      <div class="ef-detail-row"><strong>Pro Tip</strong> Bring binoculars and a long camera lens — the wildlife comes close</div>
+    </div>
+    <div class="ef-tags">
+      <span class="ef-tag">Humpback Whales</span>
+      <span class="ef-tag">Orca</span>
+      <span class="ef-tag">Sea Lions</span>
+      <span class="ef-tag">Bald Eagles</span>
+    </div>
+    <a href="contact.html" class="btn btn-gold">Book a Wildlife Charter</a>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE 03: GLACIER BAY ── -->
+<section class="exp-feature">
+  <div class="ef-image reveal">
+    <img src="uploads/gallery_glacier.jpg"
+         alt="Glacier scenery in Southeast Alaska's Inside Passage from a private yacht charter">
+    <div class="ef-image-overlay"></div>
+    <div class="ef-badge">Breathtaking</div>
+  </div>
+  <div class="ef-body reveal reveal-delay-1">
+    <div class="ef-num">03</div>
+    <div class="section-eyebrow">Glacier Bay &amp; Scenic Cruising</div>
+    <h2>Ancient Ice &amp; the<br>Grand Inside Passage</h2>
+    <p>Glacier Bay National Park is a UNESCO World Heritage Site and one of the most dramatic landscapes on the planet — 3.3 million acres of tidewater glaciers, fjords, and wilderness that has only been ice-free since the 1700s. Cruising into Glacier Bay on a private yacht, with no tour schedule and no crowds, is a genuinely once-in-a-lifetime experience.</p>
+    <p>Beyond Glacier Bay, the Inside Passage offers hundreds of miles of fjords, ancient rainforest coastline, uninhabited islands, and coastal villages with rich Tlingit heritage to explore at your own pace.</p>
+    <div class="ef-details">
+      <div class="ef-detail-row"><strong>Highlights</strong> Glacier Bay NP, Tidewater Glaciers, Fjords, Coastal Villages, Tlingit Culture Sites</div>
+      <div class="ef-detail-row"><strong>Best For</strong> Multi-day charters aboard the 42′ Nordic Tugs</div>
+      <div class="ef-detail-row"><strong>Permit</strong> Glacier Bay NPS vessel permit required — we can advise</div>
+      <div class="ef-detail-row"><strong>Duration</strong> Typically 3–7 day itineraries for full Glacier Bay access</div>
+    </div>
+    <div class="ef-tags">
+      <span class="ef-tag">Glacier Bay NP</span>
+      <span class="ef-tag">Tidewater Glaciers</span>
+      <span class="ef-tag">Fjords</span>
+      <span class="ef-tag">Village Exploration</span>
+      <span class="ef-tag">Multi-Day</span>
+    </div>
+    <a href="contact.html" class="btn btn-gold">Plan a Glacier Bay Trip</a>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE 04: KAYAKING ── -->
+<section class="exp-feature">
+  <div class="ef-image reveal">
+    <img src="uploads/gallery_wild.jpg"
+         alt="Kayaking in the pristine wilderness coves of Southeast Alaska from a private yacht charter base">
+    <div class="ef-image-overlay"></div>
+    <div class="ef-badge">Adventure</div>
+  </div>
+  <div class="ef-body dark reveal reveal-delay-1">
+    <div class="ef-num">04</div>
+    <div class="section-eyebrow light">Kayaking &amp; Exploration</div>
+    <h2>Paddle Into the<br>Hidden Alaska</h2>
+    <p>The real magic of the Inside Passage is often found in the places you can only reach at low speed, in silence — hidden coves, estuaries thick with waterfowl, sea otter beds, and sheltered bays where brown bears fish for salmon at the river mouth. Kayaking off the charter lets you get there.</p>
+    <p>Your yacht becomes the mothership: anchor in a protected bay, then launch kayaks to explore the shoreline at eye level with seals and otters. It's a dimension of Alaska exploration that most visitors never experience.</p>
+    <div class="ef-details">
+      <div class="ef-detail-row"><strong>Kayak Rental</strong> $200/kayak per trip (2 kayak minimum)</div>
+      <div class="ef-detail-row"><strong>Best For</strong> Calm, protected anchorages — Steve will find the best spots</div>
+      <div class="ef-detail-row"><strong>Combines With</strong> Wildlife watching, photography, fishing — perfect day-trip add-on</div>
+      <div class="ef-detail-row"><strong>Experience</strong> Basic kayaking ability recommended; no whitewater involved</div>
+    </div>
+    <div class="ef-tags">
+      <span class="ef-tag">Sea Kayaking</span>
+      <span class="ef-tag">Wildlife Viewing</span>
+      <span class="ef-tag">Cove Exploration</span>
+      <span class="ef-tag">Add-On Available</span>
+    </div>
+    <a href="contact.html" class="btn btn-gold">Add Kayaking to Your Charter</a>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE 05: PHOTOGRAPHY ── -->
+<section class="exp-feature">
+  <div class="ef-image reveal">
+    <img src="uploads/gallery_wildlife2.jpg"
+         alt="Wildlife and landscape photography from a private charter yacht in Southeast Alaska">
+    <div class="ef-image-overlay"></div>
+    <div class="ef-badge">Creative</div>
+  </div>
+  <div class="ef-body reveal reveal-delay-1">
+    <div class="ef-num">05</div>
+    <div class="section-eyebrow">Photography &amp; Nature</div>
+    <h2>Alaska at the<br>Speed of Light</h2>
+    <p>Southeast Alaska is arguably North America's greatest photography destination — and a private yacht charter is the only way to access it on a photographer's terms. No tour bus schedule. No other people in your frame. Position the boat exactly where you need it, stay as long as the light holds, and return to the same humpback pod when the golden hour hits.</p>
+    <p>The range is staggering: breaching whales, brown bears fishing river mouths, bald eagles with 7-foot wingspans, ancient glacier faces reflecting the midnight sun, and rain-forest coastlines straight out of a nature documentary. We've had wildlife and landscape photographers call this the trip that changed their entire portfolio.</p>
+    <div class="ef-details">
+      <div class="ef-detail-row"><strong>Subjects</strong> Whales, Bears, Eagles, Glaciers, Coastal Landscapes, Tidal Wildlife, Night Sky</div>
+      <div class="ef-detail-row"><strong>Advantage</strong> Private vessel = full control of positioning, timing, and duration</div>
+      <div class="ef-detail-row"><strong>Best Season</strong> May–September · Longest days June–July (20+ hrs of light)</div>
+      <div class="ef-detail-row"><strong>Gear</strong> Bring a 400–600mm lens for wildlife · Polarizer for water shots</div>
+    </div>
+    <div class="ef-tags">
+      <span class="ef-tag">Wildlife Photography</span>
+      <span class="ef-tag">Landscape</span>
+      <span class="ef-tag">Golden Hour</span>
+      <span class="ef-tag">Custom Positioning</span>
+    </div>
+    <a href="contact.html" class="btn btn-gold">Plan a Photography Charter</a>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE 06: PRIVATE GROUPS ── -->
+<section class="exp-feature">
+  <div class="ef-image reveal">
+    <img src="uploads/gallery_good_food.jpg"
+         alt="Private group charter on an Auke Bay Adventures yacht in Juneau, Alaska — friends and family on the Inside Passage">
+    <div class="ef-image-overlay"></div>
+    <div class="ef-badge">Custom</div>
+  </div>
+  <div class="ef-body dark reveal reveal-delay-1">
+    <div class="ef-num">06</div>
+    <div class="section-eyebrow light">Private Group &amp; Special Charters</div>
+    <h2>Entirely Yours.<br>Entirely Unforgettable.</h2>
+    <p>Every Auke Bay Adventures charter is private — but for groups with a specific purpose, we go further. Family reunions, milestone celebrations, corporate retreats, science and biology research charters, dive expeditions — the Inside Passage is the backdrop, and your vision is the itinerary.</p>
+    <p>Steve has hosted university research teams studying marine mammals, corporate groups from major companies looking for an off-site with real impact, and multi-generational family adventures that have become annual traditions. If it happens on water, we can build a charter around it.</p>
+    <div class="ef-details">
+      <div class="ef-detail-row"><strong>Group Types</strong> Family Reunions, Corporate Retreats, Biology/Science, Milestone Events, Dive Trips</div>
+      <div class="ef-detail-row"><strong>Vessels</strong> 42′ Nordic Tugs recommended for groups (Stickeen or 58° North)</div>
+      <div class="ef-detail-row"><strong>Duration</strong> Single day to multi-week — fully customized</div>
+      <div class="ef-detail-row"><strong>Captain</strong> Skippered option strongly recommended for large groups ($650/day)</div>
+    </div>
+    <div class="ef-tags">
+      <span class="ef-tag">Family Groups</span>
+      <span class="ef-tag">Corporate</span>
+      <span class="ef-tag">Science Charters</span>
+      <span class="ef-tag">Celebrations</span>
+      <span class="ef-tag">Diving</span>
+    </div>
+    <a href="contact.html" class="btn btn-gold">Inquire About Group Charters</a>
+  </div>
+</section>
+
+<!-- GEAR / ADD-ONS -->
+<section class="gear-section">
+  <div style="text-align: center; max-width: 560px; margin: 0 auto;" class="reveal">
+    <div class="section-eyebrow center">Equipment &amp; Add-Ons</div>
+    <h2 class="section-title center">Everything You Need On Board</h2>
+    <p class="section-body" style="text-align: center; margin-top: 10px;">We've got the gear — just show up ready to adventure. All equipment is rented per trip and can be added to any charter.</p>
+  </div>
+  <div class="gear-grid">
+    <div class="gear-card reveal">
+      <div class="gear-icon">🎣</div>
+      <h3>Halibut Rod</h3>
+      <p>Heavy-duty halibut tackle for bottom fishing the deep channels of the Inside Passage.</p>
+      <div class="gear-price">$70 <span>/ trip</span></div>
+    </div>
+    <div class="gear-card reveal reveal-delay-1">
+      <div class="gear-icon">🐟</div>
+      <h3>Salmon Rod</h3>
+      <p>Medium-action salmon setup ideal for trolling and casting in the productive salmon runs.</p>
+      <div class="gear-price">$65 <span>/ trip</span></div>
+    </div>
+    <div class="gear-card reveal reveal-delay-2">
+      <div class="gear-icon">🦀</div>
+      <h3>Crab Pot</h3>
+      <p>Set a pot and pull fresh Dungeness crab for dinner — a quintessential Alaska experience.</p>
+      <div class="gear-price">$40 <span>/ trip</span></div>
+    </div>
+    <div class="gear-card reveal reveal-delay-3">
+      <div class="gear-icon">🛶</div>
+      <h3>Kayak Rental</h3>
+      <p>Sea kayaks for shore exploration, wildlife approach, and paddling the quietest corners of the passage.</p>
+      <div class="gear-price">$200 <span>/ kayak</span></div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 32px;" class="reveal">
+    <a href="pricing.html" class="btn-text">View Full Pricing &amp; Add-Ons →</a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="planning-strip">
+  <div style="text-align: center;" class="reveal">
+    <div class="section-eyebrow light center">How It Works</div>
+    <h2 class="section-title light center">From Idea to Adventure</h2>
+  </div>
+  <div class="planning-grid">
+    <div class="plan-step reveal">
+      <div class="plan-num">01</div>
+      <h3>Choose Your Experience</h3>
+      <p>Fishing? Whales? Glacier Bay? Photography? Or all of the above? Browse the options above and get a feel for what excites your group most.</p>
+      <div class="plan-connector">→</div>
+    </div>
+    <div class="plan-step reveal reveal-delay-1">
+      <div class="plan-num">02</div>
+      <h3>Call or Contact Steve</h3>
+      <p>Reach out directly at (907) 723-1042 or fill out the booking form. Steve will discuss dates, vessel selection, itinerary ideas, and availability.</p>
+      <div class="plan-connector">→</div>
+    </div>
+    <div class="plan-step reveal reveal-delay-2">
+      <div class="plan-num">03</div>
+      <h3>Sign the Charter Agreement</h3>
+      <p>Review and sign the 2026 Charter Agreement. A deposit secures your dates. The rest is due at departure. No hidden fees.</p>
+      <div class="plan-connector">→</div>
+    </div>
+    <div class="plan-step reveal reveal-delay-3">
+      <div class="plan-num">04</div>
+      <h3>Show Up &amp; Adventure</h3>
+      <p>Arrive at Auke Bay Harbor, step aboard, and let Alaska do the rest. Your only job is to be present for one of the great wildernesses on earth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div style="text-align: center; max-width: 560px; margin: 0 auto;" class="reveal">
+    <div class="section-eyebrow center">FAQ</div>
+    <h2 class="section-title center">Common Questions</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q">Do I need fishing experience to book a fishing charter?</div>
+      <div class="faq-a">Not at all. Steve and the crew are happy to walk first-time anglers through everything — from rigging to setting the hook to landing a fish. Add a skippered captain for the full guided experience.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q">Can I combine multiple experiences on one charter?</div>
+      <div class="faq-a">Absolutely — that's the beauty of a private charter. You might fish in the morning, watch whales in the afternoon, and set a crab pot at anchor for dinner. Steve will help you build an itinerary that fits your time and interests.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q">What's the difference between bareboat and skippered?</div>
+      <div class="faq-a">A bareboat charter means you captain the vessel yourself — Alaska boating experience is required. A skippered charter adds Steve or one of our licensed captains at $650/day. For most guests, skippered is the right choice: you get local knowledge, safety expertise, and the freedom to focus entirely on the experience.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q">How far in advance should I book?</div>
+      <div class="faq-a">As early as possible. Summer months — especially July and August — book out months in advance. We recommend contacting Steve by late winter or early spring to secure your preferred dates for the upcoming season.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q">What happens if the weather is bad?</div>
+      <div class="faq-a">Southeast Alaska weather is dynamic but the Inside Passage is generally well-protected from open ocean swells. Steve has decades of experience reading local conditions and knows when to go, when to wait, and where to find shelter. Your safety always comes first.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q">Do I need to bring my own food and fuel?</div>
+      <div class="faq-a">Yes — provisions and fuel are the client's responsibility. This allows you to stock exactly what you like. We can advise on quantities based on your trip length. A convenience package ($45/person) covers all disposable supplies: paper goods, toiletries, and cleaning supplies.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q">Is Glacier Bay accessible on a shorter charter?</div>
+      <div class="faq-a">Glacier Bay is best suited to multi-day charters of 3 days or more given the travel time from Juneau. For day trips, there are spectacular glaciers and wildlife much closer to Auke Bay Harbor that make for equally memorable single-day adventures.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q">What should I bring on my charter?</div>
+      <div class="faq-a">Layers are essential — Alaska weather changes fast. Waterproof outerwear, rubber-soled non-marking shoes, sunscreen, polarized sunglasses, and your Alaska Sport Fishing License (if fishing). Bring a camera with plenty of storage. Check the Travel Prep Links page for a full packing guide.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="exp-cta">
+  <h2 class="reveal">Ready to Choose Your Adventure?</h2>
+  <p class="reveal">2026 charter season is open for bookings. Contact Steve to discuss your itinerary — he's done this long enough to know exactly what will make your Alaska trip extraordinary.</p>
+  <div class="exp-cta-actions reveal">
+    <a href="contact.html" class="btn btn-gold">Book a Charter</a>
+    <a href="tel:+19077231042" class="exp-cta-phone">(907) 723-1042</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <img src="uploads/auke_logo.png" alt="Auke Bay Adventures — Private Yacht Charters Juneau Alaska">
+      <p>Private luxury yacht charters in Southeast Alaska's Inside Passage. Bareboat and skippered charters from Auke Bay Harbor, Juneau, AK. 2026 season now booking.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="fleet.html">Yacht Fleet</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="gallery.html">Photo Gallery</a></li>
+        <li><a href="contact.html">Book a Charter</a></li>
+        <li><a href="styleguide.html">Brand Style Guide</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="http://www.adfg.alaska.gov/" target="_blank" rel="noopener">AK Dept of Fish &amp; Game</a></li>
+        <li><a href="http://www.uscg.mil/" target="_blank" rel="noopener">U.S. Coast Guard</a></li>
+        <li><a href="http://www.alaska.org/" target="_blank" rel="noopener">Alaska.org</a></li>
+        <li><a href="http://www.alaskaair.com/" target="_blank" rel="noopener">Alaska Airlines</a></li>
+        <li><a href="http://www.wardair.com/" target="_blank" rel="noopener">Ward Air</a></li>
+        <li><a href="http://www.flyalaskaseaplanes.com/" target="_blank" rel="noopener">Alaska Seaplanes</a></li>
+        <li><a href="https://www.aukebayadventures.com/wp-content/uploads/2025/12/2026_AUKE-BAY-ADVENTURES-LLC_charter-agreement-5.pdf" target="_blank">2026 Charter Agreement</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <address>
+        <p>Auke Bay Adventures, Inc.<br>11485 Auke Bay Harbor Rd.<br>Juneau, AK 99821</p>
+        <a href="tel:+19077231042" class="phone-link">(907) 723-1042</a>
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Auke Bay Adventures, Inc. | Juneau, Alaska Private Yacht Charters</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/Auke-Bay-Adventures-1422845364457113" target="_blank" rel="noopener" aria-label="Auke Bay Adventures on Facebook">f</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLb()">
+  <button class="lb-close">×</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script src="js/shared.js"></script>
+<script>
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>

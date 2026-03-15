@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Auke Bay Adventures — Juneau, Alaska Yacht Charters</title>
+<meta name="description" content="Learn about Auke Bay Adventures and captain Steve Birkinbine. Private yacht charters on Southeast Alaska's Inside Passage, based in Juneau, AK since the early 2000s.">
+<link rel="stylesheet" href="css/global.css">
+<style>
+.about-story{padding:var(--sp-xl) var(--sp-lg);background:var(--c-cream);display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.about-story-text p{font-size:.97rem;font-weight:300;color:var(--c-text-mid);line-height:1.82;margin-bottom:16px;}
+.about-values{padding:var(--sp-xl) var(--sp-lg);background:var(--c-white);}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:var(--sp-lg);}
+.value-card{padding:32px;border:1px solid rgba(8,25,46,.08);border-radius:var(--r-md);transition:box-shadow .3s,transform .3s;}
+.value-card:hover{box-shadow:var(--shadow-mid);transform:translateY(-4px);}
+.value-icon{font-size:2rem;margin-bottom:14px;}
+.value-card h3{font-family:var(--ff-display);font-size:1.2rem;color:var(--c-navy);margin-bottom:8px;}
+.value-card p{font-size:.85rem;color:var(--c-text-mid);font-weight:300;line-height:1.75;}
+.captain-section{padding:var(--sp-xl) var(--sp-lg);background:var(--c-navy);color:var(--c-white);}
+.captain-grid{display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:start;max-width:900px;margin:var(--sp-lg) auto 0;}
+.captain-photo{border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-hard);}
+.captain-photo img{width:100%;height:320px;object-fit:cover;object-position:top;}
+.captain-info h3{font-family:var(--ff-display);font-size:2rem;color:var(--c-white);margin-bottom:6px;}
+.captain-title{font-family:var(--ff-cond);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--c-gold-light);margin-bottom:20px;}
+.captain-info p{font-size:.92rem;color:var(--c-ice);font-weight:300;line-height:1.82;margin-bottom:14px;}
+.captain-contact{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+.captain-contact a{font-family:var(--ff-display);font-size:1.3rem;color:var(--c-white);transition:color .2s;}
+.captain-contact a:hover{color:var(--c-gold-light);}
+.captain-contact span{font-family:var(--ff-cond);font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--c-text-soft);}
+.testimonials-full{padding:var(--sp-xl) var(--sp-lg);background:var(--c-deep);}
+.testi-grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:1000px;margin:var(--sp-lg) auto 0;}
+.testi-card{background:rgba(255,255,255,.05);border:1px solid rgba(168,204,216,.1);border-radius:var(--r-md);padding:30px;transition:border-color .3s;}
+.testi-card:hover{border-color:rgba(200,136,58,.3);}
+.stars{color:var(--c-gold);letter-spacing:3px;font-size:.85rem;margin-bottom:12px;}
+.testi-text{font-family:var(--ff-display);font-style:italic;font-size:1rem;color:var(--c-glacier);line-height:1.78;margin-bottom:18px;}
+.testi-author{font-family:var(--ff-cond);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c-gold-light);}
+@media(max-width:900px){.about-story{grid-template-columns:1fr;}.captain-grid{grid-template-columns:1fr;}.captain-photo img{height:260px;}.values-grid{grid-template-columns:1fr;}.testi-grid4{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="topbar"><span class="topbar-left">📍 Auke Bay Harbor, Juneau, AK</span><span class="topbar-center">✦ 2026 Charter Season — Now Booking ✦</span><span class="topbar-right"><a href="tel:+19077231042">(907) 723-1042</a></span></div>
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand"><img src="uploads/auke_logo.png" alt="Auke Bay Adventures"><div class="nav-brand-text"><span class="nav-brand-name">Auke Bay Adventures</span><span class="nav-brand-sub">Juneau, Alaska</span></div></a>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html" class="active">About</a></li><li><a href="fleet.html">Fleet</a></li><li><a href="experiences.html">Experiences</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html" class="nav-cta">Book Now</a></li></ul>
+  <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-nav" id="mobile-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="fleet.html">Fleet</a><a href="experiences.html">Experiences</a><a href="pricing.html">Pricing</a><a href="gallery.html">Gallery</a><a href="contact.html" class="mobile-cta">Book Now</a></nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('uploads/fleet_guy_fishing.jpg')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><div class="page-hero-eyebrow">Our Story</div><h1>About Auke Bay Adventures</h1></div>
+</section>
+
+<section class="about-story">
+  <div class="reveal">
+    <img src="uploads/gallery_southeast.jpg" alt="Southeast Alaska wildlife from Auke Bay Adventures charter" style="border-radius:var(--r-md);box-shadow:var(--shadow-mid);width:100%;height:420px;object-fit:cover;">
+  </div>
+  <div class="about-story-text reveal reveal-delay-1">
+    <div class="section-eyebrow">Who We Are</div>
+    <h2 class="section-title" style="margin-bottom:20px;">The Adventure Starts Here</h2>
+    <p>Welcome to Auke Bay Adventures, based in Juneau, Alaska. We hold the keys and the expertise for you to launch the Alaska adventure of a lifetime aboard a private luxury yacht.</p>
+    <p>Your private party charter itinerary is determined entirely by you as you cruise the calm waters of the Inside Passage of scenic Southeast Alaska. Choose your adventure — the Inside Passage provides an abundance of choices, from whale watching to world-class sport fishing, science and biology charters, kayaking, Glacier Bay and village explorations, photography, and diving.</p>
+    <p>If you enjoy the ocean, whales, nature on its own terms, and some of the finest fishing you will ever experience, you owe it to yourself to experience it from the deck of a private yacht where the only clock is the midnight sun.</p>
+    <p>Auke Bay Adventures provides both <strong>bareboat</strong> and <strong>skippered charters</strong> on Nordic Tugs and Cutwater yachts — all out of the beautiful Auke Bay Harbor in Juneau, Alaska.</p>
+  </div>
+</section>
+
+<section class="about-values">
+  <div style="text-align:center;max-width:560px;margin:0 auto;" class="reveal">
+    <div class="section-eyebrow center">What Drives Us</div>
+    <h2 class="section-title center">The Auke Bay Difference</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <div class="value-icon">🎣</div>
+      <h3>True Expertise</h3>
+      <p>Decades of experience on Southeast Alaska's waters mean you get more than a boat rental — you get wisdom, local knowledge, and connections that deliver real results.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-1">
+      <div class="value-icon">🛥</div>
+      <h3>Premium Vessels</h3>
+      <p>Our Nordic Tug and KingFisher fleet is purpose-built for the Inside Passage — seaworthy, comfortable, and fully equipped for anything Alaska can offer.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-2">
+      <div class="value-icon">🗺</div>
+      <h3>Your Itinerary</h3>
+      <p>100% private charters, 100% your schedule. Whether it's a day of halibut fishing or a multi-week Inside Passage expedition, you set the course.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🦅</div>
+      <h3>Wild Alaska</h3>
+      <p>Humpback whales, orcas, brown bears, bald eagles, calving glaciers — we bring you into the heart of Alaska's wilderness, not a tourist approximation of it.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-1">
+      <div class="value-icon">⚓</div>
+      <h3>Safety First</h3>
+      <p>All vessels are fully USCG compliant with up-to-date safety gear, navigation electronics, and communication equipment. You're in safe hands out there.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-2">
+      <div class="value-icon">🤝</div>
+      <h3>Personal Service</h3>
+      <p>This isn't a corporate operation. You'll work directly with Steve to plan your trip. He answers the phone, knows your name, and genuinely cares about your adventure.</p>
+    </div>
+  </div>
+</section>
+
+<section class="captain-section">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-eyebrow light center">Our Captain</div>
+    <h2 class="section-title light center">Meet Steve Birkinbine</h2>
+  </div>
+  <div class="captain-grid">
+    <div class="captain-photo reveal">
+      <img src="uploads/captain_steve.jpg" alt="Captain Steve Birkinbine — Auke Bay Adventures Juneau Alaska">
+    </div>
+    <div class="captain-info reveal reveal-delay-1">
+      <h3>Steve Birkinbine</h3>
+      <div class="captain-title">Founder &amp; Head Captain — Auke Bay Adventures</div>
+      <p>Steve Birkinbine is the heart and soul of Auke Bay Adventures. With decades of experience navigating the waters of Southeast Alaska's Inside Passage, Steve brings unmatched expertise, local knowledge, and infectious enthusiasm to every charter.</p>
+      <p>Guests consistently describe Steve as one of the finest people they've ever met — knowledgeable, flexible, funny, and genuinely dedicated to making each trip exceptional. He knows not just the waters and the fishing, but the history and ecology of the entire region.</p>
+      <p>When Steve is aboard as your skipper, you're in capable, experienced hands — whether you're chasing halibut, navigating toward a glacier, or watching humpbacks breach at sunrise.</p>
+      <div class="captain-contact">
+        <span>Call Steve Directly</span>
+        <a href="tel:+19077231042">(907) 723-1042</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-full">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-eyebrow light center">What Guests Say About Steve</div>
+    <h2 class="section-title light center">Straight from the Charter Logs</h2>
+  </div>
+  <div class="testi-grid4">
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text">"Best Captain and Crew Ever! Good fishing, great scenery, fun relaxed atmosphere. Loved every minute of this experience! Definitely the A Team for fishing in Alaska!"</p><div class="testi-author">— Sandy Lange</div></div>
+    <div class="testi-card reveal reveal-delay-1"><div class="stars">★★★★★</div><p class="testi-text">"If you're headed to Alaska this summer for some fishing, recreation or relaxation, check out Auke Bay Adventures and my friend Steve Birkinbine. I guarantee you'll have a great time and Steve is genuinely one of the finest people I've ever known."</p><div class="testi-author">— Krystin Tschacher Leonhardt</div></div>
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text">"This was a first for me and I was not sure what to expect. I can now say it was truly a great experience and I would highly recommend it to anyone. Steve and his crew pay attention to every detail and are so accommodating to everyone."</p><div class="testi-author">— Donna Gill</div></div>
+    <div class="testi-card reveal reveal-delay-1"><div class="stars">★★★★★</div><p class="testi-text">"Truly one of the best experiences I have ever had. Steve and his crew not only know the fishing and the waters, but also the history of the area. He was flexible with our plans and always had an amazing sense of humor! A once-in-a-lifetime experience."</p><div class="testi-author">— Shawn Endicott</div></div>
+  </div>
+</section>
+
+<section style="text-align:center;padding:var(--sp-xl) var(--sp-lg);background:var(--c-cream);">
+  <div class="section-eyebrow center reveal">Ready?</div>
+  <h2 class="section-title center reveal" style="margin-bottom:14px;">Let's Plan Your Alaska Adventure</h2>
+  <p class="section-body reveal" style="text-align:center;max-width:480px;margin:0 auto 28px;">Contact Steve directly to start planning the trip of a lifetime on the Inside Passage.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="reveal">
+    <a href="contact.html" class="btn btn-gold">Get in Touch</a>
+    <a href="fleet.html" class="btn btn-outline-navy">View the Fleet</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><img src="uploads/auke_logo.png" alt="Auke Bay Adventures"><p>Private luxury yacht charters in Southeast Alaska's Inside Passage. Bareboat and skippered from Auke Bay Harbor, Juneau, AK.</p></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="fleet.html">Fleet</a></li><li><a href="experiences.html">Experiences</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Book Now</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="http://www.adfg.alaska.gov/" target="_blank">AK Fish &amp; Game</a></li><li><a href="http://www.uscg.mil/" target="_blank">U.S. Coast Guard</a></li><li><a href="http://www.alaska.org/" target="_blank">Alaska.org</a></li><li><a href="http://www.alaskaair.com/" target="_blank">Alaska Airlines</a></li></ul></div>
+    <div class="footer-col footer-contact"><h4>Contact</h4><address><p>11485 Auke Bay Harbor Rd.<br>Juneau, AK 99821</p><a href="tel:+19077231042" class="phone-link">(907) 723-1042</a></address></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Auke Bay Adventures, Inc.</p><div class="footer-social"><a href="https://www.facebook.com/Auke-Bay-Adventures-1422845364457113" target="_blank">f</a></div></div>
+</footer>
+<script src="js/shared.js"></script>
+</body>
+</html>

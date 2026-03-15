@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auke Bay Adventures | Private Yacht Charters — Juneau, Alaska</title>
+<meta name="description" content="Alaska's Inside Passage on your terms. Private bareboat & skippered yacht charters from Auke Bay Harbor, Juneau. World-class fishing, whale watching, Glacier Bay & more. Call Steve: (907) 723-1042.">
+<meta property="og:title" content="Auke Bay Adventures | Private Yacht Charters — Juneau, Alaska">
+<meta property="og:description" content="Private luxury yacht charters on the Inside Passage. Fishing, whale watching, Glacier Bay & Southeast Alaska exploration. Call (907) 723-1042.">
+<meta property="og:image" content="uploads/fleet_hero.jpg">
+<link rel="canonical" href="https://www.aukebayadventures.com/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TouristAttraction","name":"Auke Bay Adventures","description":"Private luxury yacht charters in Southeast Alaska's Inside Passage.","url":"https://www.aukebayadventures.com","telephone":"+19077231042","address":{"@type":"PostalAddress","streetAddress":"11485 Auke Bay Harbor Rd.","addressLocality":"Juneau","addressRegion":"AK","postalCode":"99821","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":58.38,"longitude":-134.67},"priceRange":"$$$"}
+</script>
+<link rel="stylesheet" href="css/global.css">
+<style>
+/* ── HOME-SPECIFIC ── */
+
+/* Hero */
+.hero {
+  position: relative;
+  height: 100vh; min-height: 640px;
+  display: flex; align-items: center;
+  overflow: hidden; background: var(--c-navy);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(105deg, rgba(8,25,46,.92) 0%, rgba(8,25,46,.82) 38%, rgba(8,25,46,.4) 62%, rgba(8,25,46,.18) 100%),
+    url('uploads/fleet_hero.jpg') right center/cover no-repeat;
+  transform: scale(1.04);
+  animation: bgDrift 20s ease-in-out infinite alternate;
+}
+@keyframes bgDrift { from{transform:scale(1.04) translateX(0);} to{transform:scale(1.0) translateX(-10px);} }
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 var(--sp-lg);
+  max-width: 760px;
+  margin-left: 8vw;
+  animation: fadeUp 1.1s ease both;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
+.hero-eyebrow {
+  font-family: var(--ff-cond); font-size:.7rem; font-weight:700;
+  letter-spacing:.32em; text-transform:uppercase;
+  color:var(--c-gold-light); margin-bottom:18px;
+  display:flex; align-items:center; gap:12px;
+}
+.hero-eyebrow::before { content:''; display:block; width:34px; height:1px; background:var(--c-gold); }
+.hero h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(3rem, 6.5vw, 5.6rem);
+  font-weight: 600; line-height: 1.04;
+  color: var(--c-white); margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.hero h1 em { font-style:italic; color:var(--c-ice); }
+.hero-sub {
+  font-size:1.05rem; font-weight:400;
+  color:var(--c-white); line-height:1.78;
+  max-width:520px; margin-bottom:40px;
+  text-shadow: 0 1px 10px rgba(8,25,46,.6);
+}
+.hero-btns { display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+.hero-btns .btn-outline-light {
+  background: rgba(8,25,46,.35);
+  border-color: rgba(255,255,255,.8);
+  backdrop-filter: blur(4px);
+}
+.hero-anchor {
+  position:absolute; bottom:38px; right:var(--sp-lg);
+  z-index:2; text-align:right;
+  animation: fadeUp 1.2s .4s ease both;
+  background: rgba(8,25,46,.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(200,136,58,.35);
+  border-radius: 8px;
+  padding: 14px 20px;
+}
+.hero-anchor a {
+  font-family:var(--ff-display); font-size:1.7rem;
+  color:var(--c-white); display:block; transition:color .2s;
+  text-shadow: 0 1px 8px rgba(8,25,46,.4);
+}
+.hero-anchor a:hover { color:var(--c-gold-light); }
+.hero-anchor span {
+  font-family:var(--ff-cond); font-size:.65rem;
+  font-weight:700; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--c-gold-light);
+}
+.hero-scroll {
+  position:absolute; bottom:38px; left:50%;
+  transform:translateX(-50%); z-index:2;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  animation: fadeUp 1.2s .6s ease both;
+}
+.hero-scroll span {
+  font-family:var(--ff-cond); font-size:.6rem;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--c-ice); opacity:.7;
+}
+.scroll-line {
+  width:1px; height:40px; background:linear-gradient(to bottom,var(--c-gold),transparent);
+  animation: scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine { 0%,100%{transform:scaleY(1);opacity:.7;} 50%{transform:scaleY(0.4);opacity:.3;} }
+
+/* Trust Strip */
+.trust-strip {
+  background: var(--c-deep);
+  border-bottom: 1px solid rgba(168,204,216,0.08);
+  padding: 18px var(--sp-lg);
+  display:flex; justify-content:center; gap:clamp(20px,4vw,64px); flex-wrap:wrap;
+}
+.trust-item {
+  display:flex; align-items:center; gap:10px;
+  color:var(--c-ice);
+}
+.trust-item svg { color:var(--c-gold); flex-shrink:0; }
+.trust-item span {
+  font-family:var(--ff-cond); font-size:.72rem;
+  font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+}
+
+/* About Split */
+.about-split {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:0; min-height:580px;
+}
+.about-image-col {
+  position:relative; overflow:hidden; background:var(--c-ocean);
+  min-height:420px;
+}
+.about-image-col img {
+  width:100%; height:100%;
+  object-fit:cover;
+  transition:transform .7s ease;
+}
+.about-image-col:hover img { transform:scale(1.04); }
+.about-image-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to right,transparent 60%,rgba(247,243,236,.6) 100%);
+}
+.about-text-col {
+  background:var(--c-cream);
+  padding:var(--sp-xl) var(--sp-xl) var(--sp-xl) var(--sp-lg);
+  display:flex; flex-direction:column; justify-content:center;
+}
+.about-text-col p {
+  font-size:.97rem; font-weight:300; line-height:1.82;
+  color:var(--c-text-mid); margin-bottom:16px;
+}
+.stat-row {
+  display:flex; gap:32px; margin:28px 0; flex-wrap:wrap;
+}
+.stat { display:flex; flex-direction:column; }
+.stat-num {
+  font-family:var(--ff-display); font-size:2.4rem;
+  font-weight:600; color:var(--c-navy); line-height:1;
+}
+.stat-lbl {
+  font-family:var(--ff-cond); font-size:.64rem;
+  font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--c-text-soft); margin-top:4px;
+}
+
+/* Experiences Grid */
+.experiences { padding:var(--sp-xl) var(--sp-lg); background:var(--c-white); }
+.exp-header { text-align:center; max-width:580px; margin:0 auto var(--sp-lg); }
+.exp-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.exp-card {
+  position:relative; min-height:310px;
+  border-radius:var(--r-md); overflow:hidden;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  cursor:pointer;
+  transition:transform .3s, box-shadow .3s;
+}
+.exp-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-hard); }
+.exp-bg {
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  filter:brightness(.55);
+  transition:transform .5s ease, filter .3s;
+}
+.exp-card:hover .exp-bg { transform:scale(1.07); filter:brightness(.65); }
+.exp-body {
+  position:relative; z-index:2;
+  padding:24px;
+  background:linear-gradient(to top,rgba(8,25,46,.9) 0%,transparent 100%);
+}
+.exp-tag {
+  font-family:var(--ff-cond); font-size:.62rem;
+  font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--c-gold-light); margin-bottom:6px;
+}
+.exp-card h3 { font-family:var(--ff-display); font-size:1.25rem; color:var(--c-white); margin-bottom:5px; }
+.exp-card p { font-size:.8rem; color:var(--c-glacier); font-weight:300; line-height:1.6; }
+
+/* Fleet Preview */
+.fleet-preview { padding:var(--sp-xl) var(--sp-lg); background:var(--c-navy); }
+.fleet-hd {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  margin-bottom:var(--sp-lg); flex-wrap:wrap; gap:16px;
+}
+.fleet-hd p { font-size:.9rem; color:var(--c-ice); font-weight:300; max-width:380px; line-height:1.7; text-align:right; }
+.fleet-cards {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.fleet-card {
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(168,204,216,.1);
+  border-radius:var(--r-md); overflow:hidden;
+  transition:border-color .3s, transform .3s;
+}
+.fleet-card:hover { border-color:rgba(200,136,58,.4); transform:translateY(-4px); }
+.fleet-card-img { width:100%; height:160px; object-fit:cover; display:block; transition:transform .5s; }
+.fleet-card:hover .fleet-card-img { transform:scale(1.05); }
+.fleet-card-img-wrap { overflow:hidden; }
+.fleet-card-body { padding:18px; }
+.fleet-sz {
+  font-family:var(--ff-cond); font-size:.62rem;
+  font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--c-gold-light); margin-bottom:4px;
+}
+.fleet-card h3 { font-family:var(--ff-display); font-size:1.05rem; color:var(--c-white); margin-bottom:6px; }
+.fleet-card .price { font-family:var(--ff-display); font-size:1.2rem; color:var(--c-white); }
+.fleet-card .price span { font-family:var(--ff-cond); font-size:.7rem; color:var(--c-text-soft); }
+.fleet-card-link {
+  display:block; margin-top:14px;
+  font-family:var(--ff-cond); font-size:.66rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--c-gold-light); transition:color .2s;
+}
+.fleet-card-link:hover { color:var(--c-gold); }
+
+/* Testimonials */
+.testimonials { padding:var(--sp-xl) var(--sp-lg); background:var(--c-deep); }
+.testi-header { text-align:center; margin-bottom:var(--sp-lg); }
+.testi-grid {
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:20px; max-width:1000px; margin:0 auto;
+}
+.testi-card {
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(168,204,216,.1);
+  border-radius:var(--r-md); padding:30px;
+  transition:border-color .3s, background .3s;
+}
+.testi-card:hover { border-color:rgba(200,136,58,.3); background:rgba(255,255,255,.07); }
+.stars { color:var(--c-gold); letter-spacing:3px; font-size:.85rem; margin-bottom:12px; }
+.testi-text {
+  font-family:var(--ff-display); font-style:italic;
+  font-size:1rem; color:var(--c-glacier);
+  line-height:1.78; margin-bottom:18px;
+}
+.testi-author {
+  font-family:var(--ff-cond); font-size:.68rem;
+  font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--c-gold-light);
+}
+
+/* Gallery Strip */
+.gallery-strip { padding:var(--sp-xl) var(--sp-lg); background:var(--c-white); }
+.gallery-strip-hd { text-align:center; margin-bottom:var(--sp-lg); }
+.strip-grid {
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:200px 200px;
+  gap:10px;
+}
+.strip-grid .sg { overflow:hidden; border-radius:var(--r-sm); cursor:pointer; }
+.strip-grid .sg img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .4s, filter .3s;
+  filter:brightness(.9);
+}
+.strip-grid .sg:hover img { transform:scale(1.07); filter:brightness(1); }
+.sg.tall { grid-row:span 2; }
+.sg.wide { grid-column:span 2; }
+.gallery-link { text-align:center; margin-top:28px; }
+
+/* CTA Band */
+.cta-band {
+  padding:var(--sp-xl) var(--sp-lg);
+  background:
+    linear-gradient(rgba(8,25,46,.82),rgba(8,25,46,.82)),
+    url('uploads/stickeen_hero.jpg') center/cover fixed;
+  text-align:center; color:var(--c-white);
+}
+.cta-band h2 {
+  font-family:var(--ff-display); font-size:clamp(2rem,4vw,3.4rem);
+  font-weight:600; margin-bottom:16px; line-height:1.15;
+}
+.cta-band p {
+  font-size:.97rem; color:var(--c-glacier); font-weight:300;
+  max-width:520px; margin:0 auto 36px; line-height:1.8;
+}
+.cta-actions { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; align-items:center; }
+.cta-phone {
+  font-family:var(--ff-display); font-size:1.5rem;
+  color:var(--c-white); transition:color .2s;
+}
+.cta-phone:hover { color:var(--c-gold-light); }
+
+@media(max-width:1024px){
+  .fleet-cards{grid-template-columns:repeat(2,1fr);}
+  .strip-grid{grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(4,160px);}
+  .sg.wide{grid-column:span 1;}
+  .sg.tall{grid-row:span 1;}
+}
+@media(max-width:768px){
+  .about-split{grid-template-columns:1fr;}
+  .exp-grid{grid-template-columns:1fr;}
+  .fleet-cards{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .strip-grid{grid-template-columns:repeat(2,1fr); grid-template-rows:auto;}
+  .hero-anchor{display:none;}
+  .hero h1{font-size:2.6rem;}
+}
+@media(max-width:480px){
+  .fleet-cards{grid-template-columns:1fr;}
+  .strip-grid{grid-template-columns:1fr;}
+  .hero-btns{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span class="topbar-left">📍 Auke Bay Harbor, Juneau, AK</span>
+  <span class="topbar-center" id="topbar-season">✦ 2026 Charter Season — Now Booking ✦</span>
+  <span class="topbar-right">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;color:var(--c-gold-light);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+19077231042">(907) 723-1042</a>
+  </span>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <img src="uploads/auke_logo.png" alt="Auke Bay Adventures Logo">
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Auke Bay Adventures</span>
+      <span class="nav-brand-sub">Juneau, Alaska</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="experiences.html">Experiences</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="fleet.html">Fleet</a>
+  <a href="experiences.html">Experiences</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html" class="mobile-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Alaska's Inside Passage</div>
+    <h1>Alaska<br>on <em>Your</em><br>Terms</h1>
+    <p class="hero-sub">Private luxury yacht charters out of Auke Bay Harbor, Juneau. World-class fishing, whale watching, Glacier Bay, and Southeast Alaska exploration on Nordic Tugs and Cutwater yachts.</p>
+    <div class="hero-btns">
+      <a href="contact.html" class="btn btn-gold">Book a Charter <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="fleet.html" class="btn btn-outline-light">Explore the Fleet</a>
+    </div>
+  </div>
+  <div class="hero-anchor">
+    <span>Reach Steve Directly</span>
+    <a href="tel:+19077231042">(907) 723-1042</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>USCG Compliant</span>
+  </div>
+  <div class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    <span>20+ Years Experience</span>
+  </div>
+  <div class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+    <span>100% Private Charters</span>
+  </div>
+  <div class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <span>5-Star Rated Captains</span>
+  </div>
+  <div class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+    <span>Bareboat &amp; Skippered</span>
+  </div>
+</div>
+
+<!-- ABOUT SPLIT -->
+<section class="about-split">
+  <div class="about-image-col reveal">
+    <img src="uploads/fleet_guy_fishing.jpg" alt="Sport fishing on an Auke Bay Adventures charter in Juneau Alaska — halibut and salmon">
+    <div class="about-image-overlay"></div>
+  </div>
+  <div class="about-text-col reveal reveal-delay-1">
+    <div class="section-eyebrow">Your Gateway to Alaska</div>
+    <h2 class="section-title" style="margin-bottom:20px;">Big "Tale" Adventures<br>Launch Here</h2>
+    <p>Welcome to Auke Bay Adventures, based in Juneau, Alaska. We hold the keys and expertise for you to launch the Alaska adventure of a lifetime aboard a private luxury yacht.</p>
+    <p>Your private party charter itinerary is determined entirely by you as you cruise the calm, wild waters of the Inside Passage of scenic Southeast Alaska — where the only clock is the midnight sun.</p>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Vessels</span></div>
+      <div class="stat"><span class="stat-num">20+</span><span class="stat-lbl">Years on Water</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-lbl">Private Groups</span></div>
+    </div>
+    <a href="about.html" class="btn btn-outline-navy">Learn Our Story</a>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="experiences">
+  <div class="exp-header reveal">
+    <div class="section-eyebrow center">Choose Your Adventure</div>
+    <h2 class="section-title center" style="margin-bottom:12px;">What Will You Discover?</h2>
+    <p class="section-body" style="text-align:center; margin-top:10px;">The Inside Passage opens a world of possibility. You set the itinerary.</p>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card reveal">
+      <div class="exp-bg" style="background-image:url('uploads/gallery_fishing.jpg')"></div>
+      <div class="exp-body">
+        <div class="exp-tag">Most Popular</div>
+        <h3>Sport Fishing</h3>
+        <p>World-class halibut & salmon in the nutrient-rich waters of Southeast Alaska.</p>
+      </div>
+    </div>
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-bg" style="background-image:url('uploads/gallery_whales.jpg')"></div>
+      <div class="exp-body">
+        <div class="exp-tag">Iconic</div>
+        <h3>Whale Watching</h3>
+        <p>Humpbacks, orcas, Steller sea lions & bald eagles in their natural habitat.</p>
+      </div>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-bg" style="background-image:url('uploads/gallery_scenic.jpg')"></div>
+      <div class="exp-body">
+        <div class="exp-tag">Breathtaking</div>
+        <h3>Glacier Bay</h3>
+        <p>Ancient fjords, calving glaciers, and the grandeur of Alaska's national parks.</p>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-bg" style="background-image:url('uploads/gallery_wild.jpg')"></div>
+      <div class="exp-body">
+        <div class="exp-tag">Adventure</div>
+        <h3>Kayaking &amp; Exploration</h3>
+        <p>Paddle into hidden coves and coastal wilderness accessible only by sea.</p>
+      </div>
+    </div>
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-bg" style="background-image:url('uploads/gallery_wildlife2.jpg')"></div>
+      <div class="exp-body">
+        <div class="exp-tag">Creative</div>
+        <h3>Photography &amp; Wildlife</h3>
+        <p>A photographer's paradise — bears, eagles, and glaciers in golden-hour light.</p>
+      </div>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-bg" style="background-image:url('uploads/gallery_good_food.jpg')"></div>
+      <div class="exp-body">
+        <div class="exp-tag">Custom</div>
+        <h3>Private Group Charters</h3>
+        <p>Family adventures, corporate retreats, science charters — all entirely private.</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:32px;">
+    <a href="experiences.html" class="btn-text">View All Experiences →</a>
+  </div>
+</section>
+
+<!-- FLEET PREVIEW -->
+<section class="fleet-preview">
+  <div class="fleet-hd reveal">
+    <div>
+      <div class="section-eyebrow light">Our Vessels</div>
+      <h2 class="section-title light">A Fleet Built for Alaska</h2>
+    </div>
+    <p>Nordic Tugs and Cutwater yachts — stable, comfortable, and purpose-built for the Inside Passage. Bareboat or fully skippered.</p>
+  </div>
+  <div class="fleet-cards">
+    <div class="fleet-card reveal">
+      <div class="fleet-card-img-wrap">
+        <img class="fleet-card-img" src="uploads/fleet_hero.jpg" alt="26 foot Southern C's KingFisher charter boat Juneau Alaska">
+      </div>
+      <div class="fleet-card-body">
+        <div class="fleet-sz">26-Foot Vessel</div>
+        <h3>Southern C's</h3>
+        <div class="price">$1,200 <span>/day</span></div>
+        <a href="fleet.html" class="fleet-card-link">Details →</a>
+      </div>
+    </div>
+    <div class="fleet-card reveal reveal-delay-1">
+      <div class="fleet-card-img-wrap">
+        <img class="fleet-card-img" src="uploads/yacht_sablefish.jpg" alt="30 foot Sablefish KingFisher charter boat Juneau Alaska">
+      </div>
+      <div class="fleet-card-body">
+        <div class="fleet-sz">30-Foot Vessel</div>
+        <h3>Sablefish</h3>
+        <div class="price">$1,575 <span>/day</span></div>
+        <a href="fleet.html" class="fleet-card-link">Details →</a>
+      </div>
+    </div>
+    <div class="fleet-card reveal reveal-delay-2">
+      <div class="fleet-card-img-wrap">
+        <img class="fleet-card-img" src="uploads/yacht_stickeen.jpg" alt="42 foot Stickeen Nordic Tug charter boat Juneau Alaska">
+      </div>
+      <div class="fleet-card-body">
+        <div class="fleet-sz">42-Foot Vessel</div>
+        <h3>Stickeen</h3>
+        <div class="price">$2,195 <span>/day</span></div>
+        <a href="fleet.html" class="fleet-card-link">Details →</a>
+      </div>
+    </div>
+    <div class="fleet-card reveal reveal-delay-3">
+      <div class="fleet-card-img-wrap">
+        <img class="fleet-card-img" src="uploads/yacht_58north.jpg" alt="42 foot 58 North Nordic Tug charter boat Juneau Alaska">
+      </div>
+      <div class="fleet-card-body">
+        <div class="fleet-sz">42-Foot Vessel</div>
+        <h3>58° North</h3>
+        <div class="price">$2,195 <span>/day</span></div>
+        <a href="fleet.html" class="fleet-card-link">Details →</a>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:36px;">
+    <a href="fleet.html" class="btn btn-outline-light">View Full Fleet Details</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testi-header reveal">
+    <div class="section-eyebrow light center">Guest Reviews</div>
+    <h2 class="section-title light center">Adventures Worth Talking About</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text">"Best Captain and Crew Ever! Good fishing, great scenery, fun relaxed atmosphere. Loved every minute of this experience! Definitely the A Team for fishing in Alaska!"</p><div class="testi-author">— Sandy Lange</div></div>
+    <div class="testi-card reveal reveal-delay-1"><div class="stars">★★★★★</div><p class="testi-text">"If you're headed to Alaska for some fishing, recreation or relaxation, check out Auke Bay Adventures. I guarantee you'll have a great time — Steve is genuinely one of the finest people I've ever known."</p><div class="testi-author">— Krystin Tschacher Leonhardt</div></div>
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text">"This was a first for me and I wasn't sure what to expect. Steve and his crew pay attention to every detail. His experience, knowledge, and love-for-life personality made this adventure exceed all expectations."</p><div class="testi-author">— Donna Gill</div></div>
+    <div class="testi-card reveal reveal-delay-1"><div class="stars">★★★★★</div><p class="testi-text">"Truly one of the best experiences I've ever had. Not only do they know the fishing and the waters, but the history of the area. Flexible, funny, and unforgettable. A once-in-a-lifetime experience."</p><div class="testi-author">— Shawn Endicott</div></div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<section class="gallery-strip">
+  <div class="gallery-strip-hd reveal">
+    <div class="section-eyebrow center">Photo Gallery</div>
+    <h2 class="section-title center">Bragging Rights Start Here</h2>
+  </div>
+  <div class="strip-grid">
+    <div class="sg tall reveal" onclick="openLb('uploads/gallery_fishing.jpg','Sport fishing on Alaska charter')"><img src="uploads/gallery_fishing.jpg" alt="Sport fishing Alaska charter"></div>
+    <div class="sg reveal" onclick="openLb('uploads/gallery_whales.jpg','Whale watching Southeast Alaska')"><img src="uploads/gallery_whales.jpg" alt="Whale watching Southeast Alaska"></div>
+    <div class="sg reveal" onclick="openLb('uploads/gallery_scenic.jpg','Scenic Alaska Inside Passage')"><img src="uploads/gallery_scenic.jpg" alt="Scenic Alaska Inside Passage"></div>
+    <div class="sg wide reveal" onclick="openLb('uploads/gallery_wild.jpg','Alaska wilderness charter')"><img src="uploads/gallery_wild.jpg" alt="Alaska wilderness charter"></div>
+    <div class="sg reveal" onclick="openLb('uploads/gallery_bear.jpg','Alaska wildlife viewing')"><img src="uploads/gallery_bear.jpg" alt="Alaska wildlife viewing"></div>
+    <div class="sg reveal" onclick="openLb('uploads/gallery_shortraker.jpg','Fishing catch Alaska')"><img src="uploads/gallery_shortraker.jpg" alt="Fishing catch Alaska"></div>
+    <div class="sg reveal" onclick="openLb('uploads/gallery_good_food.jpg','Good food on charter')"><img src="uploads/gallery_good_food.jpg" alt="Good food on charter"></div>
+    <div class="sg reveal" onclick="openLb('uploads/gallery_glacier.jpg','Glacier scenery Alaska')"><img src="uploads/gallery_glacier.jpg" alt="Glacier scenery Alaska"></div>
+  </div>
+  <div class="gallery-link reveal"><a href="gallery.html" class="btn-text">View Full Photo Gallery →</a></div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2 class="reveal">Your Alaska Adventure Awaits</h2>
+  <p class="reveal">2026 charter season is open. Private charters fill fast — secure your dates early and let us craft the Alaska experience of a lifetime.</p>
+  <div class="cta-actions reveal">
+    <a href="contact.html" class="btn btn-gold">Request a Booking</a>
+    <a href="tel:+19077231042" class="cta-phone">(907) 723-1042</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <img src="uploads/auke_logo.png" alt="Auke Bay Adventures">
+      <p>Private luxury yacht charters in Southeast Alaska's Inside Passage. Bareboat and skippered charters from Auke Bay Harbor, Juneau, AK. 2026 season now booking.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="fleet.html">Yacht Fleet</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="gallery.html">Photo Gallery</a></li>
+        <li><a href="contact.html">Book a Charter</a></li>
+        <li><a href="styleguide.html">Brand Styleguide</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="http://www.adfg.alaska.gov/" target="_blank" rel="noopener">AK Dept of Fish &amp; Game</a></li>
+        <li><a href="http://www.uscg.mil/" target="_blank" rel="noopener">U.S. Coast Guard</a></li>
+        <li><a href="http://www.alaska.org/" target="_blank" rel="noopener">Alaska.org</a></li>
+        <li><a href="http://www.alaskaair.com/" target="_blank" rel="noopener">Alaska Airlines</a></li>
+        <li><a href="http://www.wardair.com/" target="_blank" rel="noopener">Ward Air</a></li>
+        <li><a href="http://www.flyalaskaseaplanes.com/" target="_blank" rel="noopener">Alaska Seaplanes</a></li>
+        <li><a href="https://www.aukebayadventures.com/wp-content/uploads/2025/12/2026_AUKE-BAY-ADVENTURES-LLC_charter-agreement-5.pdf" target="_blank">2026 Charter Agreement</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <address>
+        <p>Auke Bay Adventures, Inc.<br>11485 Auke Bay Harbor Rd.<br>Juneau, AK 99821</p>
+        <a href="tel:+19077231042" class="phone-link">(907) 723-1042</a>
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Auke Bay Adventures, Inc. | Juneau, Alaska Private Yacht Charters</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/Auke-Bay-Adventures-1422845364457113" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLb()">
+  <button class="lb-close">×</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script src="js/shared.js"></script>
+<script>
+  const yr = new Date().getFullYear();
+  const el = document.getElementById('topbar-season');
+  if (el) el.textContent = `✦ ${yr} Charter Season — Now Booking ✦`;
+</script>
+</body>
+</html>

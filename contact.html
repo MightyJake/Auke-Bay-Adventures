@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Charter | Auke Bay Adventures — Juneau, Alaska</title>
+<meta name="description" content="Book an Auke Bay Adventures private yacht charter in Juneau, Alaska. Contact Steve at (907) 723-1042 or fill out our booking inquiry form to reserve your 2026 charter dates.">
+<link rel="stylesheet" href="css/global.css">
+<style>
+.contact-layout{display:grid;grid-template-columns:1fr 1.2fr;min-height:calc(100vh - 76px);}
+.contact-info-panel{background:var(--c-navy);padding:var(--sp-xl) var(--sp-lg);display:flex;flex-direction:column;justify-content:center;}
+.contact-info-panel h2{font-family:var(--ff-display);font-size:clamp(1.8rem,3vw,2.8rem);color:var(--c-white);margin-bottom:18px;line-height:1.15;}
+.contact-info-panel p{font-size:.94rem;color:var(--c-ice);font-weight:300;line-height:1.82;margin-bottom:var(--sp-lg);}
+.contact-items{display:flex;flex-direction:column;gap:20px;}
+.contact-item{display:flex;align-items:flex-start;gap:16px;}
+.ci-icon{width:44px;height:44px;border-radius:50%;background:rgba(200,136,58,.15);border:1px solid rgba(200,136,58,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;}
+.ci-text span:first-child{display:block;font-family:var(--ff-cond);font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--c-text-soft);margin-bottom:4px;}
+.ci-text span:last-child,.ci-text a{font-size:.95rem;color:var(--c-white);transition:color .2s;}
+.ci-text a:hover{color:var(--c-gold-light);}
+.contact-map{margin-top:var(--sp-lg);border-radius:var(--r-md);overflow:hidden;border:1px solid rgba(168,204,216,.12);}
+.contact-map iframe{width:100%;height:220px;border:0;display:block;filter:saturate(.6) brightness(.7);}
+.contact-form-panel{background:var(--c-frost);padding:var(--sp-xl) var(--sp-lg);display:flex;flex-direction:column;justify-content:center;}
+.form-card{background:var(--c-white);border-radius:var(--r-lg);padding:44px;box-shadow:var(--shadow-mid);}
+.form-card h3{font-family:var(--ff-display);font-size:1.7rem;color:var(--c-navy);margin-bottom:6px;}
+.form-card .sub{font-size:.84rem;color:var(--c-text-soft);margin-bottom:28px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:16px;}
+.fg label{font-family:var(--ff-cond);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--c-text-mid);}
+.fg input,.fg select,.fg textarea{border:1.5px solid rgba(8,25,46,.12);border-radius:var(--r-sm);padding:11px 14px;font-family:var(--ff-body);font-size:.9rem;color:var(--c-text);background:var(--c-white);outline:none;transition:.2s;width:100%;}
+.fg input:focus,.fg select,.fg textarea:focus{border-color:var(--c-gold);box-shadow:0 0 0 3px rgba(200,136,58,.12);}
+.fg textarea{resize:vertical;min-height:96px;}
+.fg select option{background:var(--c-white);}
+.form-submit{width:100%;padding:16px;background:var(--c-gold);color:var(--c-navy);border:none;border-radius:var(--r-sm);font-family:var(--ff-cond);font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:4px;}
+.form-submit:hover{background:var(--c-gold-light);transform:translateY(-2px);}
+.form-note{font-size:.76rem;color:var(--c-text-soft);text-align:center;margin-top:12px;line-height:1.5;}
+.form-note a{color:var(--c-ocean);}
+.success-msg{display:none;text-align:center;padding:24px;background:rgba(45,122,79,.08);border:1px solid rgba(45,122,79,.2);border-radius:var(--r-md);margin-top:16px;}
+.success-msg h4{font-family:var(--ff-display);font-size:1.3rem;color:#1e6640;margin-bottom:6px;}
+.success-msg p{font-size:.85rem;color:#2d7a4f;}
+@media(max-width:900px){.contact-layout{grid-template-columns:1fr;}.form-card{padding:28px 20px;}}
+@media(max-width:480px){.form-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="topbar"><span class="topbar-left">📍 Auke Bay Harbor, Juneau, AK</span><span class="topbar-center">✦ 2026 Charter Season — Now Booking ✦</span><span class="topbar-right"><a href="tel:+19077231042">(907) 723-1042</a></span></div>
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand"><img src="uploads/auke_logo.png" alt="Auke Bay Adventures"><div class="nav-brand-text"><span class="nav-brand-name">Auke Bay Adventures</span><span class="nav-brand-sub">Juneau, Alaska</span></div></a>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="fleet.html">Fleet</a></li><li><a href="experiences.html">Experiences</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html" class="nav-cta active">Book Now</a></li></ul>
+  <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-nav" id="mobile-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="fleet.html">Fleet</a><a href="experiences.html">Experiences</a><a href="pricing.html">Pricing</a><a href="gallery.html">Gallery</a><a href="contact.html" class="mobile-cta">Book Now</a></nav>
+
+<div class="contact-layout">
+  <div class="contact-info-panel">
+    <div class="section-eyebrow light reveal">Let's Plan Your Trip</div>
+    <h2 class="reveal">Book Your<br>Alaska Charter</h2>
+    <p class="reveal">Fill out the form and Steve will be in touch to confirm availability and discuss your adventure. In remote Alaska, we may not respond immediately — for fastest service, call directly.</p>
+    <div class="contact-items">
+      <div class="contact-item reveal">
+        <div class="ci-icon">📞</div>
+        <div class="ci-text">
+          <span>Phone — Fastest Response</span>
+          <a href="tel:+19077231042">(907) 723-1042 — Steve</a>
+        </div>
+      </div>
+      <div class="contact-item reveal">
+        <div class="ci-icon">📍</div>
+        <div class="ci-text">
+          <span>Launch Harbor</span>
+          <span>11485 Auke Bay Harbor Rd.<br>Juneau, AK 99821</span>
+        </div>
+      </div>
+      <div class="contact-item reveal">
+        <div class="ci-icon">⚓</div>
+        <div class="ci-text">
+          <span>Charter Options</span>
+          <span>Bareboat &amp; Skippered Available</span>
+        </div>
+      </div>
+      <div class="contact-item reveal">
+        <div class="ci-icon">📅</div>
+        <div class="ci-text">
+          <span>Season</span>
+          <span>2026 — Now Accepting Reservations</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-map reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.5!2d-134.6705!3d58.3819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s11485+Auke+Bay+Harbor+Rd+Juneau+AK!5e0!3m2!1sen!2sus!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Auke Bay Adventures location map — 11485 Auke Bay Harbor Rd, Juneau AK"></iframe>
+    </div>
+  </div>
+  <div class="contact-form-panel">
+    <div class="form-card reveal">
+      <h3>Request a Charter</h3>
+      <p class="sub">We'll respond within 24 hours. For immediate help, call (907) 723-1042.</p>
+      <div class="form-row">
+        <div class="fg"><label>First Name *</label><input type="text" placeholder="John" required></div>
+        <div class="fg"><label>Last Name *</label><input type="text" placeholder="Smith" required></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Email *</label><input type="email" placeholder="you@example.com" required></div>
+        <div class="fg"><label>Phone *</label><input type="tel" placeholder="(555) 000-0000" required></div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Preferred Vessel</label>
+          <select>
+            <option value="">Select a vessel</option>
+            <option>26′ Southern C's — $1,200/day</option>
+            <option>30′ Sablefish — $1,575/day</option>
+            <option>42′ Stickeen — $2,195/day</option>
+            <option>42′ 58° North — $2,195/day</option>
+            <option>Not sure — please advise</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Charter Type</label>
+          <select>
+            <option>Bareboat (self-captained)</option>
+            <option>Skippered (captain included)</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Start Date</label><input type="date" min="2026-01-01"></div>
+        <div class="fg">
+          <label>Number of Guests</label>
+          <select>
+            <option>1–2 guests</option>
+            <option>3–4 guests</option>
+            <option>5–6 guests</option>
+            <option>7+ guests</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Adventure Type &amp; Message</label>
+        <textarea placeholder="Tell us about your ideal Alaska adventure — fishing, whale watching, Glacier Bay, photography, group type, trip length, etc. The more detail the better!"></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(event)">Send Booking Request →</button>
+      <p class="form-note">We respect your privacy. Your info is used only to respond to your inquiry.<br>Note: we operate in remote Alaska — response time may vary. Call for urgent inquiries.</p>
+      <div class="success-msg" id="success-msg">
+        <h4>✓ Request Sent!</h4>
+        <p>Thanks for reaching out! Steve will be in touch within 24 hours. For immediate assistance, call <a href="tel:+19077231042">(907) 723-1042</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><img src="uploads/auke_logo.png" alt="Auke Bay Adventures"><p>Private luxury yacht charters in Southeast Alaska's Inside Passage. Bareboat and skippered from Auke Bay Harbor, Juneau, AK.</p></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="fleet.html">Fleet</a></li><li><a href="experiences.html">Experiences</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Book Now</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="http://www.adfg.alaska.gov/" target="_blank">AK Fish &amp; Game</a></li><li><a href="http://www.uscg.mil/" target="_blank">U.S. Coast Guard</a></li><li><a href="http://www.alaska.org/" target="_blank">Alaska.org</a></li><li><a href="http://www.alaskaair.com/" target="_blank">Alaska Airlines</a></li></ul></div>
+    <div class="footer-col footer-contact"><h4>Contact</h4><address><p>11485 Auke Bay Harbor Rd.<br>Juneau, AK 99821</p><a href="tel:+19077231042" class="phone-link">(907) 723-1042</a></address></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Auke Bay Adventures, Inc.</p><div class="footer-social"><a href="https://www.facebook.com/Auke-Bay-Adventures-1422845364457113" target="_blank">f</a></div></div>
+</footer>
+<script src="js/shared.js"></script>
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target;
+  btn.textContent = '✓ Request Sent!';
+  btn.style.background = '#2d7a4f';
+  btn.disabled = true;
+  document.getElementById('success-msg').style.display = 'block';
+}
+</script>
+</body>
+</html>

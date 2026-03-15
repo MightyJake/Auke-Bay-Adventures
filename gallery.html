@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Gallery | Auke Bay Adventures — Alaska Charter Photos</title>
+<meta name="description" content="Photo gallery from Auke Bay Adventures charters in Juneau, Alaska. Fishing catches, whale watching, glaciers, wildlife and scenic Inside Passage photography.">
+<link rel="stylesheet" href="css/global.css">
+<style>
+/* ── GALLERY ── */
+.gallery-main{padding:var(--sp-lg) var(--sp-lg) var(--sp-xl);}
+.masonry{columns:4;column-gap:12px;}
+.masonry-item{break-inside:avoid;margin-bottom:12px;border-radius:var(--r-sm);overflow:hidden;cursor:pointer;position:relative;}
+.masonry-item img{width:100%;display:block;transition:transform .4s,filter .3s;filter:brightness(.92);}
+.masonry-item:hover img{transform:scale(1.04);filter:brightness(1.02);}
+/* Captions removed — clean hover with no text overlay */
+.user-photo-badge{position:absolute;top:8px;right:8px;background:rgba(200,136,58,.88);color:var(--c-navy);font-family:var(--ff-cond);font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:10px;pointer-events:none;}
+
+/* ── SUBMIT SECTION ── */
+.submit-section{padding:var(--sp-xl) var(--sp-lg);background:var(--c-deep);}
+.submit-inner{max-width:780px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
+.submit-info h2{font-family:var(--ff-display);font-size:1.9rem;color:var(--c-white);margin-bottom:12px;line-height:1.2;}
+.submit-info p{font-size:.88rem;color:var(--c-ice);font-weight:300;line-height:1.78;margin-bottom:12px;}
+.submit-steps{display:flex;flex-direction:column;gap:14px;margin-top:20px;}
+.submit-step{display:flex;gap:14px;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:rgba(200,136,58,.2);border:1px solid rgba(200,136,58,.4);display:flex;align-items:center;justify-content:center;font-family:var(--ff-cond);font-size:.62rem;font-weight:700;color:var(--c-gold-light);flex-shrink:0;margin-top:2px;}
+.step-text{font-size:.82rem;color:var(--c-glacier);font-weight:300;line-height:1.65;}
+.step-text strong{color:var(--c-white);font-weight:500;}
+.submit-form-card{background:rgba(255,255,255,.04);border:1px solid rgba(168,204,216,.12);border-radius:var(--r-md);padding:32px;}
+.submit-form-card h3{font-family:var(--ff-display);font-size:1.3rem;color:var(--c-white);margin-bottom:20px;}
+.sf-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.sf-group label{font-family:var(--ff-cond);font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--c-ice);}
+.sf-group input,.sf-group textarea,.sf-group select{background:rgba(255,255,255,.06);border:1px solid rgba(168,204,216,.15);border-radius:var(--r-sm);padding:10px 13px;color:var(--c-white);font-family:var(--ff-body);font-size:.88rem;outline:none;transition:.2s;width:100%;}
+.sf-group input:focus,.sf-group textarea:focus,.sf-group select:focus{border-color:rgba(200,136,58,.6);background:rgba(255,255,255,.09);}
+.sf-group input[type="file"]{padding:8px;cursor:pointer;}
+.sf-group input[type="file"]::file-selector-button{font-family:var(--ff-cond);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--c-gold);color:var(--c-navy);border:none;padding:6px 14px;border-radius:4px;cursor:pointer;margin-right:10px;transition:.2s;}
+.sf-group input[type="file"]::file-selector-button:hover{background:var(--c-gold-light);}
+.sf-group select option{background:var(--c-deep);}
+.submit-btn{width:100%;padding:13px;background:var(--c-gold);color:var(--c-navy);border:none;border-radius:var(--r-sm);font-family:var(--ff-cond);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:4px;}
+.submit-btn:hover{background:var(--c-gold-light);transform:translateY(-2px);}
+.submit-btn:disabled{background:rgba(200,136,58,.4);cursor:not-allowed;transform:none;}
+.submit-note{font-size:.72rem;color:var(--c-text-soft);text-align:center;margin-top:10px;line-height:1.5;}
+.submit-success{display:none;text-align:center;padding:20px;background:rgba(45,122,79,.12);border:1px solid rgba(45,122,79,.25);border-radius:var(--r-sm);margin-top:14px;}
+.submit-success h4{font-family:var(--ff-display);font-size:1.1rem;color:#6fcf97;margin-bottom:5px;}
+.submit-success p{font-size:.78rem;color:var(--c-glacier);line-height:1.55;}
+
+/* ── ADMIN TOGGLE BAR ── */
+.admin-toggle-bar{background:var(--c-navy);border-top:1px solid rgba(168,204,216,.08);padding:12px var(--sp-lg);display:flex;align-items:center;justify-content:flex-end;gap:12px;}
+.admin-toggle-btn{font-family:var(--ff-cond);font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c-text-soft);background:none;border:1px solid rgba(168,204,216,.15);border-radius:4px;padding:7px 16px;cursor:pointer;transition:.2s;}
+.admin-toggle-btn:hover{color:var(--c-gold-light);border-color:rgba(200,136,58,.3);}
+
+/* ── ADMIN LOGIN MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2000;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--c-navy);border:1px solid rgba(168,204,216,.12);border-radius:var(--r-lg);padding:40px;max-width:380px;width:100%;animation:modalIn .25s ease;}
+@keyframes modalIn{from{opacity:0;transform:scale(.96);}to{opacity:1;transform:scale(1);}}
+.modal-box h3{font-family:var(--ff-display);font-size:1.5rem;color:var(--c-white);margin-bottom:6px;}
+.modal-box p{font-size:.8rem;color:var(--c-ice);font-weight:300;margin-bottom:22px;line-height:1.6;}
+.modal-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.modal-group label{font-family:var(--ff-cond);font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--c-ice);}
+.modal-group input{background:rgba(255,255,255,.07);border:1px solid rgba(168,204,216,.15);border-radius:var(--r-sm);padding:10px 13px;color:var(--c-white);font-family:var(--ff-body);font-size:.9rem;outline:none;width:100%;transition:.2s;}
+.modal-group input:focus{border-color:rgba(200,136,58,.6);}
+.modal-error{font-size:.75rem;color:#e57373;margin-bottom:10px;display:none;}
+.modal-actions{display:flex;gap:10px;margin-top:4px;}
+.modal-submit{flex:1;padding:12px;background:var(--c-gold);color:var(--c-navy);border:none;border-radius:var(--r-sm);font-family:var(--ff-cond);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:.2s;}
+.modal-submit:hover{background:var(--c-gold-light);}
+.modal-cancel{padding:12px 18px;background:transparent;border:1px solid rgba(168,204,216,.2);color:var(--c-ice);border-radius:var(--r-sm);font-family:var(--ff-cond);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.2s;}
+.modal-cancel:hover{border-color:rgba(168,204,216,.4);color:var(--c-white);}
+
+/* ── ADMIN DASHBOARD ── */
+.admin-panel{display:none;background:#050f1c;padding:var(--sp-lg) var(--sp-lg) var(--sp-xl);border-top:1px solid rgba(168,204,216,.08);}
+.admin-panel.open{display:block;}
+.admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-lg);flex-wrap:wrap;gap:12px;}
+.admin-logout{font-family:var(--ff-cond);font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c-text-soft);background:none;border:1px solid rgba(168,204,216,.15);border-radius:4px;padding:7px 14px;cursor:pointer;transition:.2s;}
+.admin-logout:hover{color:var(--c-white);border-color:rgba(168,204,216,.4);}
+.admin-tabs{display:flex;gap:0;border-bottom:1px solid rgba(168,204,216,.1);margin-bottom:28px;}
+.admin-tab{font-family:var(--ff-cond);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;color:var(--c-text-soft);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:.2s;}
+.admin-tab.active{color:var(--c-gold-light);border-bottom-color:var(--c-gold);}
+.admin-tab-content{display:none;}
+.admin-tab-content.active{display:block;}
+.admin-badge{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:var(--c-gold);color:var(--c-navy);border-radius:50%;font-size:.6rem;font-weight:700;margin-left:6px;vertical-align:middle;}
+.pending-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.pending-card{background:rgba(255,255,255,.04);border:1px solid rgba(168,204,216,.1);border-radius:var(--r-md);overflow:hidden;transition:opacity .3s,transform .3s;}
+.pending-card img{width:100%;height:180px;object-fit:cover;display:block;}
+.pending-card-body{padding:16px;}
+.pending-meta{font-size:.74rem;color:var(--c-ice);margin-bottom:4px;line-height:1.5;}
+.pending-meta strong{color:var(--c-white);font-weight:500;}
+.pending-caption{font-size:.78rem;color:var(--c-glacier);font-style:italic;margin-bottom:12px;font-weight:300;line-height:1.5;}
+.pending-actions{display:flex;gap:8px;}
+.btn-approve{flex:1;padding:9px;background:rgba(45,122,79,.25);border:1px solid rgba(45,122,79,.4);color:#6fcf97;border-radius:4px;font-family:var(--ff-cond);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.2s;}
+.btn-approve:hover{background:rgba(45,122,79,.4);}
+.btn-reject{flex:1;padding:9px;background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.3);color:#e57373;border-radius:4px;font-family:var(--ff-cond);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.2s;}
+.btn-reject:hover{background:rgba(192,57,43,.3);}
+.approved-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.approved-card{background:rgba(255,255,255,.04);border:1px solid rgba(168,204,216,.08);border-radius:var(--r-sm);overflow:hidden;}
+.approved-card img{width:100%;height:120px;object-fit:cover;display:block;}
+.approved-card-body{padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.approved-card-name{font-size:.72rem;color:var(--c-ice);font-weight:300;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.btn-remove{font-family:var(--ff-cond);font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#e57373;background:none;border:1px solid rgba(192,57,43,.25);border-radius:3px;padding:4px 8px;cursor:pointer;transition:.2s;white-space:nowrap;}
+.btn-remove:hover{background:rgba(192,57,43,.2);}
+.admin-empty{text-align:center;padding:48px 20px;color:var(--c-text-soft);font-size:.88rem;font-weight:300;grid-column:1/-1;}
+.admin-empty svg{margin:0 auto 12px;display:block;opacity:.4;}
+
+@media(max-width:1100px){.masonry{columns:3;}.pending-grid{grid-template-columns:repeat(2,1fr);}.approved-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){.masonry{columns:2;}.submit-inner{grid-template-columns:1fr;gap:32px;}.pending-grid{grid-template-columns:1fr;}.approved-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.masonry{columns:1;}.approved-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-left">📍 Auke Bay Harbor, Juneau, AK</span>
+  <span class="topbar-center" id="topbar-season">✦ 2026 Charter Season — Now Booking ✦</span>
+  <span class="topbar-right">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;color:var(--c-gold-light);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <a href="tel:+19077231042">(907) 723-1042</a>
+  </span>
+</div>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <img src="uploads/auke_logo.png" alt="Auke Bay Adventures">
+    <div class="nav-brand-text"><span class="nav-brand-name">Auke Bay Adventures</span><span class="nav-brand-sub">Juneau, Alaska</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="fleet.html">Fleet</a></li><li><a href="experiences.html">Experiences</a></li>
+    <li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="fleet.html">Fleet</a>
+  <a href="experiences.html">Experiences</a><a href="pricing.html">Pricing</a>
+  <a href="gallery.html">Gallery</a><a href="contact.html" class="mobile-cta">Book Now</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('uploads/stickeen_hero.jpg')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><div class="page-hero-eyebrow">Bragging Rights</div><h1>Photo Gallery</h1></div>
+</section>
+
+<div style="text-align:center;padding:var(--sp-lg) var(--sp-lg) 0;">
+  <div class="section-eyebrow center reveal">Real Trips. Real Memories.</div>
+  <h2 class="section-title center reveal" style="max-width:500px;margin:0 auto 10px;">From Our Guests &amp; Crew</h2>
+  <p class="section-body reveal" style="text-align:center;max-width:520px;margin:0 auto;">Click any photo to view full size. These images were captured on actual Auke Bay Adventures charter trips in Southeast Alaska.</p>
+</div>
+
+<!-- MASONRY — no caption divs -->
+<section class="gallery-main">
+  <div class="masonry" id="masonry">
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_fishing.jpg')"><img src="uploads/gallery_fishing.jpg" alt="Sport fishing on Alaska charter — halibut fishing Juneau"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_whales.jpg')"><img src="uploads/gallery_whales.jpg" alt="Humpback whale watching Southeast Alaska Inside Passage"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_scenic.jpg')"><img src="uploads/gallery_scenic.jpg" alt="Scenic Alaska Inside Passage views from charter yacht"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_wild.jpg')"><img src="uploads/gallery_wild.jpg" alt="Alaska wilderness from yacht charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_shortraker.jpg')"><img src="uploads/gallery_shortraker.jpg" alt="Shortraker rockfish catch on Alaska fishing charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_fishon2.jpg')"><img src="uploads/gallery_fishon2.jpg" alt="Alaska fishing charter catch"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_cod.jpg')"><img src="uploads/gallery_cod.jpg" alt="Pacific cod caught on Juneau Alaska fishing charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_good_food.jpg')"><img src="uploads/gallery_good_food.jpg" alt="Good food and friends on Alaska yacht charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_guests.jpg')"><img src="uploads/gallery_guests.jpg" alt="Charter guests enjoying Alaska Inside Passage"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_wildlife1.jpg')"><img src="uploads/gallery_wildlife1.jpg" alt="Alaska wildlife from private charter yacht"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_glacier.jpg')"><img src="uploads/gallery_glacier.jpg" alt="Glacier scenery from Alaska yacht charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_passage.jpg')"><img src="uploads/gallery_passage.jpg" alt="Inside Passage exploration from private yacht charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_bear.jpg')"><img src="uploads/gallery_bear.jpg" alt="Brown bear wildlife sighting on Alaska yacht charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_wildlife2.jpg')"><img src="uploads/gallery_wildlife2.jpg" alt="Alaska wildlife photography from charter yacht"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_coastal.jpg')"><img src="uploads/gallery_coastal.jpg" alt="Alaska coastline scenery from charter yacht"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_southeast.jpg')"><img src="uploads/gallery_southeast.jpg" alt="Southeast Alaska scenic view from private charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_yachts.jpg')"><img src="uploads/gallery_yachts.jpg" alt="Auke Bay Adventures charter fleet Juneau Alaska"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_charter_exp.jpg')"><img src="uploads/gallery_charter_exp.jpg" alt="Alaska private charter experience Juneau"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_august.jpg')"><img src="uploads/gallery_august.jpg" alt="Alaska summer scenery from charter yacht"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_ocean.jpg')"><img src="uploads/gallery_ocean.jpg" alt="Alaska ocean scenery from private yacht charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_scenic2.jpg')"><img src="uploads/gallery_scenic2.jpg" alt="Alaska charter scenic photography"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_photo1.jpg')"><img src="uploads/gallery_photo1.jpg" alt="Alaska photography from charter yacht Juneau"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_coastal2.jpg')"><img src="uploads/gallery_coastal2.jpg" alt="Coastal exploration on Alaska private charter"></div>
+    <div class="masonry-item reveal" onclick="openLb('uploads/gallery_nature.jpg')"><img src="uploads/gallery_nature.jpg" alt="Alaska nature from Inside Passage charter"></div>
+  </div>
+</section>
+
+<!-- PHOTO SUBMISSION -->
+<section class="submit-section">
+  <div class="submit-inner">
+    <div class="submit-info reveal">
+      <div class="section-eyebrow light">Share Your Adventure</div>
+      <h2>Got a Great Shot<br>from Your Charter?</h2>
+      <p>We'd love to feature your photos here. Submit your best images from the trip and our team will review them. Approved photos appear in the gallery above with a guest credit.</p>
+      <div class="submit-steps">
+        <div class="submit-step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Upload your photo</strong> — JPG or PNG, max 10MB. Your best catches, wildlife moments, and scenery.</div>
+        </div>
+        <div class="submit-step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>We review it</strong> — Steve or the team approves all photos before they go live. Typically within 24–48 hrs.</div>
+        </div>
+        <div class="submit-step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>It goes live</strong> — Approved photos appear in the gallery with a "Guest Photo" badge.</div>
+        </div>
+      </div>
+    </div>
+    <div class="submit-form-card reveal reveal-delay-1">
+      <h3>Submit a Photo</h3>
+      <div class="sf-group"><label>Your Name *</label><input type="text" id="sub-name" placeholder="First &amp; Last Name"></div>
+      <div class="sf-group"><label>Email Address *</label><input type="email" id="sub-email" placeholder="you@example.com"></div>
+      <div class="sf-group"><label>Charter Date (approx.)</label><input type="text" id="sub-date" placeholder="e.g. July 2025"></div>
+      <div class="sf-group"><label>Caption (optional)</label><input type="text" id="sub-caption" placeholder="e.g. 68-lb halibut, Day 2"></div>
+      <div class="sf-group"><label>Photo File * (JPG or PNG, max 10MB)</label><input type="file" id="sub-file" accept="image/jpeg,image/png,image/webp"></div>
+      <div class="sf-group">
+        <label>Rights Confirmation *</label>
+        <select id="sub-consent"><option value="">Select…</option><option value="yes">Yes — I took this photo and consent to its use</option><option value="no">No</option></select>
+      </div>
+      <button class="submit-btn" id="submit-btn" onclick="handlePhotoSubmit()">Submit Photo for Review →</button>
+      <p class="submit-note">Photos are reviewed before publishing. Your email is never shared.</p>
+      <div class="submit-success" id="submit-success">
+        <h4>✓ Photo Submitted!</h4>
+        <p>Thanks! We'll review your photo and it'll appear in the gallery once approved — usually within 24–48 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN TOGGLE -->
+<div class="admin-toggle-bar">
+  <span style="font-size:.7rem;color:var(--c-text-soft);font-family:var(--ff-cond);letter-spacing:.1em;text-transform:uppercase;">Gallery Admin</span>
+  <button class="admin-toggle-btn" id="admin-toggle-btn" onclick="openAdminLogin()">Admin Login</button>
+</div>
+
+<!-- ADMIN LOGIN MODAL -->
+<div class="modal-overlay" id="admin-modal">
+  <div class="modal-box">
+    <h3>Admin Access</h3>
+    <p>Enter the admin password to review and approve submitted photos.</p>
+    <div class="modal-group"><label>Password</label><input type="password" id="admin-pw" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')verifyAdmin()"></div>
+    <div class="modal-error" id="modal-error">Incorrect password. Please try again.</div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeAdminLogin()">Cancel</button>
+      <button class="modal-submit" onclick="verifyAdmin()">Sign In →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="admin-panel">
+  <div class="admin-header">
+    <div>
+      <div class="section-eyebrow" style="margin-bottom:4px;">Gallery Management</div>
+      <h2 style="font-family:var(--ff-display);font-size:1.6rem;color:var(--c-white);">Photo Review Dashboard</h2>
+    </div>
+    <button class="admin-logout" onclick="adminLogout()">Sign Out</button>
+  </div>
+  <div class="admin-tabs">
+    <button class="admin-tab active" onclick="switchTab('pending',this)">Pending Review <span id="pending-badge"></span></button>
+    <button class="admin-tab" onclick="switchTab('approved',this)">Approved &amp; Live <span id="approved-badge"></span></button>
+  </div>
+  <div class="admin-tab-content active" id="tab-pending"><div class="pending-grid" id="pending-grid"></div></div>
+  <div class="admin-tab-content" id="tab-approved"><div class="approved-grid" id="approved-grid"></div></div>
+</div>
+
+<!-- FOOTER CTA -->
+<section style="text-align:center;padding:var(--sp-xl) var(--sp-lg);background:var(--c-navy);">
+  <h2 class="reveal" style="font-family:var(--ff-display);font-size:2rem;color:var(--c-white);margin-bottom:14px;">Ready to Add Your Photos?</h2>
+  <p class="reveal" style="color:var(--c-ice);font-weight:300;max-width:480px;margin:0 auto 28px;line-height:1.75;font-size:.95rem;">Book your charter and come home with memories — and catches — worth bragging about.</p>
+  <a href="contact.html" class="btn btn-gold reveal">Book a Charter</a>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><img src="uploads/auke_logo.png" alt="Auke Bay Adventures"><p>Private luxury yacht charters in Southeast Alaska's Inside Passage. Bareboat and skippered from Auke Bay Harbor, Juneau, AK.</p></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="fleet.html">Fleet</a></li><li><a href="experiences.html">Experiences</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Book Now</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="http://www.adfg.alaska.gov/" target="_blank">AK Fish &amp; Game</a></li><li><a href="http://www.uscg.mil/" target="_blank">U.S. Coast Guard</a></li><li><a href="http://www.alaska.org/" target="_blank">Alaska.org</a></li><li><a href="http://www.alaskaair.com/" target="_blank">Alaska Airlines</a></li></ul></div>
+    <div class="footer-col footer-contact"><h4>Contact</h4><address><p>11485 Auke Bay Harbor Rd.<br>Juneau, AK 99821</p><a href="tel:+19077231042" class="phone-link">(907) 723-1042</a></address></div>
+  </div>
+  <div class="footer-bottom"><p>© <span id="footer-yr"></span> Auke Bay Adventures, Inc.</p><div class="footer-social"><a href="https://www.facebook.com/Auke-Bay-Adventures-1422845364457113" target="_blank">f</a></div></div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLb()"><button class="lb-close">×</button><img id="lb-img" src="" alt=""></div>
+
+<script src="js/shared.js"></script>
+<script>
+// ── YEAR ──────────────────────────────────────────────────────
+const yr = new Date().getFullYear();
+document.getElementById('topbar-season').textContent = `✦ ${yr} Charter Season — Now Booking ✦`;
+document.getElementById('footer-yr').textContent = yr;
+
+// ── ADMIN PASSWORD — change before going live ─────────────────
+const ADMIN_PASSWORD = 'AukeBay2026!';
+
+// ── STORAGE HELPERS (localStorage = persists across sessions) ─
+const K_PENDING  = 'aba_pending_photos';
+const K_APPROVED = 'aba_approved_photos';
+const getPending  = () => { try { return JSON.parse(localStorage.getItem(K_PENDING))  || []; } catch(e) { return []; }};
+const getApproved = () => { try { return JSON.parse(localStorage.getItem(K_APPROVED)) || []; } catch(e) { return []; }};
+const savePending  = d => localStorage.setItem(K_PENDING,  JSON.stringify(d));
+const saveApproved = d => localStorage.setItem(K_APPROVED, JSON.stringify(d));
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+// ── INJECT APPROVED GUEST PHOTOS INTO GALLERY ─────────────────
+function loadApprovedPhotos() {
+  const masonry = document.getElementById('masonry');
+  masonry.querySelectorAll('.user-submitted').forEach(el => el.remove());
+  getApproved().forEach(photo => {
+    const div = document.createElement('div');
+    div.className = 'masonry-item user-submitted';
+    div.onclick = () => openLb(photo.dataUrl);
+    div.innerHTML = `<img src="${photo.dataUrl}" alt="Guest photo — Auke Bay Adventures charter"><div class="user-photo-badge">Guest Photo</div>`;
+    masonry.appendChild(div);
+  });
+}
+loadApprovedPhotos();
+
+// ── PHOTO SUBMISSION ──────────────────────────────────────────
+function handlePhotoSubmit() {
+  const name    = document.getElementById('sub-name').value.trim();
+  const email   = document.getElementById('sub-email').value.trim();
+  const caption = document.getElementById('sub-caption').value.trim();
+  const date    = document.getElementById('sub-date').value.trim();
+  const consent = document.getElementById('sub-consent').value;
+  const file    = document.getElementById('sub-file').files[0];
+  const btn     = document.getElementById('submit-btn');
+
+  if (!name || !email)   { alert('Please enter your name and email.'); return; }
+  if (!file)             { alert('Please select a photo to upload.'); return; }
+  if (consent !== 'yes') { alert('Please confirm you have rights to share this photo.'); return; }
+  if (file.size > 10 * 1024 * 1024) { alert('File must be under 10MB. Please compress it and try again.'); return; }
+  if (!file.type.startsWith('image/')) { alert('Please upload a JPG or PNG image.'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Uploading…';
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    const pending = getPending();
+    pending.push({ id: Date.now(), name, email, caption, date, dataUrl: e.target.result, filename: file.name, submitted: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) });
+    savePending(pending);
+    btn.textContent = '✓ Submitted!';
+    btn.style.background = '#2d7a4f';
+    document.getElementById('submit-success').style.display = 'block';
+    ['sub-name','sub-email','sub-caption','sub-date'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('sub-file').value = '';
+    document.getElementById('sub-consent').value = '';
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── ADMIN MODAL ───────────────────────────────────────────────
+function openAdminLogin()  { document.getElementById('admin-modal').classList.add('open'); setTimeout(() => document.getElementById('admin-pw').focus(), 100); }
+function closeAdminLogin() { document.getElementById('admin-modal').classList.remove('open'); document.getElementById('admin-pw').value = ''; document.getElementById('modal-error').style.display = 'none'; }
+function verifyAdmin() {
+  if (document.getElementById('admin-pw').value === ADMIN_PASSWORD) {
+    closeAdminLogin(); openAdminPanel();
+  } else {
+    document.getElementById('modal-error').style.display = 'block';
+    document.getElementById('admin-pw').value = '';
+    document.getElementById('admin-pw').focus();
+  }
+}
+document.getElementById('admin-modal').addEventListener('click', e => { if (e.target === document.getElementById('admin-modal')) closeAdminLogin(); });
+function adminLogout() { document.getElementById('admin-panel').classList.remove('open'); document.getElementById('admin-toggle-btn').textContent = 'Admin Login'; }
+
+// ── ADMIN PANEL ───────────────────────────────────────────────
+function openAdminPanel() {
+  document.getElementById('admin-panel').classList.add('open');
+  document.getElementById('admin-toggle-btn').textContent = 'Close Admin';
+  document.getElementById('admin-panel').scrollIntoView({ behavior:'smooth', block:'start' });
+  renderPending(); renderApproved();
+}
+function updateBadges() {
+  const p = getPending().length, a = getApproved().length;
+  document.getElementById('pending-badge').innerHTML  = p ? `<span class="admin-badge">${p}</span>` : '';
+  document.getElementById('approved-badge').innerHTML = a ? `<span class="admin-badge">${a}</span>` : '';
+}
+function renderPending() {
+  const data = getPending(), grid = document.getElementById('pending-grid');
+  updateBadges();
+  if (!data.length) { grid.innerHTML = `<div class="admin-empty"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><p>No photos pending review.</p></div>`; return; }
+  grid.innerHTML = data.map(p => `
+    <div class="pending-card" id="pc-${p.id}">
+      <img src="${p.dataUrl}" alt="Pending guest submission">
+      <div class="pending-card-body">
+        <div class="pending-meta"><strong>${esc(p.name)}</strong> · ${esc(p.email)}</div>
+        <div class="pending-meta">Submitted: ${p.submitted}${p.date ? ' · Charter: '+esc(p.date) : ''}</div>
+        ${p.caption ? `<div class="pending-caption">"${esc(p.caption)}"</div>` : ''}
+        <div class="pending-actions">
+          <button class="btn-approve" onclick="approvePhoto(${p.id})">✓ Approve</button>
+          <button class="btn-reject"  onclick="rejectPhoto(${p.id})">✕ Reject</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+function renderApproved() {
+  const data = getApproved(), grid = document.getElementById('approved-grid');
+  updateBadges();
+  if (!data.length) { grid.innerHTML = `<div class="admin-empty"><p>No approved photos yet.</p></div>`; return; }
+  grid.innerHTML = data.map(p => `
+    <div class="approved-card" id="ac-${p.id}">
+      <img src="${p.dataUrl}" alt="Approved guest photo">
+      <div class="approved-card-body">
+        <span class="approved-card-name">${esc(p.name)}</span>
+        <button class="btn-remove" onclick="removeApproved(${p.id})">Remove</button>
+      </div>
+    </div>`).join('');
+}
+function approvePhoto(id) {
+  let pending = getPending();
+  const photo = pending.find(p => p.id === id);
+  if (!photo) return;
+  savePending(pending.filter(p => p.id !== id));
+  const approved = getApproved(); approved.unshift(photo); saveApproved(approved);
+  renderPending(); renderApproved(); loadApprovedPhotos();
+}
+function rejectPhoto(id) {
+  if (!confirm('Permanently delete this submission?')) return;
+  savePending(getPending().filter(p => p.id !== id));
+  renderPending();
+}
+function removeApproved(id) {
+  if (!confirm('Remove this photo from the live gallery?')) return;
+  saveApproved(getApproved().filter(p => p.id !== id));
+  renderApproved(); loadApprovedPhotos();
+}
+function switchTab(name, btn) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.admin-tab-content').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(`tab-${name}`).classList.add('active');
+}
+</script>
+</body>
+</html>

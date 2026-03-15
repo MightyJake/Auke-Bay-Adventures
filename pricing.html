@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Charter Pricing | Auke Bay Adventures — Juneau, Alaska</title>
+<meta name="description" content="2026 pricing for Auke Bay Adventures yacht charters in Juneau, Alaska. Bareboat rates from $1,200/day. Captain available $650/day. Fishing rods, kayaks & equipment rentals.">
+<link rel="stylesheet" href="css/global.css">
+<style>
+.pricing-intro{padding:var(--sp-xl) var(--sp-lg);background:var(--c-cream);text-align:center;max-width:700px;margin:0 auto;}
+.pricing-intro p{font-size:.97rem;font-weight:300;color:var(--c-text-mid);line-height:1.82;margin-top:16px;}
+.pricing-main{padding:var(--sp-xl) var(--sp-lg);background:var(--c-white);}
+.pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto var(--sp-xl);}
+.p-card{background:var(--c-white);border:1.5px solid rgba(8,25,46,.1);border-radius:var(--r-md);padding:36px 28px;position:relative;overflow:hidden;transition:box-shadow .3s,transform .3s;}
+.p-card:hover{box-shadow:var(--shadow-mid);transform:translateY(-4px);}
+.p-card.featured{background:var(--c-navy);border-color:var(--c-navy);color:var(--c-white);transform:scale(1.02);box-shadow:var(--shadow-hard);}
+.p-card.featured:hover{transform:scale(1.02) translateY(-4px);}
+.p-card.featured::before{content:'Most Popular';position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--c-gold);color:var(--c-navy);font-family:var(--ff-cond);font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:5px 16px;border-radius:0 0 6px 6px;}
+.p-tier{font-family:var(--ff-cond);font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--c-gold);margin-bottom:6px;}
+.featured .p-tier{color:var(--c-gold-light);}
+.p-name{font-family:var(--ff-display);font-size:1.5rem;color:var(--c-navy);margin-bottom:18px;}
+.featured .p-name{color:var(--c-white);}
+.p-rate{margin-bottom:22px;}
+.p-rate .big{font-family:var(--ff-display);font-size:2.8rem;font-weight:600;color:var(--c-navy);line-height:1;}
+.featured .p-rate .big{color:var(--c-white);}
+.p-rate .per{font-family:var(--ff-cond);font-size:.75rem;color:var(--c-text-soft);margin-left:4px;}
+.featured .p-rate .per{color:var(--c-ice);}
+.p-divider{height:1px;background:rgba(8,25,46,.08);margin-bottom:20px;}
+.featured .p-divider{background:rgba(255,255,255,.1);}
+.p-features{list-style:none;margin-bottom:26px;}
+.p-features li{display:flex;align-items:flex-start;gap:9px;font-size:.84rem;color:var(--c-text-mid);padding:5px 0;font-weight:300;line-height:1.5;}
+.featured .p-features li{color:var(--c-glacier);}
+.p-features li::before{content:'✓';color:var(--c-gold);font-weight:700;flex-shrink:0;}
+.p-cta{display:block;width:100%;padding:14px;text-align:center;border-radius:var(--r-sm);font-family:var(--ff-cond);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:.2s;border:1.5px solid var(--c-navy);color:var(--c-navy);background:transparent;cursor:pointer;}
+.p-cta:hover{background:var(--c-navy);color:var(--c-white);}
+.featured .p-cta{background:var(--c-gold);border-color:var(--c-gold);color:var(--c-navy);}
+.featured .p-cta:hover{background:var(--c-gold-light);border-color:var(--c-gold-light);}
+.addons-section{background:var(--c-cream);padding:var(--sp-xl) var(--sp-lg);}
+.addons-section h2{font-family:var(--ff-display);font-size:1.8rem;color:var(--c-navy);text-align:center;margin-bottom:var(--sp-md);}
+.addons-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1000px;margin:0 auto var(--sp-lg);}
+.addon{background:var(--c-white);border:1px solid rgba(8,25,46,.08);border-radius:var(--r-sm);padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.addon .an{font-size:.85rem;color:var(--c-text-mid);}
+.addon .ap{font-family:var(--ff-display);font-size:1rem;font-weight:600;color:var(--c-navy);}
+.addons-notes{max-width:800px;margin:0 auto;}
+.addons-notes p{font-size:.84rem;color:var(--c-text-mid);font-weight:300;line-height:1.75;margin-bottom:10px;}
+.agreement-cta{text-align:center;padding:var(--sp-xl) var(--sp-lg);background:var(--c-navy);}
+.agreement-cta h2{font-family:var(--ff-display);font-size:1.8rem;color:var(--c-white);margin-bottom:14px;}
+.agreement-cta p{color:var(--c-ice);font-weight:300;font-size:.94rem;max-width:520px;margin:0 auto 28px;line-height:1.75;}
+@media(max-width:900px){.pricing-cards{grid-template-columns:1fr;max-width:480px;}.p-card.featured{transform:none;}.addons-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.addons-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="topbar"><span class="topbar-left">📍 Auke Bay Harbor, Juneau, AK</span><span class="topbar-center">✦ 2026 Charter Season — Now Booking ✦</span><span class="topbar-right"><a href="tel:+19077231042">(907) 723-1042</a></span></div>
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand"><img src="uploads/auke_logo.png" alt="Auke Bay Adventures"><div class="nav-brand-text"><span class="nav-brand-name">Auke Bay Adventures</span><span class="nav-brand-sub">Juneau, Alaska</span></div></a>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="fleet.html">Fleet</a></li><li><a href="experiences.html">Experiences</a></li><li><a href="pricing.html" class="active">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html" class="nav-cta">Book Now</a></li></ul>
+  <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-nav" id="mobile-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="fleet.html">Fleet</a><a href="experiences.html">Experiences</a><a href="pricing.html">Pricing</a><a href="gallery.html">Gallery</a><a href="contact.html" class="mobile-cta">Book Now</a></nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('uploads/ready_to_book.jpg')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><div class="page-hero-eyebrow">2026 Season</div><h1>Fees &amp; Options</h1></div>
+</section>
+
+<div style="padding:var(--sp-xl) var(--sp-lg) var(--sp-lg);text-align:center;">
+  <div class="section-eyebrow center reveal">Transparent Pricing</div>
+  <h2 class="section-title center reveal" style="margin-bottom:14px;max-width:600px;margin-left:auto;margin-right:auto;">All 2026 Charter Rates</h2>
+  <p class="section-body reveal" style="text-align:center;max-width:580px;margin:0 auto;">All rates are per day. Insurance ($65/day) and convenience packages ($45/person) are additional. A licensed captain can be added to any charter at $650/day. Provisions &amp; fuel are the client's responsibility.</p>
+</div>
+
+<section class="pricing-main">
+  <div class="pricing-cards">
+    <div class="p-card reveal">
+      <div class="p-tier">26-Foot Charter</div>
+      <div class="p-name">Southern C's</div>
+      <div class="p-rate"><span class="big">$1,200</span><span class="per">/ day</span></div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li>KingFisher Luxury Edition</li>
+        <li>Cleaning fee: $250/trip</li>
+        <li>Damage deposit: $1,000 (refundable)</li>
+        <li>Convenience pack: $45/person</li>
+        <li>Insurance: $65/day</li>
+        <li>Optional captain: +$650/day</li>
+      </ul>
+      <a href="contact.html" class="p-cta">Book This Vessel</a>
+    </div>
+    <div class="p-card featured reveal reveal-delay-1">
+      <div class="p-tier">30-Foot Charter</div>
+      <div class="p-name">Sablefish</div>
+      <div class="p-rate"><span class="big">$1,575</span><span class="per">/ day</span></div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li>Designation KingFisher</li>
+        <li>More cabin space &amp; range</li>
+        <li>Cleaning fee: $250/trip</li>
+        <li>Damage deposit: $1,000 (refundable)</li>
+        <li>Convenience pack: $45/person</li>
+        <li>Optional captain: +$650/day</li>
+      </ul>
+      <a href="contact.html" class="p-cta">Book This Vessel</a>
+    </div>
+    <div class="p-card reveal reveal-delay-2">
+      <div class="p-tier">42-Foot Charter</div>
+      <div class="p-name">Stickeen / 58° North</div>
+      <div class="p-rate"><span class="big">$2,195</span><span class="per">/ day</span></div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li>Full liveaboard Nordic Tug</li>
+        <li>Best for extended expeditions</li>
+        <li>Cleaning fee: $350/trip</li>
+        <li>Damage deposit: $4,000 (refundable)</li>
+        <li>Convenience pack: $45/person</li>
+        <li>Optional captain: +$650/day</li>
+      </ul>
+      <a href="contact.html" class="p-cta">Book This Vessel</a>
+    </div>
+  </div>
+</section>
+
+<section class="addons-section">
+  <h2 class="reveal">Add-Ons &amp; Equipment Rental</h2>
+  <p class="reveal" style="text-align:center;font-size:.85rem;color:var(--c-text-mid);font-weight:300;max-width:560px;margin:0 auto var(--sp-md);">Enhance your charter with gear rentals. All add-ons are per trip unless noted.</p>
+  <div class="addons-grid">
+    <div class="addon reveal"><span class="an">Halibut Rod</span><span class="ap">$70</span></div>
+    <div class="addon reveal"><span class="an">Salmon Rod</span><span class="ap">$65</span></div>
+    <div class="addon reveal"><span class="an">Kayak Rental</span><span class="ap">$200/kayak</span></div>
+    <div class="addon reveal"><span class="an">Crab Pot</span><span class="ap">$40</span></div>
+    <div class="addon reveal"><span class="an">Bedding Package</span><span class="ap">$70/person</span></div>
+    <div class="addon reveal"><span class="an">Cooler</span><span class="ap">$20</span></div>
+    <div class="addon reveal"><span class="an">Hull Dive Fee</span><span class="ap">$350</span></div>
+    <div class="addon reveal"><span class="an">Insurance</span><span class="ap">$65/day</span></div>
+  </div>
+  <div class="addons-notes reveal">
+    <p><strong>Convenience Pack</strong> ($45/person/trip) — Mandatory. Includes paper towels, plates, bowls, cups, napkins, Kleenex, marine-safe shower gels, toilet paper for marine heads, all cleaning supplies, galley sponges and galley towels.</p>
+    <p><strong>Bedding Pack</strong> ($70/person/trip) — Optional. Includes two sheets, two blankets, pillow and pillow case, bath towel, hand towel, and wash cloth.</p>
+    <p><strong>Kayak minimum:</strong> 2 kayaks per trip. Sales tax TBD. Provisions and fuel are the client's responsibility.</p>
+  </div>
+</section>
+
+<section class="agreement-cta">
+  <h2 class="reveal">Ready to Commit?</h2>
+  <p class="reveal">Review the full 2026 Charter Agreement before booking. Questions? Call Steve directly.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="reveal">
+    <a href="https://www.aukebayadventures.com/wp-content/uploads/2025/12/2026_AUKE-BAY-ADVENTURES-LLC_charter-agreement-5.pdf" target="_blank" class="btn btn-outline-light">View 2026 Charter Agreement</a>
+    <a href="contact.html" class="btn btn-gold">Request a Booking</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand"><img src="uploads/auke_logo.png" alt="Auke Bay Adventures"><p>Private luxury yacht charters in Southeast Alaska's Inside Passage. Bareboat and skippered from Auke Bay Harbor, Juneau, AK.</p></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="fleet.html">Fleet</a></li><li><a href="experiences.html">Experiences</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Book Now</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="http://www.adfg.alaska.gov/" target="_blank">AK Fish &amp; Game</a></li><li><a href="http://www.uscg.mil/" target="_blank">U.S. Coast Guard</a></li><li><a href="http://www.alaska.org/" target="_blank">Alaska.org</a></li><li><a href="http://www.alaskaair.com/" target="_blank">Alaska Airlines</a></li></ul></div>
+    <div class="footer-col footer-contact"><h4>Contact</h4><address><p>11485 Auke Bay Harbor Rd.<br>Juneau, AK 99821</p><a href="tel:+19077231042" class="phone-link">(907) 723-1042</a></address></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Auke Bay Adventures, Inc.</p><div class="footer-social"><a href="https://www.facebook.com/Auke-Bay-Adventures-1422845364457113" target="_blank">f</a></div></div>
+</footer>
+<script src="js/shared.js"></script>
+</body>
+</html>

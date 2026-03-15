@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Style Guide | Auke Bay Adventures</title>
+<meta name="description" content="Official brand style guide for Auke Bay Adventures — colors, typography, logo usage, UI components, voice and tone guidelines.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-navy:#08192e; --c-deep:#0c2040; --c-ocean:#163352;
+  --c-slate:#1f4a70; --c-mist:#3a6b8a; --c-ice:#a8ccd8;
+  --c-glacier:#d6eaf3; --c-frost:#eef6fb; --c-gold:#c8883a;
+  --c-gold-light:#e4aa60; --c-gold-pale:#f5e4c8;
+  --c-cream:#f7f3ec; --c-white:#fafcfe;
+  --c-text:#0f2237; --c-text-mid:#37566e; --c-text-soft:#7a9db5;
+  --ff-display:'Cormorant Garamond',Georgia,serif;
+  --ff-body:'Jost',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff-body);background:var(--c-white);color:var(--c-text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;height:auto;display:block;}
+
+/* NAV */
+.sg-nav{background:var(--c-navy);height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(168,204,216,.08);}
+.sg-nav a{color:var(--c-glacier);font-family:var(--ff-body);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
+.sg-nav a:hover{color:var(--c-gold-light);}
+.sg-nav .logo{display:flex;align-items:center;gap:12px;}
+.sg-nav .logo img{height:40px;filter:brightness(1.1);}
+.sg-nav .logo span{font-family:var(--ff-display);font-size:.95rem;color:var(--c-white);}
+.nav-links{display:flex;gap:0;}
+.nav-links a{padding:0 14px;height:68px;line-height:68px;}
+
+/* LAYOUT */
+.sg-wrapper{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 68px);}
+.sg-sidebar{background:#050f1c;padding:36px 0;position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto;}
+.sg-sidebar h5{font-family:var(--ff-body);font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--c-text-soft);padding:0 24px;margin-bottom:8px;margin-top:24px;}
+.sg-sidebar h5:first-child{margin-top:0;}
+.sg-sidebar a{display:block;padding:8px 24px;font-size:.78rem;color:var(--c-ice);font-weight:300;transition:color .2s,background .2s;}
+.sg-sidebar a:hover,.sg-sidebar a.active{color:var(--c-gold-light);background:rgba(200,136,58,.07);}
+.sg-content{padding:0;}
+
+/* SECTIONS */
+.sg-section{padding:60px 64px;border-bottom:1px solid rgba(8,25,46,.06);}
+.sg-section:last-child{border:none;}
+.sg-section.dark{background:var(--c-navy);color:var(--c-white);}
+.sg-section.cream{background:var(--c-cream);}
+.sg-section-title{font-family:var(--ff-display);font-size:2.2rem;font-weight:600;color:var(--c-navy);margin-bottom:8px;line-height:1.1;}
+.sg-section.dark .sg-section-title{color:var(--c-white);}
+.sg-section-sub{font-size:.84rem;color:var(--c-text-soft);font-weight:300;margin-bottom:40px;line-height:1.7;max-width:560px;}
+.sg-section.dark .sg-section-sub{color:var(--c-ice);}
+.sg-label{font-family:var(--ff-body);font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--c-gold);margin-bottom:6px;}
+.sg-section.dark .sg-label{color:var(--c-gold-light);}
+
+/* HERO BANNER */
+.sg-hero{background:linear-gradient(135deg,var(--c-navy) 0%,var(--c-ocean) 100%);padding:80px 64px;color:var(--c-white);position:relative;overflow:hidden;}
+.sg-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(200,136,58,.12) 0%,transparent 70%);}
+.sg-hero h1{font-family:var(--ff-display);font-size:3.2rem;font-weight:600;margin-bottom:8px;line-height:1.1;}
+.sg-hero p{font-size:.95rem;color:var(--c-ice);font-weight:300;max-width:500px;line-height:1.75;}
+.sg-hero-logo{display:flex;align-items:center;gap:20px;margin-bottom:28px;}
+.sg-hero-logo img{height:80px;filter:brightness(1.1);}
+.sg-hero-logo-text .name{font-family:var(--ff-display);font-size:1.4rem;color:var(--c-white);}
+.sg-hero-logo-text .sub{font-family:var(--ff-body);font-size:.62rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--c-gold-light);}
+.sg-version{font-family:var(--ff-body);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--c-gold-light);position:absolute;bottom:24px;right:64px;}
+
+/* COLOR PALETTE */
+.color-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+.color-swatch{border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(8,25,46,.12);}
+.swatch-block{height:100px;}
+.swatch-info{background:var(--c-white);padding:12px 14px;border:1px solid rgba(8,25,46,.06);border-top:none;}
+.swatch-name{font-family:var(--ff-body);font-size:.7rem;font-weight:700;color:var(--c-text);letter-spacing:.06em;margin-bottom:2px;}
+.swatch-hex{font-family:monospace;font-size:.68rem;color:var(--c-text-soft);}
+.swatch-var{font-family:monospace;font-size:.6rem;color:var(--c-text-soft);margin-top:2px;}
+
+/* TYPOGRAPHY */
+.type-specimen{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(8,25,46,.06);}
+.type-specimen:last-child{border:none;}
+.type-meta{display:flex;gap:24px;margin-bottom:16px;flex-wrap:wrap;}
+.type-meta span{font-size:.72rem;color:var(--c-text-soft);}
+.type-meta strong{color:var(--c-text);}
+.type-sample-display{font-family:var(--ff-display);color:var(--c-navy);}
+.type-sample-body{font-family:var(--ff-body);color:var(--c-text);}
+
+/* LOGO USAGE */
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.logo-cell{border-radius:8px;overflow:hidden;border:1px solid rgba(8,25,46,.08);}
+.logo-cell-bg{padding:40px;display:flex;align-items:center;justify-content:center;min-height:160px;}
+.logo-cell-bg.dark{background:var(--c-navy);}
+.logo-cell-bg.mid{background:var(--c-ocean);}
+.logo-cell-bg.light{background:var(--c-cream);}
+.logo-cell-bg.white{background:var(--c-white);}
+.logo-cell-info{padding:14px 18px;background:var(--c-white);border-top:1px solid rgba(8,25,46,.06);}
+.logo-cell-info h4{font-size:.72rem;font-weight:700;color:var(--c-text);margin-bottom:3px;}
+.logo-cell-info p{font-size:.68rem;color:var(--c-text-soft);}
+.logo-dont{opacity:.4;position:relative;}
+.logo-dont::after{content:'✕ DON\'T';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(200,40,40,.8);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:4px;}
+
+/* UI COMPONENTS */
+.comp-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:28px;}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-body);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border-radius:4px;transition:.2s;cursor:pointer;padding:14px 28px;border:none;}
+.btn-gold{background:var(--c-gold);color:var(--c-navy);}
+.btn-navy{background:var(--c-navy);color:var(--c-white);}
+.btn-outline{background:transparent;border:1.5px solid var(--c-navy);color:var(--c-navy);}
+.btn-outline-light{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:var(--c-white);}
+.btn-text-link{font-family:var(--ff-body);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--c-gold);display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;}
+
+/* Form elements */
+.form-demo{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:600px;}
+.fd-group{display:flex;flex-direction:column;gap:5px;}
+.fd-group label{font-family:var(--ff-body);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--c-text-mid);}
+.fd-group input,.fd-group select{border:1.5px solid rgba(8,25,46,.12);border-radius:4px;padding:10px 13px;font-family:var(--ff-body);font-size:.88rem;color:var(--c-text);outline:none;}
+.fd-group input:focus{border-color:var(--c-gold);box-shadow:0 0 0 3px rgba(200,136,58,.12);}
+
+/* Cards */
+.card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.demo-card{border-radius:8px;overflow:hidden;box-shadow:0 4px 24px rgba(8,25,46,.1);}
+.demo-card-img{height:140px;background:linear-gradient(135deg,var(--c-ocean),var(--c-navy));display:flex;align-items:center;justify-content:center;color:var(--c-ice);font-size:.72rem;font-family:var(--ff-body);letter-spacing:.1em;text-transform:uppercase;}
+.demo-card-img.gold{background:linear-gradient(135deg,var(--c-gold),var(--c-gold-light));}
+.demo-card-body{padding:18px;background:var(--c-white);}
+.demo-card-tag{font-family:var(--ff-body);font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--c-gold);margin-bottom:5px;}
+.demo-card-title{font-family:var(--ff-display);font-size:1.1rem;color:var(--c-navy);margin-bottom:6px;}
+.demo-card-body p{font-size:.78rem;color:var(--c-text-mid);font-weight:300;line-height:1.6;}
+
+/* Voice & Tone */
+.voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.voice-card{padding:28px;border-radius:8px;background:var(--c-white);border:1px solid rgba(8,25,46,.08);}
+.voice-card.do{border-left:3px solid #2d7a4f;}
+.voice-card.dont{border-left:3px solid #c0392b;}
+.voice-card h4{font-family:var(--ff-body);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;}
+.voice-card.do h4{color:#2d7a4f;}
+.voice-card.dont h4{color:#c0392b;}
+.voice-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.voice-card ul li{font-size:.84rem;color:var(--c-text-mid);font-weight:300;line-height:1.6;padding-left:16px;position:relative;}
+.voice-card ul li::before{position:absolute;left:0;}
+.voice-card.do ul li::before{content:'✓';color:#2d7a4f;font-weight:700;}
+.voice-card.dont ul li::before{content:'✕';color:#c0392b;font-weight:700;}
+
+/* Tags */
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;}
+.tag{font-family:var(--ff-body);font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;}
+.tag-navy{background:var(--c-navy);color:var(--c-white);}
+.tag-ocean{background:var(--c-ocean);color:var(--c-white);}
+.tag-gold{background:var(--c-gold);color:var(--c-navy);}
+.tag-outline{background:transparent;border:1.5px solid var(--c-navy);color:var(--c-navy);}
+.tag-outline-light{background:transparent;border:1.5px solid rgba(168,204,216,.4);color:var(--c-ice);}
+
+/* Spacing display */
+.spacing-row{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;}
+.spacing-block{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.spacing-vis{background:var(--c-gold);width:32px;border-radius:2px;}
+.spacing-label{font-family:monospace;font-size:.62rem;color:var(--c-text-soft);}
+
+/* Motion */
+.motion-demo{display:flex;gap:16px;flex-wrap:wrap;}
+.motion-card{width:80px;height:80px;background:var(--c-ocean);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--c-ice);font-size:.6rem;text-align:center;transition:.3s;cursor:pointer;font-family:var(--ff-body);}
+.motion-card:hover{background:var(--c-slate);transform:translateY(-4px);box-shadow:0 12px 32px rgba(8,25,46,.3);}
+.motion-card.fade{opacity:.4;animation:fadeDemo 2s ease-in-out infinite;}
+@keyframes fadeDemo{0%,100%{opacity:.4;}50%{opacity:1;}}
+
+/* Eyebrow utility */
+.eyebrow{font-family:var(--ff-body);font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--c-gold);display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.eyebrow::after{content:'';display:block;width:20px;height:1px;background:var(--c-gold);}
+
+@media(max-width:1100px){.sg-wrapper{grid-template-columns:1fr;}.sg-sidebar{display:none;}.color-grid{grid-template-columns:repeat(3,1fr);}.logo-grid{grid-template-columns:1fr 1fr;}.sg-section{padding:48px 32px;}}
+@media(max-width:768px){.color-grid{grid-template-columns:repeat(2,1fr);}.voice-grid{grid-template-columns:1fr;}.card-row{grid-template-columns:1fr;}.form-demo{grid-template-columns:1fr;}.sg-hero{padding:48px 32px;}.logo-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="sg-nav">
+  <a href="index.html" class="logo">
+    <img src="uploads/auke_logo.png" alt="Auke Bay Adventures">
+    <span>Brand Style Guide</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">← Back to Site</a>
+    <a href="#colors">Colors</a>
+    <a href="#typography">Type</a>
+    <a href="#logo">Logo</a>
+    <a href="#components">Components</a>
+    <a href="#voice">Voice</a>
+  </div>
+</div>
+
+<div class="sg-wrapper">
+  <!-- SIDEBAR -->
+  <aside class="sg-sidebar">
+    <h5>Getting Started</h5>
+    <a href="#intro">Overview</a>
+    <a href="#mission">Mission &amp; Positioning</a>
+    <h5>Visual Identity</h5>
+    <a href="#logo">Logo Usage</a>
+    <a href="#colors">Color Palette</a>
+    <a href="#typography">Typography</a>
+    <a href="#spacing">Spacing</a>
+    <a href="#motion">Motion &amp; Animation</a>
+    <h5>UI Components</h5>
+    <a href="#buttons">Buttons</a>
+    <a href="#forms">Form Elements</a>
+    <a href="#cards">Cards</a>
+    <a href="#tags">Tags &amp; Labels</a>
+    <h5>Content</h5>
+    <a href="#voice">Voice &amp; Tone</a>
+    <a href="#imagery">Imagery</a>
+    <a href="#seo">SEO Guidelines</a>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="sg-content">
+
+    <!-- HERO -->
+    <section class="sg-hero" id="intro">
+      <div class="sg-hero-logo">
+        <img src="uploads/auke_logo.png" alt="Auke Bay Adventures Logo">
+        <div class="sg-hero-logo-text">
+          <div class="name">Auke Bay Adventures</div>
+          <div class="sub">Juneau, Alaska · Est. Charter Operations</div>
+        </div>
+      </div>
+      <h1>Brand Style Guide</h1>
+      <p>A comprehensive reference for the visual identity, tone, and digital design standards of Auke Bay Adventures — Juneau's premiere private yacht charter company.</p>
+      <div class="sg-version">Version 2.0 · 2026 Season</div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="sg-section cream" id="mission">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sg-section-title">Mission &amp; Positioning</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;">
+        <div>
+          <h3 style="font-family:var(--ff-display);font-size:1.2rem;color:var(--c-navy);margin-bottom:10px;">Mission Statement</h3>
+          <p style="font-size:.9rem;color:var(--c-text-mid);font-weight:300;line-height:1.82;">To provide unforgettable private yacht charter experiences on Alaska's Inside Passage — where the wilderness of Southeast Alaska becomes accessible on your terms, with world-class service and vessels built for the region.</p>
+        </div>
+        <div>
+          <h3 style="font-family:var(--ff-display);font-size:1.2rem;color:var(--c-navy);margin-bottom:10px;">Brand Positioning</h3>
+          <p style="font-size:.9rem;color:var(--c-text-mid);font-weight:300;line-height:1.82;"><strong>Maritime Luxury meets Rugged Alaska.</strong> Auke Bay Adventures is not a cruise line or a tour operator — it's a private key to the most spectacular and remote wilderness in North America, delivered with genuine expertise and personal warmth.</p>
+        </div>
+        <div>
+          <h3 style="font-family:var(--ff-display);font-size:1.2rem;color:var(--c-navy);margin-bottom:10px;">Brand Personality</h3>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+            <span class="tag tag-navy">Authoritative</span>
+            <span class="tag tag-navy">Adventurous</span>
+            <span class="tag tag-ocean">Warm</span>
+            <span class="tag tag-ocean">Genuine</span>
+            <span class="tag tag-gold">Luxurious</span>
+            <span class="tag tag-gold">Trustworthy</span>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family:var(--ff-display);font-size:1.2rem;color:var(--c-navy);margin-bottom:10px;">Target Audience</h3>
+          <p style="font-size:.9rem;color:var(--c-text-mid);font-weight:300;line-height:1.82;">Experienced anglers, adventure travelers, nature photographers, families seeking bucket-list Alaska experiences, and corporate/group charter clients. Typically 35–65, affluent, value authenticity over mass tourism.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGO -->
+    <section class="sg-section" id="logo">
+      <div class="eyebrow">Identity</div>
+      <h2 class="sg-section-title">Logo Usage</h2>
+      <p class="sg-section-sub">The Auke Bay Adventures logo is the primary brand identifier. Use it consistently across all materials. The logo should always have clear space equal to the height of the "A" in Adventures on all sides.</p>
+      <div class="logo-grid">
+        <div class="logo-cell">
+          <div class="logo-cell-bg dark"><img src="uploads/auke_logo.png" alt="Logo on dark navy" style="height:80px;filter:brightness(1.1);"></div>
+          <div class="logo-cell-info"><h4>✓ Primary — On Navy</h4><p>Preferred. Use on all dark navy backgrounds.</p></div>
+        </div>
+        <div class="logo-cell">
+          <div class="logo-cell-bg mid"><img src="uploads/auke_logo.png" alt="Logo on ocean blue" style="height:80px;filter:brightness(1.05);"></div>
+          <div class="logo-cell-info"><h4>✓ Acceptable — On Ocean Blue</h4><p>Works well on mid-tone blues.</p></div>
+        </div>
+        <div class="logo-cell">
+          <div class="logo-cell-bg light"><img src="uploads/auke_logo.png" alt="Logo on cream" style="height:80px;"></div>
+          <div class="logo-cell-info"><h4>✓ Acceptable — On Cream/Light</h4><p>Use on light backgrounds with sufficient contrast.</p></div>
+        </div>
+      </div>
+      <div style="margin-top:28px;padding:20px;background:var(--c-cream);border-radius:8px;">
+        <h4 style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text-mid);margin-bottom:10px;">Logo Don'ts</h4>
+        <ul style="font-size:.84rem;color:var(--c-text-mid);font-weight:300;line-height:1.75;padding-left:20px;">
+          <li>Do not stretch, squish, or distort the logo proportions</li>
+          <li>Do not apply drop shadows or glows directly to the logo</li>
+          <li>Do not place the logo over busy photographs without a dark overlay</li>
+          <li>Do not change the logo colors — use the official asset only</li>
+          <li>Do not make the logo smaller than 36px tall in digital contexts</li>
+          <li>Do not rotate or flip the logo orientation</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- COLORS -->
+    <section class="sg-section cream" id="colors">
+      <div class="eyebrow">Visual Identity</div>
+      <h2 class="sg-section-title">Color Palette</h2>
+      <p class="sg-section-sub">Our palette is drawn from the natural environment of Southeast Alaska — the deep navy of midnight ocean, arctic ice, and the warm gold of Alaskan sunsets. Navy is dominant; gold is reserved for emphasis and CTAs.</p>
+
+      <div style="margin-bottom:32px;">
+        <p class="sg-label">Primary Colors</p>
+        <div class="color-grid">
+          <div class="color-swatch"><div class="swatch-block" style="background:#08192e;"></div><div class="swatch-info"><div class="swatch-name">Navy</div><div class="swatch-hex">#08192e</div><div class="swatch-var">--c-navy</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#0c2040;"></div><div class="swatch-info"><div class="swatch-name">Deep Sea</div><div class="swatch-hex">#0c2040</div><div class="swatch-var">--c-deep</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#c8883a;"></div><div class="swatch-info"><div class="swatch-name">Gold</div><div class="swatch-hex">#c8883a</div><div class="swatch-var">--c-gold</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#e4aa60;"></div><div class="swatch-info"><div class="swatch-name">Gold Light</div><div class="swatch-hex">#e4aa60</div><div class="swatch-var">--c-gold-light</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#fafcfe;"></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-hex">#fafcfe</div><div class="swatch-var">--c-white</div></div></div>
+        </div>
+      </div>
+      <div style="margin-bottom:32px;">
+        <p class="sg-label">Secondary Colors</p>
+        <div class="color-grid">
+          <div class="color-swatch"><div class="swatch-block" style="background:#163352;"></div><div class="swatch-info"><div class="swatch-name">Ocean</div><div class="swatch-hex">#163352</div><div class="swatch-var">--c-ocean</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#1f4a70;"></div><div class="swatch-info"><div class="swatch-name">Slate</div><div class="swatch-hex">#1f4a70</div><div class="swatch-var">--c-slate</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#3a6b8a;"></div><div class="swatch-info"><div class="swatch-name">Mist</div><div class="swatch-hex">#3a6b8a</div><div class="swatch-var">--c-mist</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#a8ccd8;"></div><div class="swatch-info"><div class="swatch-name">Arctic Ice</div><div class="swatch-hex">#a8ccd8</div><div class="swatch-var">--c-ice</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#d6eaf3;"></div><div class="swatch-info"><div class="swatch-name">Glacier</div><div class="swatch-hex">#d6eaf3</div><div class="swatch-var">--c-glacier</div></div></div>
+        </div>
+      </div>
+      <div>
+        <p class="sg-label">Background &amp; Neutral Colors</p>
+        <div class="color-grid">
+          <div class="color-swatch"><div class="swatch-block" style="background:#f7f3ec;border:1px solid #e8e2d8;"></div><div class="swatch-info"><div class="swatch-name">Cream</div><div class="swatch-hex">#f7f3ec</div><div class="swatch-var">--c-cream</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#eef6fb;border:1px solid #e0ecf4;"></div><div class="swatch-info"><div class="swatch-name">Frost</div><div class="swatch-hex">#eef6fb</div><div class="swatch-var">--c-frost</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#37566e;"></div><div class="swatch-info"><div class="swatch-name">Text Mid</div><div class="swatch-hex">#37566e</div><div class="swatch-var">--c-text-mid</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#7a9db5;"></div><div class="swatch-info"><div class="swatch-name">Text Soft</div><div class="swatch-hex">#7a9db5</div><div class="swatch-var">--c-text-soft</div></div></div>
+          <div class="color-swatch"><div class="swatch-block" style="background:#050f1c;"></div><div class="swatch-info"><div class="swatch-name">Footer Black</div><div class="swatch-hex">#050f1c</div><div class="swatch-var">Footer BG</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section class="sg-section" id="typography">
+      <div class="eyebrow">Typography</div>
+      <h2 class="sg-section-title">Type System</h2>
+      <p class="sg-section-sub">Two typefaces form our typographic identity. Cormorant Garamond brings old-world elegance and editorial gravitas to headlines. Jost provides clean, modern legibility for body copy and UI.</p>
+
+      <div class="type-specimen">
+        <p class="sg-label">Display Font — Cormorant Garamond</p>
+        <div class="type-meta">
+          <span><strong>Use:</strong> Headlines, section titles, yacht names, hero copy, testimonials, decorative pull quotes</span>
+          <span><strong>Weights:</strong> 300 Light · 400 Regular · 600 SemiBold · 700 Bold · Italic variants</span>
+        </div>
+        <div class="type-sample-display" style="font-size:3.5rem;font-weight:600;line-height:1.05;margin-bottom:10px;">Alaska on Your Terms</div>
+        <div class="type-sample-display" style="font-size:2.2rem;font-weight:300;font-style:italic;color:var(--c-text-mid);margin-bottom:10px;">The Adventure Starts Here</div>
+        <div class="type-sample-display" style="font-size:1.4rem;font-weight:400;">Auke Bay Adventures — Big "Tale" Adventures Launch Here</div>
+      </div>
+
+      <div class="type-specimen">
+        <p class="sg-label">Body Font — Jost</p>
+        <div class="type-meta">
+          <span><strong>Use:</strong> Body copy, UI labels, navigation, buttons, captions, metadata</span>
+          <span><strong>Weights:</strong> 300 Light · 400 Regular · 500 Medium · 600 SemiBold · 700 Bold</span>
+        </div>
+        <div class="type-sample-body" style="font-size:1rem;font-weight:300;line-height:1.82;margin-bottom:12px;">AUKE BAY ADVENTURES provides bareboat and skippered charters on Nordic Tugs and Cutwater yachts. The adventure region is the inland passage of Southeast Alaska based out of Juneau, Alaska — your gateway to experience Alaska on your own terms.</div>
+        <div class="type-sample-body" style="font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--c-gold);">BOOK YOUR CHARTER · EXPLORE THE FLEET · 2026 SEASON NOW OPEN</div>
+      </div>
+
+      <div>
+        <p class="sg-label">Type Scale</p>
+        <div style="display:flex;flex-direction:column;gap:14px;border-left:2px solid var(--c-gold);padding-left:24px;">
+          <div><span style="font-family:var(--ff-display);font-size:3.8rem;font-weight:600;color:var(--c-navy);">Hero H1</span> <span style="font-size:.68rem;color:var(--c-text-soft);vertical-align:middle;"> · Cormorant 600 · clamp(3rem, 6.5vw, 5.6rem)</span></div>
+          <div><span style="font-family:var(--ff-display);font-size:2.4rem;font-weight:600;color:var(--c-navy);">Section Title H2</span> <span style="font-size:.68rem;color:var(--c-text-soft);vertical-align:middle;"> · Cormorant 600 · clamp(1.9rem, 3.5vw, 2.9rem)</span></div>
+          <div><span style="font-family:var(--ff-display);font-size:1.5rem;font-weight:500;color:var(--c-navy);">Card Title H3 · Cormorant 500 · 1.2–1.5rem</span></div>
+          <div><span style="font-family:var(--ff-body);font-size:1rem;font-weight:300;color:var(--c-text-mid);">Body paragraph · Jost 300 · 0.95–1rem · line-height 1.82</span></div>
+          <div><span style="font-family:var(--ff-body);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--c-gold);">UI LABEL / EYEBROW · JOST 700 · 0.68–0.72REM · 0.2EM TRACKING</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACING -->
+    <section class="sg-section cream" id="spacing">
+      <div class="eyebrow">Layout</div>
+      <h2 class="sg-section-title">Spacing System</h2>
+      <p class="sg-section-sub">An 8px-base spacing scale keeps layouts consistent and visually harmonious. Major sections use larger spacing units for breathing room.</p>
+      <div class="spacing-row">
+        <div class="spacing-block"><div class="spacing-vis" style="height:8px;"></div><div class="spacing-label">8px · xs</div></div>
+        <div class="spacing-block"><div class="spacing-vis" style="height:16px;"></div><div class="spacing-label">16px · sm</div></div>
+        <div class="spacing-block"><div class="spacing-vis" style="height:24px;"></div><div class="spacing-label">24px · md</div></div>
+        <div class="spacing-block"><div class="spacing-vis" style="height:48px;"></div><div class="spacing-label">48px · lg</div></div>
+        <div class="spacing-block"><div class="spacing-vis" style="height:80px;"></div><div class="spacing-label">80px · xl</div></div>
+        <div class="spacing-block"><div class="spacing-vis" style="height:120px;"></div><div class="spacing-label">120px · 2xl</div></div>
+      </div>
+      <div style="margin-top:32px;padding:24px;background:var(--c-white);border-radius:8px;">
+        <p style="font-size:.84rem;color:var(--c-text-mid);font-weight:300;line-height:1.75;"><strong>Section padding:</strong> 80–120px top/bottom on desktop, 48–64px on mobile. Horizontal padding scales from 24px (mobile) to 48px+ (desktop). The max content width is ~1440px. Page gutter is 5vw on large screens.</p>
+      </div>
+    </section>
+
+    <!-- MOTION -->
+    <section class="sg-section" id="motion">
+      <div class="eyebrow">Motion</div>
+      <h2 class="sg-section-title">Animation &amp; Motion</h2>
+      <p class="sg-section-sub">Motion should feel organic and maritime — slow, deliberate, confident. Avoid fast or bouncy animations. All transitions use ease or ease-out curves at 0.2–0.7s durations.</p>
+      <div class="motion-demo">
+        <div class="motion-card" style="transition:transform .3s ease, box-shadow .3s ease, background .3s;">Hover ↑<br><span style="font-size:.55rem;opacity:.7;">translateY(-4px)</span></div>
+        <div class="motion-card fade" style="animation:fadeDemo 2s ease-in-out infinite;">Fade<br><span style="font-size:.55rem;opacity:.7;">opacity</span></div>
+        <div class="motion-card" style="transition:transform .6s ease, filter .3s;">Hero BG<br><span style="font-size:.55rem;opacity:.7;">scale drift</span></div>
+        <div class="motion-card" style="transition:all .65s ease;">Reveal<br><span style="font-size:.55rem;opacity:.7;">scroll fade-up</span></div>
+      </div>
+      <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+        <div style="padding:18px;background:var(--c-cream);border-radius:8px;"><p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text-mid);margin-bottom:6px;">Hover Transitions</p><p style="font-size:.82rem;color:var(--c-text-mid);font-weight:300;">0.2–0.3s ease. Subtle lift (translateY -2 to -6px), color shift, or shadow expansion.</p></div>
+        <div style="padding:18px;background:var(--c-cream);border-radius:8px;"><p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text-mid);margin-bottom:6px;">Scroll Reveals</p><p style="font-size:.82rem;color:var(--c-text-mid);font-weight:300;">0.65s ease. Elements fade up from 24px offset. Use staggered delays (0.1s increments) for grids.</p></div>
+        <div style="padding:18px;background:var(--c-cream);border-radius:8px;"><p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text-mid);margin-bottom:6px;">Hero Animations</p><p style="font-size:.82rem;color:var(--c-text-mid);font-weight:300;">Background: 18–20s scale drift. Content: 1.1s fade-up on load. Parallax scrolling on bg images.</p></div>
+      </div>
+    </section>
+
+    <!-- BUTTONS -->
+    <section class="sg-section cream" id="buttons">
+      <div class="eyebrow">Components</div>
+      <h2 class="sg-section-title">Buttons &amp; CTAs</h2>
+      <p class="sg-section-sub">All button text uses Jost, uppercase, 700 weight, wide letter-spacing. Buttons are rounded at 4px. The Gold button is the primary booking CTA and should be used sparingly to maintain impact.</p>
+      <div class="comp-row">
+        <button class="btn btn-gold">Book a Charter →</button>
+        <button class="btn btn-navy">View Fleet</button>
+        <button class="btn btn-outline">Learn More</button>
+      </div>
+      <div style="background:var(--c-navy);padding:24px;border-radius:8px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
+        <button class="btn btn-gold">Book a Charter →</button>
+        <button class="btn btn-outline-light">Explore Fleet</button>
+        <button class="btn-text-link">View All Experiences →</button>
+      </div>
+      <div style="padding:16px;background:var(--c-cream);border-radius:6px;font-size:.8rem;color:var(--c-text-mid);font-weight:300;line-height:1.7;">
+        <strong>Usage hierarchy:</strong> Gold = primary CTA (1 per section max) · Navy/Outline = secondary actions · Text link = tertiary / "view more" style actions. Never use two Gold buttons side by side.
+      </div>
+    </section>
+
+    <!-- FORMS -->
+    <section class="sg-section" id="forms">
+      <div class="eyebrow">Components</div>
+      <h2 class="sg-section-title">Form Elements</h2>
+      <p class="sg-section-sub">Form inputs have 1.5px borders, 4px border-radius, and highlight gold on focus. Labels are uppercase condensed at 0.62rem. Error states use red #c0392b.</p>
+      <div class="form-demo">
+        <div class="fd-group"><label>First Name</label><input type="text" placeholder="John"></div>
+        <div class="fd-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        <div class="fd-group"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+        <div class="fd-group"><label>Preferred Vessel</label><select><option>Select a vessel</option><option>26′ Southern C's</option><option>30′ Sablefish</option><option>42′ Stickeen</option></select></div>
+      </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="sg-section cream" id="cards">
+      <div class="eyebrow">Components</div>
+      <h2 class="sg-section-title">Card Patterns</h2>
+      <p class="sg-section-sub">Cards use 8px border-radius, subtle shadows, and hover transforms. Fleet cards use a dark navy background on dark-section contexts; activity/experience cards use cinematic full-bleed backgrounds.</p>
+      <div class="card-row">
+        <div class="demo-card"><div class="demo-card-img">Image Placeholder</div><div class="demo-card-body"><div class="demo-card-tag">Most Popular</div><div class="demo-card-title">Sport Fishing</div><p>World-class halibut and salmon in the nutrient-rich waters of Southeast Alaska.</p></div></div>
+        <div class="demo-card"><div class="demo-card-img gold">Fleet Card</div><div class="demo-card-body"><div class="demo-card-tag">42-Foot Vessel</div><div class="demo-card-title">Stickeen</div><p>Full liveaboard Nordic Tug. $2,195/day bareboat or skippered.</p></div></div>
+        <div class="demo-card" style="background:var(--c-navy);"><div class="demo-card-img" style="background:var(--c-slate);">Testimonial</div><div class="demo-card-body" style="background:var(--c-navy);"><div style="color:var(--c-gold);letter-spacing:3px;font-size:.75rem;margin-bottom:8px;">★★★★★</div><div style="font-family:var(--ff-display);font-style:italic;font-size:.92rem;color:var(--c-glacier);line-height:1.7;margin-bottom:10px;">"Truly one of the best experiences I've ever had."</div><div style="font-family:var(--ff-body);font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c-gold-light);">— Shawn Endicott</div></div></div>
+      </div>
+    </section>
+
+    <!-- TAGS -->
+    <section class="sg-section" id="tags">
+      <div class="eyebrow">Components</div>
+      <h2 class="sg-section-title">Tags, Labels &amp; Badges</h2>
+      <p class="sg-section-sub">Tags use uppercase Jost 600, small letter-spacing, pill shape (20px border-radius), and small font size. Use gold tags to highlight featured or popular items.</p>
+      <div style="margin-bottom:20px;">
+        <p class="sg-label" style="margin-bottom:10px;">On Light Backgrounds</p>
+        <div class="tag-row">
+          <span class="tag tag-navy">Bareboat</span>
+          <span class="tag tag-navy">Skippered</span>
+          <span class="tag tag-ocean">USCG Compliant</span>
+          <span class="tag tag-gold">Most Popular</span>
+          <span class="tag tag-outline">42-Foot Vessel</span>
+        </div>
+      </div>
+      <div style="background:var(--c-navy);padding:24px;border-radius:8px;">
+        <p class="sg-label" style="color:var(--c-gold-light);margin-bottom:10px;">On Dark Backgrounds</p>
+        <div class="tag-row">
+          <span class="tag" style="background:rgba(200,136,58,.2);color:var(--c-gold-light);">Sport Fishing</span>
+          <span class="tag" style="background:rgba(200,136,58,.2);color:var(--c-gold-light);">Whale Watching</span>
+          <span class="tag tag-outline-light">Glacier Bay</span>
+          <span class="tag tag-outline-light">Kayaking</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOICE & TONE -->
+    <section class="sg-section cream" id="voice">
+      <div class="eyebrow">Content</div>
+      <h2 class="sg-section-title">Voice &amp; Tone</h2>
+      <p class="sg-section-sub">Auke Bay Adventures speaks with the confidence of genuine expertise and the warmth of a trusted local guide. We don't oversell — we let Alaska do the selling. Our voice is personal, direct, and unhurried.</p>
+      <div class="voice-grid">
+        <div class="voice-card do">
+          <h4>✓ Do: Write Like This</h4>
+          <ul>
+            <li>Use active, direct language that paints a picture</li>
+            <li>"Alaska on your terms" — emphasize autonomy and privacy</li>
+            <li>"Where the only clock is the midnight sun" — evocative, earned poetry</li>
+            <li>Reference real places: Glacier Bay, Inside Passage, Auke Bay Harbor</li>
+            <li>Speak to the guest's aspiration, not just the product</li>
+            <li>Short sentences for impact. Longer ones to build atmosphere.</li>
+            <li>Use "Steve" by name — this is a personal operation, not a corporation</li>
+          </ul>
+        </div>
+        <div class="voice-card dont">
+          <h4>✕ Don't: Avoid These</h4>
+          <ul>
+            <li>Avoid generic travel-speak ("unforgettable memories await!")</li>
+            <li>Don't over-use exclamation points in body copy</li>
+            <li>Don't use cruise-line language ("amenity-rich," "curated journey")</li>
+            <li>Don't write passive voice — "charters are available" → "we offer charters"</li>
+            <li>Never use superlatives without substance to back them up</li>
+            <li>Avoid long run-on sentences in UI copy or CTAs</li>
+            <li>Don't refer to guests as "passengers" — they're adventurers, anglers, explorers</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:24px;padding:24px;background:var(--c-white);border-radius:8px;border-left:3px solid var(--c-gold);">
+        <p style="font-family:var(--ff-display);font-style:italic;font-size:1.1rem;color:var(--c-navy);line-height:1.7;">"If you enjoy the ocean, whales, nature on its own terms, and some of the finest fishing you will ever experience — you owe it to yourself to experience it from the deck of a private yacht where the only clock is the midnight sun."</p>
+        <p style="font-size:.72rem;color:var(--c-text-soft);margin-top:10px;font-family:var(--ff-body);font-weight:700;letter-spacing:.12em;text-transform:uppercase;">Exemplary Brand Voice</p>
+      </div>
+    </section>
+
+    <!-- IMAGERY -->
+    <section class="sg-section dark" id="imagery">
+      <div class="eyebrow" style="color:var(--c-gold-light);">Content</div>
+      <h2 class="sg-section-title">Imagery Guidelines</h2>
+      <p class="sg-section-sub">Photography must feel genuine, not stock. Real guests, real catches, real Alaska. Dark overlays maintain text readability. All images should have descriptive alt text for SEO and accessibility.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;">
+        <div><img src="uploads/gallery_fishing.jpg" alt="Sport fishing" style="border-radius:6px;width:100%;height:120px;object-fit:cover;"></div>
+        <div><img src="uploads/gallery_whales.jpg" alt="Whale watching" style="border-radius:6px;width:100%;height:120px;object-fit:cover;"></div>
+        <div><img src="uploads/gallery_scenic.jpg" alt="Scenic Alaska" style="border-radius:6px;width:100%;height:120px;object-fit:cover;"></div>
+        <div><img src="uploads/gallery_wild.jpg" alt="Alaska wilderness" style="border-radius:6px;width:100%;height:120px;object-fit:cover;"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="padding:18px;background:rgba(255,255,255,.05);border:1px solid rgba(168,204,216,.1);border-radius:8px;"><p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c-gold-light);margin-bottom:6px;">✓ Do Use</p><p style="font-size:.82rem;color:var(--c-glacier);font-weight:300;line-height:1.7;">Real guest photos · Actual catch photography · Genuine wildlife moments · Authentic Alaska scenery · Behind-the-scenes captain/crew shots</p></div>
+        <div style="padding:18px;background:rgba(255,255,255,.05);border:1px solid rgba(168,204,216,.1);border-radius:8px;"><p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#e57373;margin-bottom:6px;">✕ Avoid</p><p style="font-size:.82rem;color:var(--c-glacier);font-weight:300;line-height:1.7;">Generic stock photography · Overly posed/stiff images · Images from non-Alaska locations · Highly filtered or heavily edited photos that lose authenticity</p></div>
+      </div>
+    </section>
+
+    <!-- SEO -->
+    <section class="sg-section" id="seo">
+      <div class="eyebrow">Content</div>
+      <h2 class="sg-section-title">SEO &amp; Metadata Standards</h2>
+      <p class="sg-section-sub">Every page should be optimized for the keywords guests use to find us. Below are the core standards for all website pages.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div style="padding:24px;background:var(--c-cream);border-radius:8px;">
+          <h4 style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text-mid);margin-bottom:12px;">Page Title Formula</h4>
+          <p style="font-family:monospace;font-size:.8rem;color:var(--c-ocean);background:var(--c-white);padding:10px;border-radius:4px;line-height:1.6;">[Page Name] | Auke Bay Adventures — [City], Alaska</p>
+          <p style="font-size:.78rem;color:var(--c-text-soft);margin-top:8px;font-weight:300;">Max 60 characters. Include "Juneau, Alaska" or "Alaska" in every title.</p>
+        </div>
+        <div style="padding:24px;background:var(--c-cream);border-radius:8px;">
+          <h4 style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text-mid);margin-bottom:12px;">Meta Description Formula</h4>
+          <p style="font-size:.78rem;color:var(--c-text-mid);font-weight:300;line-height:1.7;">120–155 characters. Include primary keyword, location (Juneau, Alaska), and a CTA. Always include phone number or booking action.</p>
+        </div>
+        <div style="padding:24px;background:var(--c-cream);border-radius:8px;">
+          <h4 style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text-mid);margin-bottom:12px;">Primary Keywords</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+            <span style="background:var(--c-white);border:1px solid rgba(8,25,46,.1);border-radius:4px;padding:3px 9px;font-size:.7rem;color:var(--c-text-mid);">Alaska yacht charter</span>
+            <span style="background:var(--c-white);border:1px solid rgba(8,25,46,.1);border-radius:4px;padding:3px 9px;font-size:.7rem;color:var(--c-text-mid);">Juneau fishing charter</span>
+            <span style="background:var(--c-white);border:1px solid rgba(8,25,46,.1);border-radius:4px;padding:3px 9px;font-size:.7rem;color:var(--c-text-mid);">Inside Passage charter</span>
+            <span style="background:var(--c-white);border:1px solid rgba(8,25,46,.1);border-radius:4px;padding:3px 9px;font-size:.7rem;color:var(--c-text-mid);">bareboat charter Alaska</span>
+            <span style="background:var(--c-white);border:1px solid rgba(8,25,46,.1);border-radius:4px;padding:3px 9px;font-size:.7rem;color:var(--c-text-mid);">Nordic Tug charter</span>
+            <span style="background:var(--c-white);border:1px solid rgba(8,25,46,.1);border-radius:4px;padding:3px 9px;font-size:.7rem;color:var(--c-text-mid);">Glacier Bay tour Juneau</span>
+          </div>
+        </div>
+        <div style="padding:24px;background:var(--c-cream);border-radius:8px;">
+          <h4 style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-text-mid);margin-bottom:12px;">Image Alt Text</h4>
+          <p style="font-size:.78rem;color:var(--c-text-mid);font-weight:300;line-height:1.7;">Format: <code style="background:var(--c-white);padding:1px 5px;border-radius:3px;">[Subject] [action/context] — [location/brand]</code><br>Example: "Halibut fishing charter Juneau Alaska — Auke Bay Adventures"</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// Sidebar active link on scroll
+const sections = document.querySelectorAll('.sg-section, .sg-hero');
+const sideLinks = document.querySelectorAll('.sg-sidebar a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (s.offsetTop - 120 <= window.scrollY) current = s.id; });
+  sideLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
