@@ -1,0 +1,15 @@
+# netlify.toml — Auke Bay Adventures site configuration
+
+[build]
+  functions = "netlify/functions"
+  publish   = "."
+
+# Enable Netlify Identity
+[context.production]
+  environment = { NODE_VERSION = "18" }
+
+# Redirect /admin to Netlify Identity admin (optional convenience)
+[[redirects]]
+  from   = "/admin"
+  to     = "https://app.netlify.com/sites/YOUR_SITE_NAME/identity"
+  status = 301

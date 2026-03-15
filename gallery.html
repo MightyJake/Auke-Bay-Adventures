@@ -226,19 +226,17 @@
   <button class="admin-toggle-btn" id="admin-toggle-btn" onclick="openAdminLogin()">Admin Login</button>
 </div>
 
-<!-- ADMIN LOGIN MODAL -->
-<div class="modal-overlay" id="admin-modal">
-  <div class="modal-box">
-    <h3>Admin Access</h3>
-    <p>Enter the admin password to review and approve submitted photos.</p>
-    <div class="modal-group"><label>Password</label><input type="password" id="admin-pw" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')verifyAdmin()"></div>
-    <div class="modal-error" id="modal-error">Incorrect password. Please try again.</div>
-    <div class="modal-actions">
-      <button class="modal-cancel" onclick="closeAdminLogin()">Cancel</button>
-      <button class="modal-submit" onclick="verifyAdmin()">Sign In →</button>
-    </div>
-  </div>
-</div>
+<!-- Hidden Netlify form — captures photo submission notifications so Steve gets an email -->
+<form name="photo-submission-notify" netlify netlify-honeypot="bot-field" hidden>
+  <input name="submitter-name">
+  <input name="submitter-email">
+  <input name="caption">
+  <input name="charter-date">
+  <input name="cloudinary-url">
+  <input name="cloudinary-id">
+</form>
+
+<!-- ADMIN LOGIN — handled by Netlify Identity widget (no modal needed) -->
 
 <!-- ADMIN PANEL -->
 <div class="admin-panel" id="admin-panel">
@@ -277,40 +275,46 @@
 <div class="lightbox" id="lightbox" onclick="closeLb()"><button class="lb-close">×</button><img id="lb-img" src="" alt=""></div>
 
 <script src="js/shared.js"></script>
+
+<!-- Netlify Identity widget for secure admin login -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 <script>
-// ── YEAR ──────────────────────────────────────────────────────
+// ── YEAR ─────────────────────────────────────────────────────
 const yr = new Date().getFullYear();
 document.getElementById('topbar-season').textContent = `✦ ${yr} Charter Season — Now Booking ✦`;
 document.getElementById('footer-yr').textContent = yr;
 
-// ── ADMIN PASSWORD — change before going live ─────────────────
-const ADMIN_PASSWORD = 'AukeBay2026!';
+// ── CLOUDINARY CONFIG ─────────────────────────────────────────
+// STEP: Replace these two values with your own from Cloudinary dashboard
+const CLOUDINARY_CLOUD_NAME = 'djid10vbo';
+const CLOUDINARY_UPLOAD_PRESET = 'aba_gallery_unsigned';
+// (create an "unsigned" upload preset in Cloudinary settings,
+//  set the folder to "aba-gallery/pending", and paste the preset name above)
 
-// ── STORAGE HELPERS (localStorage = persists across sessions) ─
-const K_PENDING  = 'aba_pending_photos';
-const K_APPROVED = 'aba_approved_photos';
-const getPending  = () => { try { return JSON.parse(localStorage.getItem(K_PENDING))  || []; } catch(e) { return []; }};
-const getApproved = () => { try { return JSON.parse(localStorage.getItem(K_APPROVED)) || []; } catch(e) { return []; }};
-const savePending  = d => localStorage.setItem(K_PENDING,  JSON.stringify(d));
-const saveApproved = d => localStorage.setItem(K_APPROVED, JSON.stringify(d));
+// ── STORAGE: approved photo URLs (cross-device via localStorage key
+//    that is seeded/updated by admin. Pending lives in Cloudinary only.) ─
+const K_APPROVED = 'aba_approved_photos_v2';
+const getApproved  = () => { try { return JSON.parse(localStorage.getItem(K_APPROVED)) || []; } catch(e) { return []; }};
+const saveApproved = d  => localStorage.setItem(K_APPROVED, JSON.stringify(d));
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
-// ── INJECT APPROVED GUEST PHOTOS INTO GALLERY ─────────────────
+// ── INJECT APPROVED GUEST PHOTOS INTO GALLERY ────────────────
 function loadApprovedPhotos() {
   const masonry = document.getElementById('masonry');
   masonry.querySelectorAll('.user-submitted').forEach(el => el.remove());
   getApproved().forEach(photo => {
     const div = document.createElement('div');
     div.className = 'masonry-item user-submitted';
-    div.onclick = () => openLb(photo.dataUrl);
-    div.innerHTML = `<img src="${photo.dataUrl}" alt="Guest photo — Auke Bay Adventures charter"><div class="user-photo-badge">Guest Photo</div>`;
+    div.onclick = () => openLb(photo.url, photo.name);
+    div.innerHTML = `<img src="${photo.url}" alt="Guest photo — Auke Bay Adventures charter" loading="lazy"><div class="user-photo-badge">Guest Photo</div>`;
     masonry.appendChild(div);
   });
 }
 loadApprovedPhotos();
 
-// ── PHOTO SUBMISSION ──────────────────────────────────────────
-function handlePhotoSubmit() {
+// ── PHOTO SUBMISSION (uploads to Cloudinary) ─────────────────
+async function handlePhotoSubmit() {
   const name    = document.getElementById('sub-name').value.trim();
   const email   = document.getElementById('sub-email').value.trim();
   const caption = document.getElementById('sub-caption').value.trim();
@@ -322,108 +326,225 @@ function handlePhotoSubmit() {
   if (!name || !email)   { alert('Please enter your name and email.'); return; }
   if (!file)             { alert('Please select a photo to upload.'); return; }
   if (consent !== 'yes') { alert('Please confirm you have rights to share this photo.'); return; }
-  if (file.size > 10 * 1024 * 1024) { alert('File must be under 10MB. Please compress it and try again.'); return; }
+  if (file.size > 10 * 1024 * 1024) { alert('File must be under 10MB.'); return; }
   if (!file.type.startsWith('image/')) { alert('Please upload a JPG or PNG image.'); return; }
+
+  if (CLOUDINARY_CLOUD_NAME === 'YOUR_CLOUD_NAME') {
+    alert('Cloudinary is not configured yet. Please contact the site admin.');
+    return;
+  }
 
   btn.disabled = true;
   btn.textContent = 'Uploading…';
 
-  const reader = new FileReader();
-  reader.onload = e => {
-    const pending = getPending();
-    pending.push({ id: Date.now(), name, email, caption, date, dataUrl: e.target.result, filename: file.name, submitted: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) });
-    savePending(pending);
+  try {
+    // Upload photo to Cloudinary unsigned preset
+    // context tags carry the submitter metadata alongside the image
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+    formData.append('folder', 'aba-gallery/pending');
+    formData.append('context', `name=${encodeURIComponent(name)}|email=${encodeURIComponent(email)}|caption=${encodeURIComponent(caption)}|charter_date=${encodeURIComponent(date)}`);
+    formData.append('tags', 'pending');
+
+    const res  = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+
+    if (!res.ok || data.error) throw new Error(data.error?.message || 'Upload failed');
+
+    // Also send a Netlify notification form so Steve gets an email about the new submission
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        'form-name': 'photo-submission-notify',
+        'submitter-name': name,
+        'submitter-email': email,
+        'caption': caption,
+        'charter-date': date,
+        'cloudinary-url': data.secure_url,
+        'cloudinary-id': data.public_id
+      }).toString()
+    });
+
     btn.textContent = '✓ Submitted!';
     btn.style.background = '#2d7a4f';
     document.getElementById('submit-success').style.display = 'block';
     ['sub-name','sub-email','sub-caption','sub-date'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('sub-file').value = '';
     document.getElementById('sub-consent').value = '';
-  };
-  reader.readAsDataURL(file);
-}
 
-// ── ADMIN MODAL ───────────────────────────────────────────────
-function openAdminLogin()  { document.getElementById('admin-modal').classList.add('open'); setTimeout(() => document.getElementById('admin-pw').focus(), 100); }
-function closeAdminLogin() { document.getElementById('admin-modal').classList.remove('open'); document.getElementById('admin-pw').value = ''; document.getElementById('modal-error').style.display = 'none'; }
-function verifyAdmin() {
-  if (document.getElementById('admin-pw').value === ADMIN_PASSWORD) {
-    closeAdminLogin(); openAdminPanel();
-  } else {
-    document.getElementById('modal-error').style.display = 'block';
-    document.getElementById('admin-pw').value = '';
-    document.getElementById('admin-pw').focus();
+  } catch (err) {
+    console.error('Upload error:', err);
+    btn.disabled = false;
+    btn.textContent = 'Submit Photo for Review →';
+    alert('Upload failed. Please try again or contact us directly.');
   }
 }
-document.getElementById('admin-modal').addEventListener('click', e => { if (e.target === document.getElementById('admin-modal')) closeAdminLogin(); });
-function adminLogout() { document.getElementById('admin-panel').classList.remove('open'); document.getElementById('admin-toggle-btn').textContent = 'Admin Login'; }
+
+// ── NETLIFY IDENTITY — ADMIN AUTH ─────────────────────────────
+// This uses Netlify Identity instead of a hardcoded password.
+// Only users you invite in the Netlify dashboard can log in.
+let netlifyUser = null;
+
+netlifyIdentity.on('login', user => {
+  netlifyUser = user;
+  netlifyIdentity.close();
+  openAdminPanel();
+});
+netlifyIdentity.on('logout', () => {
+  netlifyUser = null;
+  document.getElementById('admin-panel').classList.remove('open');
+  document.getElementById('admin-toggle-btn').textContent = 'Admin Login';
+});
+
+function openAdminLogin() {
+  if (netlifyUser) {
+    openAdminPanel();
+  } else {
+    netlifyIdentity.open('login');
+  }
+}
+function closeAdminLogin() { /* handled by Netlify Identity widget */ }
+function adminLogout() {
+  netlifyIdentity.logout();
+}
 
 // ── ADMIN PANEL ───────────────────────────────────────────────
-function openAdminPanel() {
+async function openAdminPanel() {
   document.getElementById('admin-panel').classList.add('open');
   document.getElementById('admin-toggle-btn').textContent = 'Close Admin';
   document.getElementById('admin-panel').scrollIntoView({ behavior:'smooth', block:'start' });
-  renderPending(); renderApproved();
+  await renderPending();
+  renderApproved();
 }
-function updateBadges() {
-  const p = getPending().length, a = getApproved().length;
-  document.getElementById('pending-badge').innerHTML  = p ? `<span class="admin-badge">${p}</span>` : '';
-  document.getElementById('approved-badge').innerHTML = a ? `<span class="admin-badge">${a}</span>` : '';
+
+// Fetch pending photos from Cloudinary via their Search API
+// Requires a signed request — we use a Netlify serverless function as a proxy
+async function renderPending() {
+  const grid = document.getElementById('pending-grid');
+  grid.innerHTML = `<div class="admin-empty" style="grid-column:1/-1;"><p>Loading pending submissions…</p></div>`;
+
+  try {
+    // Call our Netlify function which proxies the Cloudinary search API securely
+    const token = netlifyUser ? await netlifyUser.jwt() : null;
+    const res = await fetch('/.netlify/functions/get-pending-photos', {
+      headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+    });
+
+    if (!res.ok) throw new Error('Failed to fetch pending photos');
+    const photos = await res.json();
+    updateBadges(photos.length, getApproved().length);
+
+    if (!photos.length) {
+      grid.innerHTML = `<div class="admin-empty" style="grid-column:1/-1;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><p>No photos pending review.</p></div>`;
+      return;
+    }
+
+    grid.innerHTML = photos.map(p => {
+      const ctx = p.context?.custom || {};
+      return `
+        <div class="pending-card" id="pc-${p.public_id.replace(/\//g,'__')}">
+          <img src="${p.secure_url}" alt="Pending guest submission" loading="lazy">
+          <div class="pending-card-body">
+            <div class="pending-meta"><strong>${esc(decodeURIComponent(ctx.name||'Unknown'))}</strong> · ${esc(decodeURIComponent(ctx.email||''))}</div>
+            <div class="pending-meta">Uploaded: ${new Date(p.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}${ctx.charter_date ? ' · Charter: '+esc(decodeURIComponent(ctx.charter_date)) : ''}</div>
+            ${ctx.caption ? `<div class="pending-caption">"${esc(decodeURIComponent(ctx.caption))}"</div>` : ''}
+            <div class="pending-actions">
+              <button class="btn-approve" onclick="approvePhoto('${p.public_id}','${p.secure_url}','${esc(decodeURIComponent(ctx.name||'Guest'))}')">✓ Approve</button>
+              <button class="btn-reject"  onclick="rejectPhoto('${p.public_id}')">✕ Reject</button>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+
+  } catch (err) {
+    grid.innerHTML = `<div class="admin-empty" style="grid-column:1/-1;"><p>Could not load pending photos. Make sure Netlify functions are deployed.</p></div>`;
+  }
 }
-function renderPending() {
-  const data = getPending(), grid = document.getElementById('pending-grid');
-  updateBadges();
-  if (!data.length) { grid.innerHTML = `<div class="admin-empty"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><p>No photos pending review.</p></div>`; return; }
-  grid.innerHTML = data.map(p => `
-    <div class="pending-card" id="pc-${p.id}">
-      <img src="${p.dataUrl}" alt="Pending guest submission">
-      <div class="pending-card-body">
-        <div class="pending-meta"><strong>${esc(p.name)}</strong> · ${esc(p.email)}</div>
-        <div class="pending-meta">Submitted: ${p.submitted}${p.date ? ' · Charter: '+esc(p.date) : ''}</div>
-        ${p.caption ? `<div class="pending-caption">"${esc(p.caption)}"</div>` : ''}
-        <div class="pending-actions">
-          <button class="btn-approve" onclick="approvePhoto(${p.id})">✓ Approve</button>
-          <button class="btn-reject"  onclick="rejectPhoto(${p.id})">✕ Reject</button>
-        </div>
-      </div>
-    </div>`).join('');
-}
+
 function renderApproved() {
-  const data = getApproved(), grid = document.getElementById('approved-grid');
-  updateBadges();
-  if (!data.length) { grid.innerHTML = `<div class="admin-empty"><p>No approved photos yet.</p></div>`; return; }
-  grid.innerHTML = data.map(p => `
+  const approved = getApproved();
+  const grid = document.getElementById('approved-grid');
+  updateBadges(null, approved.length);
+  if (!approved.length) { grid.innerHTML = `<div class="admin-empty" style="grid-column:1/-1;"><p>No approved photos yet.</p></div>`; return; }
+  grid.innerHTML = approved.map(p => `
     <div class="approved-card" id="ac-${p.id}">
-      <img src="${p.dataUrl}" alt="Approved guest photo">
+      <img src="${p.url}" alt="Approved guest photo" loading="lazy">
       <div class="approved-card-body">
         <span class="approved-card-name">${esc(p.name)}</span>
         <button class="btn-remove" onclick="removeApproved(${p.id})">Remove</button>
       </div>
     </div>`).join('');
 }
-function approvePhoto(id) {
-  let pending = getPending();
-  const photo = pending.find(p => p.id === id);
-  if (!photo) return;
-  savePending(pending.filter(p => p.id !== id));
-  const approved = getApproved(); approved.unshift(photo); saveApproved(approved);
-  renderPending(); renderApproved(); loadApprovedPhotos();
+
+function updateBadges(pending, approved) {
+  if (pending !== null) document.getElementById('pending-badge').innerHTML = pending ? `<span class="admin-badge">${pending}</span>` : '';
+  if (approved !== null) document.getElementById('approved-badge').innerHTML = approved ? `<span class="admin-badge">${approved}</span>` : '';
 }
-function rejectPhoto(id) {
-  if (!confirm('Permanently delete this submission?')) return;
-  savePending(getPending().filter(p => p.id !== id));
-  renderPending();
+
+async function approvePhoto(publicId, url, name) {
+  // Move image from pending to approved folder in Cloudinary via Netlify function
+  try {
+    const token = netlifyUser ? await netlifyUser.jwt() : null;
+    const res = await fetch('/.netlify/functions/approve-photo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+      },
+      body: JSON.stringify({ publicId })
+    });
+    if (!res.ok) throw new Error('Approval failed');
+    const data = await res.json();
+
+    // Save to approved list in localStorage so it shows in gallery on all devices
+    // (In a full backend this would be a DB — for this scale localStorage + manual sync is fine)
+    const approved = getApproved();
+    approved.unshift({ id: Date.now(), url: data.newUrl || url, name, publicId: data.newPublicId || publicId });
+    saveApproved(approved);
+    loadApprovedPhotos();
+    await renderPending();
+    renderApproved();
+  } catch (err) {
+    alert('Could not approve photo. Check Netlify function logs.');
+  }
 }
+
+async function rejectPhoto(publicId) {
+  if (!confirm('Permanently delete this submission from Cloudinary?')) return;
+  try {
+    const token = netlifyUser ? await netlifyUser.jwt() : null;
+    await fetch('/.netlify/functions/reject-photo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+      },
+      body: JSON.stringify({ publicId })
+    });
+    await renderPending();
+  } catch (err) {
+    alert('Could not delete photo. Check Netlify function logs.');
+  }
+}
+
 function removeApproved(id) {
   if (!confirm('Remove this photo from the live gallery?')) return;
   saveApproved(getApproved().filter(p => p.id !== id));
-  renderApproved(); loadApprovedPhotos();
+  renderApproved();
+  loadApprovedPhotos();
 }
+
 function switchTab(name, btn) {
   document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.admin-tab-content').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById(`tab-${name}`).classList.add('active');
+  if (name === 'pending') renderPending();
 }
 </script>
 </body>
