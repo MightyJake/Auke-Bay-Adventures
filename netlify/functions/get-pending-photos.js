@@ -32,6 +32,9 @@ exports.handler = async (event) => {
     const credentials = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
     const url = `https://api.cloudinary.com/v1_1/${cloudName}/resources/image?prefix=aba-gallery/pending&context=true&tags=true&max_results=50`;
 
+    console.log('Cloudinary cloud name:', cloudName);
+    console.log('Fetching URL:', url);
+
     const data = await new Promise((resolve, reject) => {
       const req = https.get(url, {
         headers: { 'Authorization': `Basic ${credentials}` }
