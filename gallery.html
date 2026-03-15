@@ -287,7 +287,7 @@ document.getElementById('footer-yr').textContent = yr;
 
 // ── CLOUDINARY CONFIG ─────────────────────────────────────────
 // STEP: Replace these two values with your own from Cloudinary dashboard
-const CLOUDINARY_CLOUD_NAME = 'djid10vbo';
+const CLOUDINARY_CLOUD_NAME = 'YOUR_CLOUD_NAME';
 const CLOUDINARY_UPLOAD_PRESET = 'aba_gallery_unsigned';
 // (create an "unsigned" upload preset in Cloudinary settings,
 //  set the folder to "aba-gallery/pending", and paste the preset name above)
@@ -453,7 +453,7 @@ async function renderPending() {
       const ctx = p.context?.custom || {};
       return `
         <div class="pending-card" id="pc-${p.public_id.replace(/\//g,'__')}">
-          <img src="${p.secure_url}" alt="Pending guest submission" loading="lazy">
+          <img src="${p.secure_url}" alt="Pending guest submission" loading="lazy" style="cursor:zoom-in;" onclick="openLb('${p.secure_url}')">
           <div class="pending-card-body">
             <div class="pending-meta"><strong>${esc(decodeURIComponent(ctx.name||'Unknown'))}</strong> · ${esc(decodeURIComponent(ctx.email||''))}</div>
             <div class="pending-meta">Uploaded: ${new Date(p.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}${ctx.charter_date ? ' · Charter: '+esc(decodeURIComponent(ctx.charter_date)) : ''}</div>
@@ -478,7 +478,7 @@ function renderApproved() {
   if (!approved.length) { grid.innerHTML = `<div class="admin-empty" style="grid-column:1/-1;"><p>No approved photos yet.</p></div>`; return; }
   grid.innerHTML = approved.map(p => `
     <div class="approved-card" id="ac-${p.id}">
-      <img src="${p.url}" alt="Approved guest photo" loading="lazy">
+      <img src="${p.url}" alt="Approved guest photo" loading="lazy" style="cursor:zoom-in;" onclick="openLb('${p.url}')">
       <div class="approved-card-body">
         <span class="approved-card-name">${esc(p.name)}</span>
         <button class="btn-remove" onclick="removeApproved(${p.id})">Remove</button>
