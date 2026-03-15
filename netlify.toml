@@ -7,8 +7,12 @@
 [context.production]
   environment = { NODE_VERSION = "18" }
 
+# CLOUDINARY_CLOUD_NAME is a public identifier, not a sensitive secret.
+# The actual secrets (API key/secret) live in environment variables only.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "CLOUDINARY_CLOUD_NAME"
+
 # Custom Identity email templates
-# These use ?token= query params instead of #hash so Gmail doesn't strip them
 [identity]
   [identity.emails]
     invitation = "netlify/email-templates/invite.html"
