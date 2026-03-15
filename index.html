@@ -656,10 +656,28 @@
 </div>
 
 <script src="js/shared.js"></script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
   const yr = new Date().getFullYear();
   const el = document.getElementById('topbar-season');
   if (el) el.textContent = `✦ ${yr} Charter Season — Now Booking ✦`;
+
+  // Handle Netlify Identity invite/recovery tokens on the homepage.
+  // When the invite email link lands here, the widget opens automatically
+  // so the user can set their password.
+  if (window.location.hash && (
+    window.location.hash.includes('invite_token') ||
+    window.location.hash.includes('recovery_token') ||
+    window.location.hash.includes('confirmation_token')
+  )) {
+    window.addEventListener('load', () => netlifyIdentity.open());
+  }
+
+  // After successful login, redirect to gallery for admin access
+  netlifyIdentity.on('login', () => {
+    netlifyIdentity.close();
+    window.location.href = '/gallery';
+  });
 </script>
 </body>
 </html>
