@@ -4,12 +4,17 @@
   functions = "netlify/functions"
   publish   = "."
 
-# Enable Netlify Identity
 [context.production]
   environment = { NODE_VERSION = "18" }
 
-# Redirect /admin to Netlify Identity admin (optional convenience)
+# Custom Identity email templates
+# These use ?token= query params instead of #hash so Gmail doesn't strip them
+[identity]
+  [identity.emails]
+    invitation = "netlify/email-templates/invite.html"
+    recovery   = "netlify/email-templates/recovery.html"
+
 [[redirects]]
-  from   = "/admin"
-  to     = "https://app.netlify.com/sites/YOUR_SITE_NAME/identity"
-  status = 301
+  from = "/*"
+  to   = "/index.html"
+  status = 200

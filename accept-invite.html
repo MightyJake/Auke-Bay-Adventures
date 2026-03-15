@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setting up your account — Auke Bay Adventures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: #08192e;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      background: #0c2040;
+      border: 1px solid rgba(168,204,216,.12);
+      border-radius: 12px;
+      padding: 48px 40px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    img { height: 60px; margin: 0 auto 24px; display: block; }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: .88rem;
+      color: #a8ccd8;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 2px solid rgba(200,136,58,.2);
+      border-top-color: #c8883a;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error {
+      display: none;
+      background: rgba(192,57,43,.15);
+      border: 1px solid rgba(192,57,43,.3);
+      border-radius: 6px;
+      padding: 14px;
+      font-size: .84rem;
+      color: #e57373;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="/uploads/auke_logo.png" alt="Auke Bay Adventures">
+    <div class="spinner"></div>
+    <h1>Setting up your account</h1>
+    <p>Just a moment — redirecting you to set your password...</p>
+    <div class="error" id="error">
+      Something went wrong. <a href="/gallery" style="color:#e4aa60;">Go to gallery</a> and use the Admin Login button to try again.
+    </div>
+  </div>
+
+  <!-- Netlify Identity widget must be loaded here to handle the token -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // Read the token and type from query params
+    // (bypasses email clients that strip hash fragments)
+    const params  = new URLSearchParams(window.location.search);
+    const token   = params.get('token');
+    const type    = params.get('type') || 'invite'; // 'invite' or 'recovery'
+
+    if (!token) {
+      document.getElementById('error').style.display = 'block';
+    } else {
+      // Map type to the hash key Netlify Identity expects
+      const hashKey = type === 'recovery' ? 'recovery_token' : 'invite_token';
+
+      // Replace current URL with the hash-based token format
+      // so the Identity widget can detect and process it
+      window.location.replace(`/#${hashKey}=${token}`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You've been invited to Auke Bay Adventures</title>
+  <style>
+    body { font-family: Georgia, serif; background: #f7f3ec; margin: 0; padding: 40px 20px; }
+    .card { max-width: 520px; margin: 0 auto; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.10); }
+    .header { background: #08192e; padding: 36px; text-align: center; }
+    .header img { height: 56px; }
+    .body { padding: 40px 36px; }
+    h1 { font-family: Georgia, serif; font-size: 1.5rem; color: #08192e; margin: 0 0 12px; }
+    p { font-size: .92rem; color: #37566e; line-height: 1.75; margin: 0 0 24px; }
+    .btn { display: inline-block; background: #c8883a; color: #08192e; padding: 14px 32px; border-radius: 4px; text-decoration: none; font-family: Arial, sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .footer { padding: 20px 36px; border-top: 1px solid #f0ebe0; font-size: .78rem; color: #9ab3c6; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img src="{{ .SiteURL }}/uploads/auke_logo.png" alt="Auke Bay Adventures">
+    </div>
+    <div class="body">
+      <h1>You've been invited to manage the Auke Bay Adventures gallery</h1>
+      <p>Click the button below to set your password and access the photo review dashboard. From there you can approve or reject guest photo submissions.</p>
+      <!-- Using /accept-invite?token= instead of /#invite_token= so email clients don't strip the token -->
+      <a class="btn" href="{{ .SiteURL }}/accept-invite?token={{ .Token }}">Accept the Invite</a>
+    </div>
+    <div class="footer">
+      Auke Bay Adventures · 11485 Auke Bay Harbor Rd · Juneau, AK 99821
+    </div>
+  </div>
+</body>
+</html>
