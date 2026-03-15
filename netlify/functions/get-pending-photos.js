@@ -42,6 +42,7 @@ exports.handler = async (event) => {
         let body = '';
         res.on('data', chunk => body += chunk);
         res.on('end', () => {
+          console.log('Cloudinary raw response:', body.substring(0, 500));
           try { resolve(JSON.parse(body)); }
           catch (e) { reject(e); }
         });
